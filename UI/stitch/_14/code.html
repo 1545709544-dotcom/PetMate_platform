@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>购物车 - PetMate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tap-highlight-transparent {
+            -webkit-tap-highlight-color: transparent;
+        }
+        @keyframes pulse-once {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse-once {
+            animation: pulse-once 0.3s ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffdf9e",
+                        "surface-container-high": "#e2e9ec",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-soft": "#F8F9FA",
+                        "secondary-container": "#68abff",
+                        "primary-container": "#ff7a32",
+                        "surface-variant": "#dde4e6",
+                        "inverse-on-surface": "#ebf2f4",
+                        "primary-fixed": "#ffdbcc",
+                        "on-surface": "#161d1f",
+                        "on-surface-variant": "#584238",
+                        "warning-amber": "#FAAD14",
+                        "outline-variant": "#dfc0b3",
+                        "emergency-red": "#FF4D4F",
+                        "on-secondary-fixed-variant": "#004883",
+                        "on-primary-container": "#622400",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#351000",
+                        "on-error-container": "#93000a",
+                        "surface": "#f4fafd",
+                        "primary-fixed-dim": "#ffb694",
+                        "outline": "#8c7166",
+                        "surface-container": "#e8eff1",
+                        "surface-container-low": "#eef5f7",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "secondary-fixed": "#d4e3ff",
+                        "surface-tint": "#a14000",
+                        "primary": "#a14000",
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "background": "#f4fafd",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#cb9900",
+                        "secondary": "#0060ac",
+                        "on-secondary-fixed": "#001c39",
+                        "surface-bright": "#f4fafd",
+                        "sky-blue-light": "#EBF4FF",
+                        "surface-container-highest": "#dde4e6",
+                        "surface-dim": "#d4dbdd",
+                        "inverse-primary": "#ffb694",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#483400",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-background": "#161d1f",
+                        "on-secondary-container": "#003e73",
+                        "success-green": "#52C41A",
+                        "inverse-surface": "#2b3234",
+                        "on-error": "#ffffff",
+                        "tertiary": "#785900",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-chat": "800px",
+                        "max-width-content": "1440px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "margin-desktop": "120px",
+                        "gutter-desktop": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-on-background shadow-sm sticky top-0 z-50 h-20 flex items-center">
+<div class="flex justify-between items-center w-full px-4 md:px-margin-desktop max-w-max-width-content mx-auto h-20">
+<div class="flex items-center gap-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary-container">PetMate</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">首页</a>
+<a class="text-primary font-bold border-b-2 border-primary-container pb-1 font-body-md" href="#">商城</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">社区</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">领养</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">AI问诊</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-low rounded-full px-4 py-2 w-64 border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant scale-90">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full ml-2 text-on-surface" placeholder="搜索宠粮、零食..." type="text">
+</div>
+<button class="material-symbols-outlined text-primary scale-95 active:scale-90 transition-transform">notifications</button>
+<button class="material-symbols-outlined text-primary-container scale-95 active:scale-90 transition-transform">shopping_cart</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a smiling pet owner with a small fluffy white dog, set against a warm beige background. The lighting is soft and flattering, emphasizing a clean and friendly lifestyle aesthetic consistent with PetMate's branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSrkjutGyJj7Yg__GqdtT46hGeiWoF1dE6x__uiG1SmYbrcOeemhdSmGMz3lJJgCcgrA4HtRxhZaqrSB8FIEBprRcpdWCD-kEd1sx49ISAxJ6yw8qnGcNPazDZ4Aof6XPvLDD-JmCEDzhe6Xf1tLjAGBVNjAZFnGQTmMdPo4HagVfF8S8UR5UH3IqC0_Rx8AlUd1g-rPiwZUFdDagAOrFrIwvfeMBACtUL17WxNut8yi1_-SlC22xsoh3ea3cI0uf_Uaax0PnAnss">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-max-width-content mx-auto px-4 md:px-margin-desktop py-8 md:py-12">
+<div class="flex flex-col lg:flex-row gap-gutter-desktop">
+<!-- Shopping Cart List -->
+<div class="flex-grow flex flex-col gap-6">
+<div class="flex items-center justify-between mb-2">
+<h1 class="text-headline-md font-headline-md text-on-surface">购物车 <span class="text-body-md font-normal text-on-surface-variant ml-2">(3件商品)</span></h1>
+<button class="text-primary hover:underline text-label-md transition-colors">清空失效商品</button>
+</div>
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 p-4 md:p-6 flex flex-col md:flex-row gap-6 transition-all hover:shadow-md">
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-surface-container rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio product shot of a premium 5kg bag of organic dog food. The packaging features vibrant orange and blue accents with a friendly golden retriever illustration. The lighting is bright and professional, highlighting the texture of the packaging against a clean, light grey surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB78sP-6Vy9Vy4n2oPQwLXSeE_FqAi5uYFQoU3JNnvH92rzYBaJEuMgdhGkDvc9DPyyRHMawYrQCP3pTTUH1LIvTDF07HgcLYYE1sQSXQhFqyPwU2kvP19tWNowF32Qc_ouS3tCThWlg8WetZL9LoghfMDBl2p97_65VVNGM-hh9L345-wHqHFATLKSxpd6agiD67Jru_dCUrz91GBttglCNA6ipSoI9NuFJ9zusFCuFWrS0sox7PqQiXv1n1wJgjsuQlcnHzUFpEw">
+<div class="absolute top-2 left-2 bg-primary-container text-white text-[10px] px-2 py-0.5 rounded-full font-bold">精选</div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start gap-4">
+<div>
+<h3 class="text-body-lg font-semibold text-on-surface mb-1">PetMate 优享系列 全价幼犬粮</h3>
+<p class="text-label-sm text-on-surface-variant bg-surface-container-low inline-block px-2 py-1 rounded">口味: 鸡肉蓝莓 | 规格: 5kg</p>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-emergency-red transition-colors">delete</button>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center gap-1">
+<span class="text-label-md text-primary-container font-bold">¥</span>
+<span class="text-headline-md font-headline-md text-primary-container">258.00</span>
+</div>
+<div class="flex items-center border border-outline-variant/30 rounded-full overflow-hidden">
+<button class="px-3 py-1 hover:bg-surface-container text-on-surface transition-colors font-bold text-lg">-</button>
+<span class="px-4 py-1 text-body-md font-semibold border-x border-outline-variant/30 min-w-[40px] text-center">1</span>
+<button class="px-3 py-1 hover:bg-surface-container text-on-surface transition-colors font-bold text-lg">+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 p-4 md:p-6 flex flex-col md:flex-row gap-6 transition-all hover:shadow-md">
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-surface-container rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Close-up commercial photography of a pack of high-protein freeze-dried salmon pet treats. The treats are visible through a transparent window in the pouch. Set in a bright, modern kitchen environment with warm morning sunlight casting soft shadows, emphasizing natural and healthy ingredients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2yyPqjUJevMRt-7edoKMq_AKW3YUasAEnBAsbxjLs1Yu-UC1kaEV7UitHjtEiiKvjFGvSJjYeygnmi9-pUVQ6O1IcqAV4q2TItBTL1RxthM5PKnO87JDJoWIbF0Yc0mnyF_w60KrJcgTeNiLKJkelRzFDO4UhszrKEW-OUEmYR0f_WJjDnko-RkgVK1Kp2LUe9S4kFEGtcaHCxld6jHNxOtmPZpqUFPk2RCn9AqjtL6VxrpcBGlfoYGrDG9me04JZLDZQ1tYdfzU">
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start gap-4">
+<div>
+<h3 class="text-body-lg font-semibold text-on-surface mb-1">纯享三文鱼冻干 宠物零食</h3>
+<p class="text-label-sm text-on-surface-variant bg-surface-container-low inline-block px-2 py-1 rounded">口味: 深海三文鱼 | 规格: 100g x 3</p>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-emergency-red transition-colors">delete</button>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center gap-1">
+<span class="text-label-md text-primary-container font-bold">¥</span>
+<span class="text-headline-md font-headline-md text-primary-container">89.00</span>
+<span class="text-label-sm text-on-surface-variant line-through ml-2">¥128.00</span>
+</div>
+<div class="flex items-center border border-outline-variant/30 rounded-full overflow-hidden">
+<button class="px-3 py-1 hover:bg-surface-container text-on-surface transition-colors font-bold text-lg">-</button>
+<span class="px-4 py-1 text-body-md font-semibold border-x border-outline-variant/30 min-w-[40px] text-center">2</span>
+<button class="px-3 py-1 hover:bg-surface-container text-on-surface transition-colors font-bold text-lg">+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 p-4 md:p-6 flex flex-col md:flex-row gap-6 transition-all hover:shadow-md">
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-surface-container rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Modern minimalist pet water fountain with a sleek white ceramic design and a quiet water flow. The product is displayed in a clean, contemporary living room setting with a vibrant green plant in the background, reinforcing a high-tech and premium pet care lifestyle. Soft, natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhxcjg8kz6-DDCGSwRw2Vi6UUw2NkK2OFdstqQKH_v9OWIgl8CrDwWmlpGIjeanP9nh_XjbB3Iiwkt6fV0-_7xK7MP1W4EbS1xotjNUHRi5xNzOWQTlPdonzKhcl6V8IRab-0Hqm9PZlpho2nMVfVyyUxbhce8_zOZovZ-DK_dc30KaMh9cFxyGymvkt4iURKjOHZfdFyLzLQVNd-ixI6_lTmhQCheGZboNVa969Tli-xcRFPnIY2-emaCJ6tzULli4g9Dejz-Fa4">
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start gap-4">
+<div>
+<h3 class="text-body-lg font-semibold text-on-surface mb-1">AI 智能静音自动饮水机</h3>
+<p class="text-label-sm text-on-surface-variant bg-surface-container-low inline-block px-2 py-1 rounded">颜色: 极地白 | 版本: 智能感应版</p>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-emergency-red transition-colors">delete</button>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center gap-1">
+<span class="text-label-md text-primary-container font-bold">¥</span>
+<span class="text-headline-md font-headline-md text-primary-container">199.00</span>
+</div>
+<div class="flex items-center border border-outline-variant/30 rounded-full overflow-hidden">
+<button class="px-3 py-1 hover:bg-surface-container text-on-surface transition-colors font-bold text-lg">-</button>
+<span class="px-4 py-1 text-body-md font-semibold border-x border-outline-variant/30 min-w-[40px] text-center">1</span>
+<button class="px-3 py-1 hover:bg-surface-container text-on-surface transition-colors font-bold text-lg">+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Sidebar -->
+<aside class="w-full lg:w-[400px] flex flex-col gap-6">
+<!-- Coupon Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 p-6">
+<h2 class="text-body-lg font-bold text-on-surface mb-4">优惠券与折扣</h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 border border-primary-container/20 bg-primary-fixed/10 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">confirmation_number</span>
+<div>
+<p class="text-label-md font-bold text-on-primary-container">满200减20优惠券</p>
+<p class="text-[10px] text-on-surface-variant">有效期至 2024-12-31</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<button class="w-full py-2 border-2 border-dashed border-outline-variant/50 rounded-lg text-label-md text-on-surface-variant hover:border-primary-container/50 hover:text-primary-container transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                            使用优惠码
+                        </button>
+</div>
+</section>
+<!-- Summary Details -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 p-6 sticky top-24">
+<h2 class="text-body-lg font-bold text-on-surface mb-6">结算明细</h2>
+<div class="space-y-4">
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>商品总计</span>
+<span>¥635.00</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>运费</span>
+<span class="text-success-green">免运费</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>优惠减免</span>
+<span class="text-emergency-red">-¥20.00</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/20">
+<div class="flex justify-between items-end">
+<span class="text-body-lg font-bold text-on-surface">合计应付</span>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-primary-container leading-none">¥615.00</p>
+<p class="text-[10px] text-on-surface-variant mt-1">包含预估增值税金额</p>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary-container hover:bg-on-primary-container text-white py-4 rounded-xl font-bold text-body-lg shadow-lg hover:shadow-xl active:scale-[0.98] transition-all mt-4 flex items-center justify-center gap-2 group">
+                            去结算
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-4 mt-6">
+<img alt="Visa" class="h-6 grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmd4dfPdqH-QbXBsr9ThrXoH4UKTzTPvAG6LU4fiob4TJGA6f8AKiLhTiRg5-8rn8g4XEu_UVyqA2gduFAugH9Kt8u6ti7pffB3hrJdZYeLa6hLshUhXDPMbDAp0oWezXLC1sEWXZ3gkhM_fxkXjxPPVAyQ1BXLs8hIjsTzMRuBPowLz4Zgthwbs0J2HCXUFNhK9v7jn8W1pHtta-l99lWZXo1Ki_XH4DsYBBh9F-OA0ftB89T-NKgc_CFyqM-vJqicB3HXJiFvtk">
+<img alt="Mastercard" class="h-6 grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD2FCc52pEMcMsM7L77oIMyoEak56_f5G2LmDye8tQNccWC5DQsf8ywUsCessCfu5Ac_GcONLNMXEH6xkVBDoMIYkpxRPdOripyq2z9UoIj-3e7FkOogZSuaCI7yZmkAE-H3iOGfUjdklWYNs2nZUrDwOy3zIltg39P3Hlt4vHUGtg2Hog1Gyl_hS5bTqa0qyfhdKfUENsrDa3nq-m8ND__G6ETWn1OKOyfSMg9VDz7CrTuBsfzoAunlm5b5fL5XRHaJPoowvrqjY">
+<img alt="Alipay" class="h-6 grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChwEhOS2FyXdvhoyBFyCLdv7PP7r7ao9-qaGx6dSVfCwso1w4Ty4iSNA67mxgqWaINM64PpV_Hx5RzdN7pNVdhwlrYB_l9DebT_8rdFhOJ5_QsEbFjPJrvrgxRpyI1xOjDwwY0T3jgiQBD0CSkm-jTMvWGBKwOwB6qAIr6Z1MHWNx0d0mYJ82BkjiTuZRo5LREzwOq2Yy9hGS6-rI9hsLpdgttSpvLdDGe8YR4vpRacIQ4XW3PkPJVjOKREwUg0hJOsb4Qc4zywAQ">
+<img alt="WeChat Pay" class="h-6 grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8h9GMtaCW57HKdAOdjU8bzj4bTFUFEocedQDkgmE9sbFkqF1r4UeNwMx8h28ITfkNl5SvF51DtAhqP-BheDJXgaP8iSU0BuQtnTqzOSaLuJnMufTZTHs4RPMYnJN82wmcWlv-S-FePhq-eNzK7GlKGT2BcHHGRJEzLdhV9t143xPlPrdu9qTOawkVkQaX_emY4MmlEkdSjSRMSHW21WzTdnkaATRF2sfHADi4Dw4Ib6pXflqAho0OC0y4ecyIslsYvrFKpj8l0K4">
+</div>
+</div>
+</section>
+</aside>
+</div>
+<!-- Recommendations Section -->
+<section class="mt-16">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-8">为您推荐</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Recommended Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="aspect-square bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Elegant and playful cat scratching post shaped like a giant cactus. The product uses textured green sisal rope and sits on a sturdy base. The photography is clean, brightly lit, and set in a minimalist living room to suggest a modern home decor integration. High-end lifestyle vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdigMN0awkIrqtoivajnK1xiqTsgROM9cAYst9n6OWNZRuLSJJ0PzXvgeSwFEcUQJ_EnOkSi2v_WnqnSS58SYX0AiFz9UN0lVpNuF_0_l9Qr_XS9b6cbr2AvxB-FA9oKIr-v-vj1uymz0zSGkHPDJqq2Cu5JTBvo7UrfRlrVqdssdJVv_o--u5hy4KOMb75yJypzzsvtC_02rlHr93EyDV5RPTnnMVHwP8rAns86rHcfIRPxj0wTq0ALfp5SQ32b5BfhALme0Q4tI">
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-container shadow-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h4 class="text-label-md font-bold text-on-surface line-clamp-1">仙人掌猫爬架</h4>
+<p class="text-primary-container font-bold mt-1">¥158.00</p>
+</div>
+</div>
+<!-- Recommended Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="aspect-square bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="High-tech automatic pet feeder with a sleek dark grey finish and a transparent food storage tank. The image highlights the digital control panel and the stainless steel bowl. Professional product lighting creates sharp details and a sense of premium quality. White studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk0b_QL3d2vw49yl-QPqUtJdG98AA9BfjiHCkEV-0yBxpV5jM9sklcO3Eb2QNk4og-J9obj8T6Cf6e1gIVM7ZlSe51IKXmasppGA2RKSuiPvU6c9mwhIGmxtUk_zCzrC0L-huuTo8oA0UPigktKxiuk2LBs-1FzF_Z5H7nltp_mPyFbr4n79LxTk9qnOIPASXJKwe1OKfIAeMcxqOiEhxJP7Jpo4PRH3oqL0C98AHNOoIQMeLooAo9uhCzcQPdqw3Ho4OTW3wLjQk">
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-container shadow-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h4 class="text-label-md font-bold text-on-surface line-clamp-1">AI 智能定时喂食器</h4>
+<p class="text-primary-container font-bold mt-1">¥499.00</p>
+</div>
+</div>
+<!-- Recommended Item 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="aspect-square bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Vibrant assorted box of interactive rubber pet toys including balls, ropes, and chew toys in bright primary colors. The lighting is cheery and saturated, evoking a sense of fun and playfulness. The toys are arranged artistically to showcase diversity. Neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWGhUxWXOMuGVmJ6gXyv_BCJC_PFbyJDLEZ0HQhy_9AD9A5unW2yz-ZoTbBuOHqpGCd25jkvbHdoPgLaJKZ5Eq1cWiCCEjoK-oMaEfPbuLOKPuJDRXzS3W_nnSqDa_zACNteYC4KEXVVl2h1iK4H2lkmiRFAacWZQw66YDsyWCvOLjntyZeaeJGKYYdGBYTqDg4Mbp__sqjxE5mHL9cTfb-7XiGwH_lXGFUhjHuXPHMwgmJb6e2pS5wj5GLQwHbFLnC4haAKjwUZo">
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-container shadow-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h4 class="text-label-md font-bold text-on-surface line-clamp-1">趣动系列 互动玩具礼盒</h4>
+<p class="text-primary-container font-bold mt-1">¥79.00</p>
+</div>
+</div>
+<!-- Recommended Item 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="aspect-square bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Soft, luxurious velvet pet bed in a deep navy blue, with a plush grey faux-fur lining. The photography is cozy and warm, shot at a low angle to emphasize comfort. A single ray of soft sunlight hits the edge of the bed, creating a peaceful and high-end feel for pampered pets." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBliuDKcub36G8KC-l6vV7u4b0iwGxseMJLCc-EVGmXm549NANuwDefCcJk89Zdh4DBCeIvieuYveaNosY8S681NTeguaESoffA5OxErm4GcNh2of2AR_Kc__j0vzCXEGEsgYAG11GDcD5o_N0xkD9_9oCxJO14j6qlvmOfwZo6ptGTXZPxf1lbF9RxsgJB8z2Vff7UgR38znnIRjoLMqC5cFX76pnYBf1y4LnFSer1UXg52XL3zAVZmUFC_B4dbGFxCYKWnTGOIcE">
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-container shadow-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="p-4">
+<h4 class="text-label-md font-bold text-on-surface line-clamp-1">云感舒眠 丝绒宠物窝</h4>
+<p class="text-primary-container font-bold mt-1">¥228.00</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-inverse-surface mt-20">
+<div class="w-full py-12 px-4 md:px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-max-width-content mx-auto">
+<div class="mb-8 md:mb-0">
+<span class="text-headline-md font-headline-md text-primary-container">PetMate</span>
+<p class="text-body-md text-on-surface-variant mt-2 max-w-xs">您的全方位AI智能宠物医疗与生活服务平台，让每一份陪伴都更安心。</p>
+</div>
+<div class="flex flex-col items-center md:items-end gap-4">
+<nav class="flex gap-6">
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">关于我们</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">加入我们</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">用户协议</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">隐私政策</a>
+</nav>
+<p class="text-label-sm text-on-surface-variant">© 2024 PetMate 宠友之家 - AI智能宠物医疗与生活服务平台</p>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 md:hidden px-4 pb-safe bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-t border-outline-variant/30 shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="text-label-sm font-label-sm">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">psychiatry</span>
+<span class="text-label-sm font-label-sm">AI问诊</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">社区</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">我的</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interactions for quantity selectors
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText === '+' || btn.innerText === '-') {
+                btn.addEventListener('click', (e) => {
+                    const parent = e.target.closest('div');
+                    const span = parent.querySelector('span');
+                    let val = parseInt(span.innerText);
+                    if (e.target.innerText === '+') val++;
+                    if (e.target.innerText === '-' && val > 1) val--;
+                    span.innerText = val;
+                    
+                    // Trigger pulse animation
+                    span.classList.remove('animate-pulse-once');
+                    void span.offsetWidth; // trigger reflow
+                    span.classList.add('animate-pulse-once');
+                });
+            }
+        });
+    </script>
+</body></html>

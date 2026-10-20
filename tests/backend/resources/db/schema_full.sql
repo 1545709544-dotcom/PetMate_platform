@@ -1,0 +1,44 @@
+-- =====================================================================
+-- 测试库建表脚本（Testcontainers 容器启动时自动执行）
+--
+-- ⚠️ 当前为占位骨架，需要补全后 L3 集成测试才能跑起来。
+--
+-- 【为什么不能直接用 sql/schema.sql】
+-- 后端测试计划 §3.8 B-C5 已核实：仓库里的 sql/schema.sql 缺 7 类表，
+-- reset_and_seed.sh 建不出可用库。直接引用会让集成测试以「表不存在」
+-- 的形式失败，掩盖真正的业务缺陷。
+--
+-- 【补全方式】
+-- 本文件应是 schema.sql + v2~v18 全部迁移的**合并结果**。推荐做法：
+--   1. 起一个干净的 MySQL 8.0 库
+--   2. 按顺序执行 sql/schema.sql 与 sql/migrate_v2..v18 等全部迁移
+--   3. 确认后端能正常启动且冒烟通过
+--   4. mysqldump --no-data --skip-comments petmate > 本文件
+--   5. 手工去掉 DEFINER、AUTO_INCREMENT 起始值等环境相关内容
+--
+-- 这一步对应后端测试计划 §六 的 P0-0 阶段（预估 0.5~1 人日），
+-- 是所有 L3 集成/并发/越权用例的前置依赖。
+--
+-- 【当前状态】
+-- 未补全时：本机若无 Docker，L3 用例整体 skipped，不影响 L1 与前端；
+--           本机有 Docker 但本文件为空，L3 用例会因缺表而失败 —— 这是预期信号，
+--           提示该补 schema 了。
+-- =====================================================================
+
+-- 占位：保证空脚本也能被 MySQL 正常执行，避免 initScript 报语法错误。
+SELECT 1;
+
+-- TODO(P0-0): 在此粘贴合并后的完整 DDL。核心表清单（供补全时对照）：
+--   用户与鉴权   t_user, t_address, t_sms_log, t_user_follow
+--   商家         t_merchant, t_merchant_staff, t_merchant_apply, t_merchant_notification
+--   商品         t_product, t_sku, t_category, t_product_review
+--   交易         t_cart, t_order, t_order_item, t_payment_log
+--   售后         t_refund, t_refund_log
+--   积分         t_points_account, t_points_log
+--   秒杀         t_seckill_activity
+--   服务与预约   t_service, t_service_catalog, t_appointment
+--   社区         t_post, t_post_comment, t_sensitive_word
+--   问诊         t_consult_session, t_consult_message
+--   宠物与领养   t_pet, t_care_reminder, t_adoption
+--   运营         t_banner, t_announcement, t_operation_log, t_report, t_event
+--   配置         t_system_config

@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PetMate - 宠物档案</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .pet-card-gradient {
+            background: linear-gradient(135deg, #ff7a32 0%, #ffb694 100%);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .floating-pet-avatar {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "sky-blue-light": "#EBF4FF",
+                    "surface-variant": "#dde4e6",
+                    "primary-container": "#ff7a32",
+                    "outline": "#8c7166",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "background": "#f4fafd",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#dde4e6",
+                    "surface-soft": "#F8F9FA",
+                    "inverse-primary": "#ffb694",
+                    "emergency-red": "#FF4D4F",
+                    "inverse-surface": "#2b3234",
+                    "on-background": "#161d1f",
+                    "on-secondary-fixed": "#001c39",
+                    "surface-container-low": "#eef5f7",
+                    "on-surface": "#161d1f",
+                    "surface-container-high": "#e2e9ec",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "on-surface-variant": "#584238",
+                    "tertiary-container": "#cb9900",
+                    "success-green": "#52C41A",
+                    "inverse-on-surface": "#ebf2f4",
+                    "secondary": "#0060ac",
+                    "primary-fixed-dim": "#ffb694",
+                    "on-tertiary-container": "#483400",
+                    "primary": "#a14000",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d4dbdd",
+                    "surface-bright": "#f4fafd",
+                    "on-secondary-fixed-variant": "#004883",
+                    "warning-amber": "#FAAD14",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-primary-container": "#622400",
+                    "surface": "#f4fafd",
+                    "tertiary": "#785900",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#dfc0b3",
+                    "surface-container": "#e8eff1",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#a14000",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#003e73",
+                    "on-primary-fixed": "#351000",
+                    "tertiary-fixed": "#ffdf9e",
+                    "secondary-container": "#68abff",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-content": "1440px",
+                    "max-width-chat": "800px",
+                    "gutter-desktop": "24px",
+                    "margin-desktop": "120px",
+                    "gutter-mobile": "16px",
+                    "margin-mobile": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-20">
+<!-- Top Navigation Bar (Shared Component) -->
+<header class="bg-surface dark:bg-on-background shadow-sm fixed top-0 left-0 right-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-max-width-content mx-auto h-20">
+<div class="text-headline-lg font-headline-lg font-bold text-primary-container">PetMate</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">首页</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">商城</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">社区</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">领养</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">AI问诊</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer">shopping_cart</span>
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="A professional profile picture of a young pet owner, smiling warmly, wearing casual modern attire against a clean, softly lit studio background in warm sunny tones that match the PetMate brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGgLKEEKCCv3zyRrvT8TrGw4nW5aiyKmh4v6Ia_n3Nx0e5a8xsmbgO1QNkt1Ls1VnZoDzwx2d7Xzh-7BoCTIy-jV0pSjVAN5ukjy_SgFt8T6-fJ3VDSXVRQnhzfP4RC2-g_rl7Umzlv6ODLw0zZAgJ8gWz6G5jhhFrWGG02I-y-33qx9eFx4p3Y4-kTFDERBDPleKZPBwF76jvjzfLxtzqMlfGA3UKdDlpd2UGmuv-q2nhhgRUMVZCSobSJTE9hFWeeeVjWXrUFiE">
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-max-width-content mx-auto space-y-8">
+<!-- Pet Selector (Bento Grid Style for desktop, horizontal scroll for mobile) -->
+<!-- Main Profile Bento Section -->
+<!-- Growth Diary Image Wall -->
+<section class="flex flex-col items-center justify-center py-20 text-center space-y-8">
+<div class="relative">
+<div class="w-64 h-64 bg-primary-container/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[120px] text-primary-container opacity-40">pets</span>
+</div>
+<div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-xl">
+<span class="material-symbols-outlined text-4xl text-warning-amber">favorite</span>
+</div>
+</div>
+<div class="max-w-md space-y-4">
+<h1 class="text-headline-lg font-headline-lg text-on-surface">欢迎来到 PetMate！</h1>
+<p class="text-body-lg text-on-surface-variant">您还没有添加毛孩子，快来创建档案记录它们的成长吧。</p>
+</div>
+<button class="flex items-center gap-3 bg-primary-container text-white px-10 py-4 rounded-full font-headline-md shadow-lg shadow-primary-container/30 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+        创建宠物档案
+    </button>
+</section></main>
+<!-- Bottom Navigation Bar (Mobile only, Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 md:hidden px-4 pb-safe bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-t border-outline-variant/30 shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">首页</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">pets</span>
+<span class="text-label-sm font-label-sm">商城</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">psychiatry</span>
+<span class="text-label-sm font-label-sm">AI问诊</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">社区</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-container font-bold active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm">我的</span>
+</div>
+</nav>
+<!-- AI Consultation Floating Button (Web only) -->
+<div class="hidden md:flex fixed bottom-8 right-8 z-50 flex-col items-end gap-3 group">
+<div class="bg-white px-4 py-2 rounded-2xl shadow-xl border border-primary-container/20 opacity-0 group-hover:opacity-100 transition-opacity mb-2">
+<p class="text-label-md text-primary-container font-bold">有问题随时问我哦！</p>
+</div>
+<button class="w-16 h-16 bg-primary-container text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">psychiatry</span>
+</button>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-max-width-content mx-auto mt-20 border-t border-surface-container-highest">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="text-headline-md font-headline-md text-primary-container">PetMate</div>
+<p class="text-on-surface-variant text-body-md text-center md:text-left">© 2024 PetMate 宠友之家 - AI智能宠物医疗与生活服务平台</p>
+</div>
+<div class="flex gap-8 mt-8 md:mt-0">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">关于我们</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">用户协议</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">隐私政策</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">联系客服</a>
+</div>
+</footer>
+<script>
+        // Micro-interactions for pet selector
+        document.querySelectorAll('.flex-shrink-0').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active states
+                document.querySelectorAll('.flex-shrink-0').forEach(p => {
+                    p.classList.add('opacity-60');
+                    p.classList.remove('opacity-100');
+                    p.querySelector('div').classList.remove('border-primary-container', 'ring-4', 'ring-primary-fixed/30');
+                    p.querySelector('div').classList.add('border-outline-variant');
+                    p.querySelector('span').classList.remove('font-bold', 'text-primary-container');
+                    p.querySelector('span').classList.add('text-on-surface-variant');
+                });
+                // Set current as active
+                this.classList.remove('opacity-60');
+                this.classList.add('opacity-100');
+                this.querySelector('div').classList.add('border-primary-container', 'ring-4', 'ring-primary-fixed/30');
+                this.querySelector('div').classList.remove('border-outline-variant');
+                this.querySelector('span').classList.add('font-bold', 'text-primary-container');
+                this.querySelector('span').classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

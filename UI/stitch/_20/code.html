@@ -1,0 +1,553 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#dde4e6",
+                    "emergency-red": "#FF4D4F",
+                    "on-secondary-container": "#003e73",
+                    "on-tertiary-container": "#483400",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-primary-container": "#622400",
+                    "surface-container-high": "#e2e9ec",
+                    "on-primary-fixed": "#351000",
+                    "on-background": "#161d1f",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary-fixed-dim": "#ffb694",
+                    "surface": "#f4fafd",
+                    "tertiary-fixed": "#ffdf9e",
+                    "on-surface": "#161d1f",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e8eff1",
+                    "surface-container-low": "#eef5f7",
+                    "primary": "#a14000",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#dde4e6",
+                    "warning-amber": "#FAAD14",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "secondary-container": "#68abff",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-secondary-fixed-variant": "#004883",
+                    "outline-variant": "#dfc0b3",
+                    "outline": "#8c7166",
+                    "secondary-fixed": "#d4e3ff",
+                    "inverse-surface": "#2b3234",
+                    "on-surface-variant": "#584238",
+                    "surface-soft": "#F8F9FA",
+                    "primary-container": "#ff7a32",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f4fafd",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#785900",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#001c39",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "sky-blue-light": "#EBF4FF",
+                    "inverse-primary": "#ffb694",
+                    "primary-fixed": "#ffdbcc",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#cb9900",
+                    "success-green": "#52C41A",
+                    "secondary": "#0060ac",
+                    "background": "#f4fafd",
+                    "surface-tint": "#a14000",
+                    "surface-dim": "#d4dbdd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-chat": "800px",
+                    "gutter-desktop": "24px",
+                    "margin-desktop": "120px",
+                    "gutter-mobile": "16px",
+                    "base": "4px",
+                    "max-width-content": "1440px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #f4fafd; color: #161d1f; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #dde4e6; border-radius: 10px; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(223, 192, 179, 0.3); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="flex font-body-md overflow-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="docked left-0 h-screen w-64 bg-surface-container-lowest shadow-sm flex flex-col py-6 px-4 z-20 transition-all duration-300">
+<div class="flex items-center gap-3 mb-10 px-2">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary leading-none">PetMate Pro</h1>
+<p class="text-[10px] text-on-surface-variant tracking-wider uppercase mt-1">商家后台中心</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-surface-container-low text-on-surface-variant group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Active State: User Management (implied context) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150 text-primary font-bold border-r-4 border-primary bg-surface-container-low active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">用户管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-surface-container-low text-on-surface-variant group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">shopping_cart</span>
+<span class="font-label-md text-label-md">订单管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-surface-container-low text-on-surface-variant group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">inventory_2</span>
+<span class="font-label-md text-label-md">商品/服务管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-surface-container-low text-on-surface-variant group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">reviews</span>
+<span class="font-label-md text-label-md">评价管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-surface-container-low text-on-surface-variant group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">bar_chart</span>
+<span class="font-label-md text-label-md">数据统计</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-surface-container-low text-on-surface-variant group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-label-md text-label-md">设置</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+                发布新服务
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-screen relative overflow-hidden bg-surface">
+<!-- TopNavBar Anchor -->
+<header class="flex justify-between items-center h-16 px-gutter-desktop w-full bg-surface border-b border-outline-variant z-10">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary/30 transition-all font-body-md text-body-md placeholder-on-surface-variant/60" placeholder="搜索 用户ID / 手机号..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6 ml-auto">
+<div class="hidden lg:flex gap-4">
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" href="#">帮助中心</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors" href="#">社区论坛</a>
+</div>
+<div class="flex items-center gap-2 h-8">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-emergency-red rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-label-md text-label-md leading-tight text-on-surface">萌宠之家旗舰店</p>
+<p class="text-[10px] text-success-green flex items-center justify-end gap-1">
+<span class="w-1.5 h-1.5 bg-success-green rounded-full"></span>
+                            店铺已开张
+                        </p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional high-resolution headshot of a friendly young store administrator, clear lighting, minimalist modern office background, soft depth of field, warm skin tones, professional attire, PetMate brand colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVK0ADhjcLHkMVNCr12iGQ3nG10J-8Ql66cltD6kks_s6N-Kcf_lcbBNyexSGz5HwtjW88XKmKyLSvtFUshEcHHN3zcsGtIfBGyfiOmiAxw5RqWDIvMpty5GSylTExcrC434rZLxDoymNAniR00yoOD1iMz35mOc6VIbcAiY-E-6jLwY_SQAgpUvLy31L6-tghb9RBnIrbCPub7E8NrpZKQrIKYztrxCycgNzDvGGzAZLGaWwgw7GqEBDB647qWvNbFu5aK1JLmSI">
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar">
+<!-- Breadcrumbs & Stats Grid -->
+<div class="mb-6 flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">用户管理</h2>
+<p class="text-on-surface-variant font-label-sm text-label-sm">实时查看并管理您的 PetMate 客户群体</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 border-2 border-outline-variant rounded-xl text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+                        导出数据
+                    </button>
+<button class="px-4 py-2 bg-secondary text-on-primary rounded-xl font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                        新增虚拟用户
+                    </button>
+</div>
+</div>
+<!-- Dashboard Mini Cards -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 bg-sky-blue-light text-secondary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">group</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-label-sm">累计用户</p>
+<p class="text-headline-md font-headline-md text-on-surface">12,842</p>
+</div>
+</div>
+<div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-fixed text-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">person_celebrate</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-label-sm">新增用户 (今日)</p>
+<p class="text-headline-md font-headline-md text-on-surface">48</p>
+</div>
+</div>
+<div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 bg-tertiary-fixed text-tertiary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">stars</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-label-sm">VIP 会员数</p>
+<p class="text-headline-md font-headline-md text-on-surface">2,105</p>
+</div>
+</div>
+<div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+<div class="w-12 h-12 bg-error-container text-error rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">block</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-label-sm">异常账号</p>
+<p class="text-headline-md font-headline-md text-on-surface">12</p>
+</div>
+</div>
+</div>
+<!-- Filters Area -->
+<div class="glass-card rounded-2xl mb-6 p-4 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant whitespace-nowrap">用户状态:</label>
+<select class="bg-surface-container border-none rounded-xl text-label-md font-label-md px-4 py-2 focus:ring-2 focus:ring-primary/20">
+<option>全部状态</option>
+<option>正常</option>
+<option>锁定</option>
+<option>违规封禁</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant whitespace-nowrap">会员等级:</label>
+<select class="bg-surface-container border-none rounded-xl text-label-md font-label-md px-4 py-2 focus:ring-2 focus:ring-primary/20">
+<option>全部等级</option>
+<option>普通会员 (L0)</option>
+<option>白银会员 (L1)</option>
+<option>黄金会员 (L2)</option>
+<option>黑钻会员 (L3)</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant whitespace-nowrap">注册时间:</label>
+<input class="bg-surface-container border-none rounded-xl text-label-md font-label-md px-4 py-2 focus:ring-2 focus:ring-primary/20" type="date">
+</div>
+<div class="ml-auto flex items-center gap-2">
+<button class="p-2 bg-surface-container text-on-surface-variant rounded-xl hover:bg-surface-variant transition-colors" title="重置筛选">
+<span class="material-symbols-outlined">restart_alt</span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-label-md text-label-md hover:opacity-90">筛选</button>
+</div>
+</div>
+<!-- User List Table -->
+<div class="glass-card rounded-2xl overflow-hidden shadow-sm mb-6">
+<div class="p-4 bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-4">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" id="selectAll" type="checkbox">
+<p class="text-label-md font-label-md text-on-surface-variant">已选 <span class="text-primary font-bold" id="selectedCount">0</span> 位用户</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-on-surface-variant hover:text-emergency-red font-label-md text-label-md px-3 py-1 flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[18px]">block</span>
+                            批量封禁
+                        </button>
+<div class="w-px h-4 bg-outline-variant"></div>
+<button class="text-on-surface-variant hover:text-secondary font-label-md text-label-md px-3 py-1 flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                            发送通知
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="p-4 w-12"></th>
+<th class="p-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">用户信息</th>
+<th class="p-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">手机号</th>
+<th class="p-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">VIP 等级</th>
+<th class="p-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">注册时间</th>
+<th class="p-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">状态</th>
+<th class="p-4 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider text-right">操作栏</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- User Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4"><input class="user-checkbox w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Close-up portrait of a young woman with smiling eyes and long brown hair, warm morning sunlight, vibrant soft background of a pet cafe, modern aesthetic, high detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzRh5aw6LUolAHwuH-2rGp7bfTKYixhvVwhqj7aqFmUDlYww5a4PYnzaEk8Wde9nthMCiGR2IeR_hJkUVCamIdQAdbRMPXzazm6fm3lX9L9EmFvYaN8jVdp2pc9_qC8_uGxtiZVL1mMb1Pe5Yhs2_kO2lYCjbFw6jwuLDIDSm8JCBZ6uxDbP9Q8AJoPdj-El5JIZORf_KQTQhFfmz6CFQyUpCfE8AJ6Vc8SsCsJFPHO9HhQpZyQxKYO_t-YLkWkc6PM-R-lNNvA0k">
+<div>
+<p class="font-label-md text-label-md text-on-surface">布丁麻麻</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">ID: PM_882041</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">138 **** 9012</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold">
+<span class="material-symbols-outlined text-[14px]">stars</span>
+                                        GOLD L2
+                                    </span>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant">2023-11-15</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 text-success-green font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 bg-success-green rounded-full"></span>
+                                        正常
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-sky-blue-light hover:text-secondary rounded-lg transition-all" title="查看详情">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" title="编辑资料">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-error-container hover:text-error rounded-lg transition-all" title="封禁用户">
+<span class="material-symbols-outlined">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4"><input class="user-checkbox w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A trendy man in his 30s with stylish glasses and a short beard, outdoor urban setting with green trees blurred, high-end photography style, PetMate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJBlVJuLkIpvU7Enq6vKErD5TEoOAlz6-iHhJXavFLXIHDON8tZhbIs7FE57ZpkyzQbcdmQfvdGPmj903SWeyzsl5NA4h2ehjD372c98wAPTwUKtihyGEvnfr1_kfvR9wuSs7MDdr5c4xJp-3B8FzvGiMZb_bkYCY_sPRXQZ0URswvXFJt43hu1JL4X8h6JLz-hZB2SBsNfPtk5zgEp-zsPog3trPWLnyWyaoQB_Mhm4PAgFldVJYykDfeKQ4P26httCtxEEaG150">
+<div>
+<p class="font-label-md text-label-md text-on-surface">快乐汪星人</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">ID: PM_912405</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">156 **** 2234</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold">
+                                        SILVER L1
+                                    </span>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant">2023-12-02</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 text-success-green font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 bg-success-green rounded-full"></span>
+                                        正常
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-sky-blue-light hover:text-secondary rounded-lg transition-all" title="查看详情">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" title="编辑资料">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-error-container hover:text-error rounded-lg transition-all" title="封禁用户">
+<span class="material-symbols-outlined">lock</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 3 (Banned State) -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-error-container/5">
+<td class="p-4"><input class="user-checkbox w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A cinematic portrait of a mature woman with grey-white hair, kind expression, soft natural lighting indoors, high-end photography, professional retouching." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5zxz17o7EppGBUdDaWuUGsFydSE_2VjSQ6nDRPOOn7ULJI_APKC8nawJYW7-QeuQ3bcr0XZPNwSz3sY7OjYFW6rcQIqMlFrrxs2l2znxuWdRzhTj2-4UijlZW0EcElHrLGzeZeWEzKHfR4W-z2nR2IHOcC16bV8qXMUYvdOrxgJtrGoosAGnz43s5MVBYC-OXFQ7isCipoFWMwrSM_lpYZguppyZ0Kz-9wctPEs2CF3eTlbzCLWYH940e5ZfwLWy4dZdUKELaVFc">
+<div>
+<p class="font-label-md text-label-md text-on-surface">猫咪管家</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">ID: PM_441203</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">189 **** 5567</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-[11px] font-bold">
+                                        BASIC L0
+                                    </span>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant">2023-09-21</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 text-emergency-red font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 bg-emergency-red rounded-full"></span>
+                                        封禁中
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-sky-blue-light hover:text-secondary rounded-lg transition-all" title="查看详情">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" title="编辑资料">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-success-green hover:bg-green-100 rounded-lg transition-all" title="解封用户">
+<span class="material-symbols-outlined">lock_open</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4"><input class="user-checkbox w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox"></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A cheerful young man with curly hair wearing a yellow sweatshirt, bright pop-art style background, high energy, clean focus, playful professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaHL7-ocdUh84-4eOs4qrwDRVtt5BTOkGmAKp7kCy7wLYra4ytuHoO_tFt8bfx9voN15QA1l0GHARSoghrc0ixRK6rERrFuS3H7r1hW8vKHhswWFn0RcMc2C431pnYyvYIbCEJR8OuOon8hdru23m8jZKzYY5ml6ArrSOs8eP7xMwcTe0dI-SArzNCbTlWojG2C-YQwWwWQIrSdNS1KAt6J5UWUlFyeqoRNx1YS6vgpK9FyOba0iMj6nRXbkYJIYiCR3ACTn0DhjM">
+<div>
+<p class="font-label-md text-label-md text-on-surface">大黄的主人</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">ID: PM_229103</p>
+</div>
+</div>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface">131 **** 4490</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold">
+                                        DIAMOND L3
+                                    </span>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant">2024-01-10</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 text-success-green font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 bg-success-green rounded-full"></span>
+                                        正常
+                                    </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-sky-blue-light hover:text-secondary rounded-lg transition-all" title="查看详情">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" title="编辑资料">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-error-container hover:text-error rounded-lg transition-all" title="封禁用户">
+<span class="material-symbols-outlined">lock</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 border-t border-outline-variant flex justify-between items-center bg-surface-container-low/30">
+<p class="text-label-sm font-label-sm text-on-surface-variant">显示 1 到 4 共 12,842 条记录</p>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg hover:bg-surface-container-low text-on-surface-variant disabled:opacity-30 disabled:cursor-not-allowed">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-md text-label-md">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md">3211</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Float Notification (Micro-interaction) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 glass-card px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-500 opacity-0 translate-y-10 z-50" id="toast">
+<span class="material-symbols-outlined text-success-green">check_circle</span>
+<p class="text-label-md font-label-md text-on-surface">操作已执行</p>
+</div>
+</main>
+<script>
+        // Simple Interaction Logic
+        const selectAll = document.getElementById('selectAll');
+        const checkboxes = document.querySelectorAll('.user-checkbox');
+        const selectedCountEl = document.getElementById('selectedCount');
+        const toast = document.getElementById('toast');
+
+        function updateCount() {
+            const checked = document.querySelectorAll('.user-checkbox:checked').length;
+            selectedCountEl.textContent = checked;
+        }
+
+        selectAll.addEventListener('change', (e) => {
+            checkboxes.forEach(cb => cb.checked = e.target.checked);
+            updateCount();
+        });
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateCount);
+        });
+
+        // Demo Interaction for Buttons
+        document.querySelectorAll('button[title]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                toast.classList.remove('opacity-0', 'translate-y-10');
+                toast.classList.add('opacity-100', 'translate-y-0');
+                
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-10');
+                    toast.classList.remove('opacity-100', 'translate-y-0');
+                }, 3000);
+            });
+        });
+
+        // Micro-animations for Table Rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'scale(1.002)';
+                row.style.zIndex = '1';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'scale(1)';
+                row.style.zIndex = '0';
+            });
+        });
+    </script>
+</body></html>

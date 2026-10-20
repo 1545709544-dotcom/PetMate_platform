@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PetMate - 宠物档案</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .pet-card-gradient {
+            background: linear-gradient(135deg, #ff7a32 0%, #ffb694 100%);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .floating-pet-avatar {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "sky-blue-light": "#EBF4FF",
+                    "surface-variant": "#dde4e6",
+                    "primary-container": "#ff7a32",
+                    "outline": "#8c7166",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "background": "#f4fafd",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#dde4e6",
+                    "surface-soft": "#F8F9FA",
+                    "inverse-primary": "#ffb694",
+                    "emergency-red": "#FF4D4F",
+                    "inverse-surface": "#2b3234",
+                    "on-background": "#161d1f",
+                    "on-secondary-fixed": "#001c39",
+                    "surface-container-low": "#eef5f7",
+                    "on-surface": "#161d1f",
+                    "surface-container-high": "#e2e9ec",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "on-surface-variant": "#584238",
+                    "tertiary-container": "#cb9900",
+                    "success-green": "#52C41A",
+                    "inverse-on-surface": "#ebf2f4",
+                    "secondary": "#0060ac",
+                    "primary-fixed-dim": "#ffb694",
+                    "on-tertiary-container": "#483400",
+                    "primary": "#a14000",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d4dbdd",
+                    "surface-bright": "#f4fafd",
+                    "on-secondary-fixed-variant": "#004883",
+                    "warning-amber": "#FAAD14",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-primary-container": "#622400",
+                    "surface": "#f4fafd",
+                    "tertiary": "#785900",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#dfc0b3",
+                    "surface-container": "#e8eff1",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#a14000",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#003e73",
+                    "on-primary-fixed": "#351000",
+                    "tertiary-fixed": "#ffdf9e",
+                    "secondary-container": "#68abff",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-content": "1440px",
+                    "max-width-chat": "800px",
+                    "gutter-desktop": "24px",
+                    "margin-desktop": "120px",
+                    "gutter-mobile": "16px",
+                    "margin-mobile": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-20">
+<!-- Top Navigation Bar (Shared Component) -->
+<header class="bg-surface dark:bg-on-background shadow-sm fixed top-0 left-0 right-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-max-width-content mx-auto h-20">
+<div class="text-headline-lg font-headline-lg font-bold text-primary-container">PetMate</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">首页</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">商城</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">社区</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">领养</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors" href="#">AI问诊</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer">shopping_cart</span>
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="A professional profile picture of a young pet owner, smiling warmly, wearing casual modern attire against a clean, softly lit studio background in warm sunny tones that match the PetMate brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGgLKEEKCCv3zyRrvT8TrGw4nW5aiyKmh4v6Ia_n3Nx0e5a8xsmbgO1QNkt1Ls1VnZoDzwx2d7Xzh-7BoCTIy-jV0pSjVAN5ukjy_SgFt8T6-fJ3VDSXVRQnhzfP4RC2-g_rl7Umzlv6ODLw0zZAgJ8gWz6G5jhhFrWGG02I-y-33qx9eFx4p3Y4-kTFDERBDPleKZPBwF76jvjzfLxtzqMlfGA3UKdDlpd2UGmuv-q2nhhgRUMVZCSobSJTE9hFWeeeVjWXrUFiE">
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-max-width-content mx-auto space-y-8">
+<!-- Pet Selector (Bento Grid Style for desktop, horizontal scroll for mobile) -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-surface">我的宠物</h2>
+<button class="flex items-center gap-2 text-primary font-label-md hover:opacity-80 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                    添加新成员
+                </button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+<!-- Selected Pet -->
+<div class="flex-shrink-0 group cursor-pointer flex flex-col items-center gap-2">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 border-4 border-primary-container ring-4 ring-primary-fixed/30 bg-surface shadow-lg transition-transform active:scale-95">
+<img class="w-full h-full rounded-full object-cover" data-alt="A close-up high-quality portrait of a fluffy orange ginger cat named Moka, looking directly into the camera with curious big amber eyes. The background is a soft, warm cream color with playful geometric paw print patterns, emphasizing the modern pet care aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkx1jE8Trnl1tYTk9bvAeam_2zMjzkKJ49TlHpawrqPyz3W4JqWLBINcEqBAtA2z5ShOQQO0Fpj9DvKdcKl5AnwkpSbX5LYAtfgCQ_b0XeWcXOTNX4ErBiO4aQTs-CND9wz1J7R6dG-HTVApF1prcFs_VEiyvY46xfpsQEaY4ZhWZLCGK-xuZCrXU01nm3tZSyriTwxqPurO2L0A4gDb4MakakFnRbhCfOAys-ntOuPEd-g2877S_U5-a_-Yk17rGjViv6tFsfZU4">
+</div>
+<span class="text-label-md font-bold text-primary-container">Moka</span>
+</div>
+<!-- Other Pets -->
+<div class="flex-shrink-0 group cursor-pointer flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 border-2 border-outline-variant bg-surface-container transition-transform active:scale-95">
+<img class="w-full h-full rounded-full object-cover grayscale-[0.2]" data-alt="A charming portrait of a golden retriever puppy named Buddy, sticking its tongue out playfully. The lighting is bright and sunny, shot in a high-key style that matches the PetMate vibrant visual tokens and warm professional brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYFVgIX3wfx-B32WnvaJRD-vadmx6fpKWD3YcSwZFiY2lUgH9FlsGNwgQjruUrkhspkerkeEJ7rxkT7QMt2PhJ-2rNDpuXZJQcC0Oq2vY9SILy_BN0Zx36OaNsE7KkIqcVxL1dAXEtCPQ7i49iWRey1ybiefyPnO39jYinyJIoEq439MJrtY8Pbk3nP64PmbGeCWSje7TlVG39sGITGe-9CzUhQAeh9JzzXnmS6W_9laDbfRYPWwXJLWJsnx62nPsNKsnwMNrcdjQ">
+</div>
+<span class="text-label-md text-on-surface-variant">Buddy</span>
+</div>
+<div class="flex-shrink-0 group cursor-pointer flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full p-1 border-2 border-outline-variant bg-surface-container transition-transform active:scale-95">
+<img class="w-full h-full rounded-full object-cover grayscale-[0.2]" data-alt="A portrait of a small, sleek black and white tuxedo cat named Pepper, sitting elegantly on a soft grey cushion. The lighting is soft and diffused, creating a calm and trustworthy environment suited for an AI-driven medical consultation platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW3u-zU8R0tESL8c5hjFbH_ghibZ75W0K4wbAj6G7HLgD0SvmGhpfpiSsE2BjM33MORludN-EuBs5Mm9o6-KYFihBtB37FeEYdIvVdvvM4TI0hKzcFGD0i9l5P8o2UCYS686gpZdJ9c6tT3kTNxXc9ebHRa4YKZR4p5rma5zZJ7upo1tG0PHYwMAHXMCiZFgP2c91ws2Wrm96uoBrdd8FmcVX5PfPlnIDQe91JAd99uY2AbuSE-HLjBLUFwuLZegEoS38TOr47clA">
+</div>
+<span class="text-label-md text-on-surface-variant">Pepper</span>
+</div>
+</div>
+</section>
+<!-- Main Profile Bento Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Pet Identity Card -->
+<section class="lg:col-span-4 pet-card-gradient rounded-3xl p-8 text-white relative overflow-hidden shadow-xl">
+<!-- Background Decoration -->
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/10 text-[180px] rotate-12">pets</span>
+<div class="relative z-10 flex flex-col h-full justify-between gap-8">
+<div class="space-y-2">
+<div class="flex justify-between items-start">
+<div>
+<h1 class="font-display-lg text-4xl md:text-5xl font-extrabold tracking-tight">Moka</h1>
+<p class="text-white/80 font-label-md">中华田园橘猫 · 弟弟</p>
+</div>
+<span class="bg-white/20 backdrop-blur-md p-3 rounded-2xl cursor-pointer hover:bg-white/30 transition-all">
+<span class="material-symbols-outlined">edit</span>
+</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white/20 backdrop-blur-md rounded-2xl p-4">
+<p class="text-xs text-white/70 uppercase font-bold tracking-widest mb-1">年龄</p>
+<p class="text-lg font-bold">2岁 4个月</p>
+</div>
+<div class="bg-white/20 backdrop-blur-md rounded-2xl p-4">
+<p class="text-xs text-white/70 uppercase font-bold tracking-widest mb-1">体重</p>
+<p class="text-lg font-bold">5.2 kg</p>
+</div>
+<div class="bg-white/20 backdrop-blur-md rounded-2xl p-4">
+<p class="text-xs text-white/70 uppercase font-bold tracking-widest mb-1">绝育</p>
+<p class="text-lg font-bold">已绝育</p>
+</div>
+<div class="bg-white/20 backdrop-blur-md rounded-2xl p-4">
+<p class="text-xs text-white/70 uppercase font-bold tracking-widest mb-1">生日</p>
+<p class="text-lg font-bold">2022.02.14</p>
+</div>
+</div>
+<div class="bg-white text-primary-container w-full py-4 rounded-2xl font-bold text-center shadow-lg cursor-pointer active:scale-95 transition-transform">
+                        查看详细档案
+                    </div>
+</div>
+</section>
+<!-- Health Timeline -->
+<section class="lg:col-span-8 bg-surface-container-low rounded-3xl p-8 space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">健康日程</h3>
+<span class="text-secondary font-label-md cursor-pointer hover:underline">全部记录</span>
+</div>
+<div class="space-y-4">
+<!-- Timeline Item: Upcoming -->
+<div class="bg-white rounded-2xl p-5 flex items-center gap-6 border-l-4 border-warning-amber shadow-sm">
+<div class="w-14 h-14 bg-warning-amber/10 text-warning-amber rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">vaccines</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">三联疫苗加强针</h4>
+<p class="text-label-sm text-on-surface-variant">还有 3 天 · 瑞嘉宠物医院</p>
+</div>
+<button class="bg-secondary text-white px-6 py-2 rounded-xl font-label-md">预约</button>
+</div>
+<!-- Timeline Item: Recent -->
+<div class="bg-white rounded-2xl p-5 flex items-center gap-6 border-l-4 border-success-green shadow-sm">
+<div class="w-14 h-14 bg-success-green/10 text-success-green rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">bug_report</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">体内外驱虫 (博来恩)</h4>
+<p class="text-label-sm text-on-surface-variant">2024.05.15 · 已完成</p>
+</div>
+<span class="material-symbols-outlined text-success-green">check_circle</span>
+</div>
+<!-- Timeline Item: Past -->
+<div class="bg-white rounded-2xl p-5 flex items-center gap-6 border-l-4 border-primary-container shadow-sm">
+<div class="w-14 h-14 bg-primary-container/10 text-primary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">medication</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-on-surface">耳道日常清洁</h4>
+<p class="text-label-sm text-on-surface-variant">2024.05.01 · 已完成</p>
+</div>
+<span class="material-symbols-outlined text-success-green">check_circle</span>
+</div>
+</div>
+<!-- Quick Action Chips -->
+<div class="flex flex-wrap gap-3 pt-2">
+<span class="px-4 py-2 bg-sky-blue-light text-secondary rounded-full text-label-sm font-bold cursor-pointer hover:bg-secondary hover:text-white transition-colors">体检报告</span>
+<span class="px-4 py-2 bg-sky-blue-light text-secondary rounded-full text-label-sm font-bold cursor-pointer hover:bg-secondary hover:text-white transition-colors">病历本</span>
+<span class="px-4 py-2 bg-sky-blue-light text-secondary rounded-full text-label-sm font-bold cursor-pointer hover:bg-secondary hover:text-white transition-colors">过敏史</span>
+<span class="px-4 py-2 bg-sky-blue-light text-secondary rounded-full text-label-sm font-bold cursor-pointer hover:bg-secondary hover:text-white transition-colors">手术记录</span>
+</div>
+</section>
+</div>
+<!-- Growth Diary Image Wall -->
+<section class="space-y-6">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">成长日记</h3>
+<p class="text-on-surface-variant text-label-md">记录 Moka 每一个萌动瞬间</p>
+</div>
+<button class="flex items-center gap-2 bg-primary-container text-white px-6 py-3 rounded-full font-label-md shadow-lg shadow-primary-container/20 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add_a_photo</span>
+                    上传照片
+                </button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Large Photo Item -->
+<div class="relative group aspect-square rounded-3xl overflow-hidden cursor-pointer shadow-md col-span-2 row-span-2 md:col-span-2 md:row-span-2">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A heartwarming high-resolution lifestyle photograph of a ginger cat sleeping blissfully in a beam of sunlight on a minimalist wooden floor. The composition uses leading lines and cinematic lighting to evoke a feeling of peace and home comfort, consistent with PetMate's emotional branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGj5tvPVmHv1K1JvrzY_0PUz2i3MflKoQ68w3wSRO_h874IISpni5cubp0v0Z-16Figutys1t-C-hD31izLT8MyLbSIipihgWdiHClJ1se19ra-856BcTl96THQhwaGZHKatTk-I-9dpGn06arUQRtagXb3fNSlEgiBZyWVQf6ELNiwpCR2wyrvouaKgUWagxY3d6UUXH_p_RxVaUYuqd1KkVlwTMcLwUC7ZPg_Djl7c_LI7_bap8qvLbe47epXhIvAQjd_T9PC4Y">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+<p class="text-white font-bold">午后的暖阳</p>
+<p class="text-white/80 text-xs">2024.05.20</p>
+</div>
+</div>
+<div class="relative group aspect-square rounded-3xl overflow-hidden cursor-pointer shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A playful shot of a cat's paws trying to catch a moving toy. The background is a clean, modern apartment interior with teal and white accents. High-speed photography captures the dynamic energy of the moment, styled for a premium pet life platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeCq_PjfmI4yZllJuEKAG92FnEwmhSGdScF5MAL-THh1tSZpLWaB9C1oy6qSyEFzyGrU_DaaDY6lcNKtmx9YKuyi1C7UqgUEwJUqrplXczyjy0-qOWFC6gj1Ry_3TrAn9yRHlyYbAMDAoRcO2rSvHwqPqJHcyISSW4kNyfCMukh56jCv5M9bvMlVjTSac8GGPGblt9fct5W9FrTW0QY8sXyxRTuDTi2gXmO05bNgP8HYqR8xJgUrggWuUJNLBTtFpLSEvk2lLOEZ0">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<p class="text-white text-sm font-bold">狩猎时刻</p>
+<p class="text-white/80 text-[10px]">2024.05.12</p>
+</div>
+</div>
+<div class="relative group aspect-square rounded-3xl overflow-hidden cursor-pointer shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A close-up of a cat looking into a mirror, reflecting its own curious face. The lighting is soft and flattering, emphasizing textures of fur. The overall visual style is minimalist and clean, using the PetMate brand color palette of soft greys and warm whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXDqQxP74mtesJGEgIwpjQHOtgiAzF_VHKy9kER6Wn9n0xhwnflWWySmieT7Ka6S-mSojonrHSh_kJRoQxOL-1d3yYZxgjW81KJG8ZN-xpFrg3F0X50cfYZk_dBrdfFWvTA-dLKOLT8v2UI12w4krYxziQmwqSnmHCgzVk5OQIc0QFz4fqo7kxrt5LtTLocUiJv0e4HwbrWaA1E_EIkW-ZWgrLAzLT_vJff-7TiXq_46k1btXgM7rZJmMCMJEy0cSf5pkW7XgTWVE">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<p class="text-white text-sm font-bold">思考喵生</p>
+<p class="text-white/80 text-[10px]">2024.05.08</p>
+</div>
+</div>
+<div class="relative group aspect-square rounded-3xl overflow-hidden cursor-pointer shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cute kitten peeking out from behind a vibrant green potted plant in a bright, modern living room. The style is fresh, organic, and full of character, using natural lighting to highlight the playful professional aesthetic of the PetMate application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb0pUlRrxQa3f9KwgLIQ5420V0tSAM3G2eGDmJavRBqETkOpyp7QvAGlJX-DsGtrWvX5guyp_yAOcSGtKekV4JVbUDc1s-k9ptNBmlab6i8go9-Gz-G9E__aiSwGKEO0Jv2qiykebBTKWZ73qwTRWCYPYM9faojyTvzs2AScjyGGIGJs4AiSpw9UGXVjJOHbtbyNJ9Qj1HykU6iG03aWiXEejBoQ0WSmTX63rsUfZmBydu-Df0J97cGP71SEg-PbWQZOanV0ZSmZk">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<p class="text-white text-sm font-bold">躲猫猫</p>
+<p class="text-white/80 text-[10px]">2024.04.30</p>
+</div>
+</div>
+<div class="relative group aspect-square rounded-3xl overflow-hidden cursor-pointer shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An adorable photograph of a cat wearing a small, festive bow tie, looking proud. The background is a soft-focus studio setting in warm neutral tones. The image captures a sense of personality and character, core to the PetMate user experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVp0RyRyAoAwh6LUPjqMM63f7-8d1YUqRAyT6t2FLfg5PwFFHEagGNfkmsM_yoIxPMvjMvzElGkKY7hV8rvEYCjb5PRURTOlMMnyTfIkeE6Bwgw3x6j6T6ZBrIAi-Uenjj8Lpqo9j4FjAhdHmU0hZK_p4dVvTXwsObVwzpl-1ybL-kfJqwdCw7bMq-hDSEskxITPoiUCzGACN0JmZ7ME-jXRJkG5eAelzsqlb76zxneb5h72kesiX8Gq1pGQI6R1AP-x0tBIxCvBc">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+<p class="text-white text-sm font-bold">绅士喵</p>
+<p class="text-white/80 text-[10px]">2024.04.25</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile only, Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 md:hidden px-4 pb-safe bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-t border-outline-variant/30 shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">首页</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">pets</span>
+<span class="text-label-sm font-label-sm">商城</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">psychiatry</span>
+<span class="text-label-sm font-label-sm">AI问诊</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">社区</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary-container font-bold active:bg-primary-fixed/20 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm">我的</span>
+</div>
+</nav>
+<!-- AI Consultation Floating Button (Web only) -->
+<div class="hidden md:flex fixed bottom-8 right-8 z-50 flex-col items-end gap-3 group">
+<div class="bg-white px-4 py-2 rounded-2xl shadow-xl border border-primary-container/20 opacity-0 group-hover:opacity-100 transition-opacity mb-2">
+<p class="text-label-md text-primary-container font-bold">有问题随时问我哦！</p>
+</div>
+<button class="w-16 h-16 bg-primary-container text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">psychiatry</span>
+</button>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-max-width-content mx-auto mt-20 border-t border-surface-container-highest">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="text-headline-md font-headline-md text-primary-container">PetMate</div>
+<p class="text-on-surface-variant text-body-md text-center md:text-left">© 2024 PetMate 宠友之家 - AI智能宠物医疗与生活服务平台</p>
+</div>
+<div class="flex gap-8 mt-8 md:mt-0">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">关于我们</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">用户协议</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">隐私政策</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">联系客服</a>
+</div>
+</footer>
+<script>
+        // Micro-interactions for pet selector
+        document.querySelectorAll('.flex-shrink-0').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active states
+                document.querySelectorAll('.flex-shrink-0').forEach(p => {
+                    p.classList.add('opacity-60');
+                    p.classList.remove('opacity-100');
+                    p.querySelector('div').classList.remove('border-primary-container', 'ring-4', 'ring-primary-fixed/30');
+                    p.querySelector('div').classList.add('border-outline-variant');
+                    p.querySelector('span').classList.remove('font-bold', 'text-primary-container');
+                    p.querySelector('span').classList.add('text-on-surface-variant');
+                });
+                // Set current as active
+                this.classList.remove('opacity-60');
+                this.classList.add('opacity-100');
+                this.querySelector('div').classList.add('border-primary-container', 'ring-4', 'ring-primary-fixed/30');
+                this.querySelector('div').classList.remove('border-outline-variant');
+                this.querySelector('span').classList.add('font-bold', 'text-primary-container');
+                this.querySelector('span').classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>我的订单 - PetMate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffdf9e",
+                    "surface-container-high": "#e2e9ec",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-secondary": "#ffffff",
+                    "surface-soft": "#F8F9FA",
+                    "secondary-container": "#68abff",
+                    "primary-container": "#ff7a32",
+                    "surface-variant": "#dde4e6",
+                    "inverse-on-surface": "#ebf2f4",
+                    "primary-fixed": "#ffdbcc",
+                    "on-surface": "#161d1f",
+                    "on-surface-variant": "#584238",
+                    "warning-amber": "#FAAD14",
+                    "outline-variant": "#dfc0b3",
+                    "emergency-red": "#FF4D4F",
+                    "on-secondary-fixed-variant": "#004883",
+                    "on-primary-container": "#622400",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#351000",
+                    "on-error-container": "#93000a",
+                    "surface": "#f4fafd",
+                    "primary-fixed-dim": "#ffb694",
+                    "outline": "#8c7166",
+                    "surface-container": "#e8eff1",
+                    "surface-container-low": "#eef5f7",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "secondary-fixed": "#d4e3ff",
+                    "surface-tint": "#a14000",
+                    "primary": "#a14000",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "background": "#f4fafd",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#785900",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-chat": "800px",
+                    "max-width-content": "1440px",
+                    "gutter-mobile": "16px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "margin-desktop": "120px",
+                    "gutter-desktop": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            color: #a14000;
+            border-bottom: 3px solid #ff7a32;
+        }
+        .tap-highlight-transparent {
+            -webkit-tap-highlight-color: transparent;
+        }
+        @keyframes pulse-once {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse-once {
+            animation: pulse-once 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-20 md:pb-0">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface dark:bg-on-background shadow-sm sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-4 md:px-margin-desktop max-w-max-width-content mx-auto h-20">
+<div class="flex items-center gap-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary-container">PetMate</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">首页</a>
+<a class="text-primary font-bold border-b-2 border-primary-container pb-1 font-body-md" href="#">商城</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">社区</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">领养</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors font-body-md" href="#">AI问诊</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex bg-surface-container rounded-full px-4 py-2 items-center gap-2">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-48" placeholder="搜索订单..." type="text">
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors scale-95 active:scale-90">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors scale-95 active:scale-90">shopping_cart</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of a friendly-looking Asian woman in her late 20s, smiling warmly. She has soft natural lighting hitting her face, creating a welcoming and trustworthy atmosphere. The background is a clean, minimalist off-white surface, following the PetMate light-mode brand aesthetic of clarity and warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9ooMjYbcxiGiTBtSxbGM0xn2UJp2-oGIqYUM9X_Fvcw_r5xJ6oTllllcJWp8PjgeA1JzzEwrsNZjJVdlRdxLr9G8IbJBEZsxsSS_CcPWiRIxtfyWO7uFcdOmAlDULKjqjcjmfLpSc5rY79o4IWJE8rrNvj3eX1Zsq5SRWVfnVTDmUdGR7WhvS_HyQIED_729MaiYANxg53rA3bQ7JEaX8sNOfR4bBa3e9faaOG4EKCG47GQqMflTOT2ylWLaPcts_Z2mUGLTkhyo">
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-max-width-content mx-auto px-4 md:px-margin-desktop py-8">
+<!-- Breadcrumbs & Title -->
+<div class="mb-8">
+<div class="flex items-center gap-2 text-on-surface-variant text-label-md mb-2">
+<span>个人中心</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-bold">我的订单</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">我的订单</h1>
+</div>
+<!-- Status Tabs -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm mb-8 sticky top-24 z-30">
+<div class="flex overflow-x-auto no-scrollbar border-b border-outline-variant/30">
+<button class="flex-1 py-4 px-6 text-label-md whitespace-nowrap active-tab font-bold transition-all tap-highlight-transparent">全部</button>
+<button class="flex-1 py-4 px-6 text-label-md whitespace-nowrap text-on-surface-variant hover:text-primary transition-all tap-highlight-transparent">待付款</button>
+<button class="flex-1 py-4 px-6 text-label-md whitespace-nowrap text-on-surface-variant hover:text-primary transition-all tap-highlight-transparent">待发货</button>
+<button class="flex-1 py-4 px-6 text-label-md whitespace-nowrap text-on-surface-variant hover:text-primary transition-all tap-highlight-transparent">待收货</button>
+<button class="flex-1 py-4 px-6 text-label-md whitespace-nowrap text-on-surface-variant hover:text-primary transition-all tap-highlight-transparent">待评价</button>
+</div>
+</div>
+<!-- Orders Grid/List -->
+<div class="space-y-6">
+<!-- Order Card 1: Pending Payment -->
+<div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/20 overflow-hidden">
+<div class="bg-surface-container-low px-6 py-3 flex justify-between items-center">
+<div class="flex items-center gap-4 text-label-md text-on-surface-variant">
+<span>订单号: PM882930411</span>
+<span class="hidden md:inline">|</span>
+<span class="hidden md:inline">2024-05-20 14:30</span>
+</div>
+<span class="text-emergency-red font-bold text-label-md">待付款</span>
+</div>
+<div class="p-6">
+<div class="flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex flex-1 gap-4">
+<div class="w-24 h-24 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High-quality studio product photography of a premium 5kg bag of organic grain-free dog food. The packaging is vibrant orange and white, featuring a happy golden retriever illustration. The lighting is soft and bright against a clean, warm background, embodying the PetMate brand's professional yet playful care aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDordKKyMZ-lU1NwKJGNoaRr61dv9hk58IVoz_TlDJLjeWHmicsilXEL93ag_vbxnA4aeWOxNsyBbrm0UFYzzrV8u9VHfDCts88CC8KwjDVswwxXd_y4AYmoVBu59M9mkxHIHVPA71EiDODeVDyh32NdDUkXzgVS7FjGCi4MRKaUpK37Z1uLxunm8S7P-lPlDMyQ1cChfstQiKvI7ZHkLcDrG60wo6eY3YDrVhZ624efFSJTyWq4lH40bFnrCmhSrtXE75i6kHF9BI">
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md mb-1">PetMate 优选全价无谷成犬粮 5kg</h3>
+<p class="text-on-surface-variant text-body-md">规格：牛肉味 / 5kg</p>
+<p class="text-on-surface-variant text-label-md mt-1">数量：x 1</p>
+</div>
+</div>
+<div class="flex flex-col md:items-end gap-1 border-t md:border-t-0 pt-4 md:pt-0">
+<span class="text-on-surface-variant text-label-md">实付金额</span>
+<span class="text-primary text-headline-md font-bold">¥299.00</span>
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-6">
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant hover:bg-surface transition-colors font-label-md">取消订单</button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-white shadow-sm hover:shadow-md active:scale-95 transition-all font-label-md">立即付款</button>
+</div>
+</div>
+</div>
+<!-- Order Card 2: Shipped -->
+<div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/20 overflow-hidden">
+<div class="bg-surface-container-low px-6 py-3 flex justify-between items-center">
+<div class="flex items-center gap-4 text-label-md text-on-surface-variant">
+<span>订单号: PM882928172</span>
+<span class="hidden md:inline">|</span>
+<span class="hidden md:inline">2024-05-18 10:15</span>
+</div>
+<span class="text-secondary font-bold text-label-md">已发货</span>
+</div>
+<div class="p-6">
+<div class="flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex flex-1 gap-4">
+<div class="w-24 h-24 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern, sleek automatic smart pet water fountain in a pristine white finish with soft blue LED status lights. The product is shown from a 3/4 angle on a minimalist reflective surface. The aesthetic is tech-forward yet warm, aligning with PetMate's AI-driven smart home medical and lifestyle services." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgUPi7CcelUXE_BsidRVxcRe3-zxTH6ETY2eKRI0AYl2MJBDY9Kv0RYQH-GQBrF1wpyYvMjs_KiYZtvj2oWHk_OQ6xvD7Wzg39lbimutV0eKbvScvvQQHsoSMVblmKNVj53-0ryng1S0bbJvvZXyfY4uJqExn5YxF6NDBzqSdOYfoMjx-eFBuAPdB8FTyqjkkw77IoAzBTOKEVyb6jt3UnRcdR4xHDbLZ1eiGIdoiR3vs7Ou2O7iiaCJVdC6l6qRZ7aUUi5c5eOS4">
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md mb-1">智能循环过滤饮水机 Pro</h3>
+<p class="text-on-surface-variant text-body-md">规格：3L 抗菌版 / 珍珠白</p>
+<p class="text-on-surface-variant text-label-md mt-1">数量：x 1</p>
+</div>
+</div>
+<div class="flex flex-col md:items-end gap-1 border-t md:border-t-0 pt-4 md:pt-0">
+<span class="text-on-surface-variant text-label-md">实付金额</span>
+<span class="text-primary text-headline-md font-bold">¥158.00</span>
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-6">
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant hover:bg-surface transition-colors font-label-md">查看详情</button>
+<button class="px-6 py-2 rounded-full border border-secondary text-secondary hover:bg-secondary-fixed/20 transition-colors font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+                            查看物流
+                        </button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-white shadow-sm hover:shadow-md active:scale-95 transition-all font-label-md">确认收货</button>
+</div>
+</div>
+</div>
+<!-- Order Card 3: Multi-item Shipped -->
+<div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/20 overflow-hidden">
+<div class="bg-surface-container-low px-6 py-3 flex justify-between items-center">
+<div class="flex items-center gap-4 text-label-md text-on-surface-variant">
+<span>订单号: PM882927004</span>
+<span class="hidden md:inline">|</span>
+<span class="hidden md:inline">2024-05-15 16:45</span>
+</div>
+<span class="text-on-surface-variant font-bold text-label-md">待评价</span>
+</div>
+<div class="p-6">
+<div class="flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex flex-1 gap-4 overflow-x-auto no-scrollbar">
+<div class="w-24 h-24 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="A set of colorful, safe, non-toxic rubber dog chew toys in various organic shapes like bones and balls. The colors are soft pastels: mint green, baby blue, and salmon pink. They are arranged artistically on a white surface with soft natural lighting, conveying a playful yet high-quality professional vibe for PetMate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6ccT1ME7lAqQfzPpPL-wI4Qr_pIcesEBHXP6746fidis-RZIWclaK5jFqeVq0b3sV_-exZ94dItItrmceghcG9vrOd7sITVKPIlpCBwqqCcKhx0mG2H_8Vby_S93FJegJAzImn17XGwVwwaw63-UGr-cfLUAovMSS0pbUMgkAgKx6H9Knn-epxnfiZ7AjesKGrZEyEf-mIBrXNRRehKF8cuKms7ybYpdnKqPH9WTBj9dnqUm4RJz3CmMewYtUeWQo2PLcGl8VcW8">
+</div>
+<div class="w-24 h-24 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="A premium feline dental care kit including a small toothbrush and tuna-flavored toothpaste in professional medical packaging. The design is clean and clinical but approachable, featuring a cute cat icon. High-key lighting emphasizes hygiene and quality in this PetMate medical lifestyle service product shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACUnZgIZrcseFs8ppNWQN0fekRf3SLjKB-9m7cxC6ESQ1Wy0NsTVwQJCFYalsM7ccrKW_tm2_Kc2cPX9qf0RWcvFMl0HQ2pW8d8X2Ac55EXOROsySkpftN-vu88qRIhr8WkAuXVrjGl2RjYdp2P-N8OWZZ37oIStWd7rqRyeD3S37hkqwa-y14OAvX90uQn5w95u3pMWxN8pAM-odpFR0mqR6JYwkhwgLmIY0mE9E0fFt_Bt3A0Iwcx2inPRNoYukr-1aezb4wGyU">
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-body-md font-bold text-on-surface">共 2 件商品</span>
+<p class="text-on-surface-variant text-label-md">耐咬玩具组合 等</p>
+</div>
+</div>
+<div class="flex flex-col md:items-end gap-1 border-t md:border-t-0 pt-4 md:pt-0">
+<span class="text-on-surface-variant text-label-md">实付金额</span>
+<span class="text-primary text-headline-md font-bold">¥124.50</span>
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-6">
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant hover:bg-surface transition-colors font-label-md">再次购买</button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-white shadow-sm hover:shadow-md active:scale-95 transition-all font-label-md">立即评价</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Example (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center">
+<span class="material-symbols-outlined text-[80px] text-outline-variant mb-4">shopping_bag</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">还没有相关订单</h2>
+<p class="text-on-surface-variant text-body-md mt-2 mb-8">去商城逛逛，给您的毛孩子挑点礼物吧</p>
+<button class="px-8 py-3 bg-primary-container text-white rounded-full font-bold shadow-lg hover:shadow-xl transition-all">前往商城</button>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-high dark:bg-inverse-surface mt-20">
+<div class="w-full py-12 px-4 md:px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-max-width-content mx-auto">
+<div class="flex flex-col items-center md:items-start mb-8 md:mb-0">
+<span class="text-headline-md font-headline-md text-primary-container mb-2">PetMate</span>
+<p class="text-on-surface-variant text-body-md text-center md:text-left">© 2024 PetMate 宠友之家 - AI智能宠物医疗与生活服务平台</p>
+</div>
+<div class="flex gap-6 flex-wrap justify-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">关于我们</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">加入我们</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">用户协议</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">隐私政策</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">联系客服</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Shared Component - Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 md:hidden bg-surface/80 backdrop-blur-md border-t border-outline-variant/30 px-4 pb-safe shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">pets</span>
+<span class="text-label-sm font-label-sm">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">psychiatry</span>
+<span class="text-label-sm font-label-sm">AI问诊</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">社区</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container font-bold tap-highlight-transparent" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm">我的</span>
+</a>
+</nav>
+<script>
+        // Simple tab switching interaction
+        const tabs = document.querySelectorAll('.bg-surface-container-lowest button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active-tab', 'font-bold'));
+                tabs.forEach(t => t.classList.add('text-on-surface-variant'));
+                
+                tab.classList.add('active-tab', 'font-bold');
+                tab.classList.remove('text-on-surface-variant');
+                tab.classList.add('animate-pulse-once');
+                setTimeout(() => tab.classList.remove('animate-pulse-once'), 300);
+            });
+        });
+
+        // Sticky header behavior
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+            if (currentScroll > lastScroll && currentScroll > 80) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            header.style.transition = 'transform 0.3s ease-in-out';
+            lastScroll = currentScroll;
+        });
+    </script>
+</body></html>

@@ -1,0 +1,72 @@
+# ===================================================================
+# 测试专用配置（profile: test）
+#
+# 数据源 URL 由 IntegrationTestBase 的 @DynamicPropertySource 在运行期
+# 注入（指向 Testcontainers 启动的 MySQL 8.0 容器），此处不写死。
+#
+# 原则：关闭一切外部依赖与后台任务，让测试结果只取决于被测代码本身。
+# ===================================================================
+
+spring:
+  # 允许测试用 @MockBean 等方式覆盖同名 Bean
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+  # Redis 仅用于 AI 问诊缓存；测试环境不启用真实 Redis，
+  # 连接失败不应导致上下文启动失败（ConsultAiService 自带降级）。
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      timeout: 200ms
+      connect-timeout: 200ms
+
+logging:
+  level:
+    root: WARN
+    com.petmate: INFO
+    # 集成测试排查 SQL 时改为 DEBUG
+    org.springframework.jdbc.core: WARN
+    org.testcontainers: INFO
+    com.github.dockerjava: WARN
+
+petmate:
+  jwt:
+    # 测试固定密钥：TokenFactory 用它签发各角色 token，
+    # 与生产环境的 PETMATE_JWT_SECRET 隔离。
+    secret: test-only-secret-fixed-for-junit-must-be-at-least-32-bytes-long
+    expire-seconds: 604800
+
+  # 支付宝：测试态一律关闭，避免出站到沙箱网关。
+  # 需要验证回调链路时由 WireMock 接管（见 support/WireMockSupport）。
+  alipay:
+    enabled: false
+    app-id: test-app-id
+    private-key: ""
+    alipay-public-key: ""
+    gateway: http://localhost:0/gateway.do
+    notify-url: http://localhost:0/api/v1/pay/alipay/notify
+    return-url: http://localhost:0/pay
+    sign-type: RSA2
+    charset: UTF-8
+    insecure: false
+
+  # AI 问诊：关闭真实出站，走知识库兜底路径
+  ai:
+    enabled: false
+    provider: glm
+    api-key: ""
+    base-url: http://localhost:0/api/paas/v4
+    model: glm-4-flash-250414
+    vision-model: glm-4v-flash
+    timeout-ms: 2000
+
+  metrics:
+    real: false
+
+  cors:
+    allowed-origins:
+      - http://localhost:5173

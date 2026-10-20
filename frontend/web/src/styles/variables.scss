@@ -1,0 +1,138 @@
+// ========================================
+// PetMate 设计系统 — SCSS 变量
+// 数据来源：frontend/petmate_living/DESIGN.md
+// ========================================
+
+// ---------- 颜色（Material 3 Token Set）----------
+// 品牌色：橙色
+$color-brand: #ff7a32;                  // brand orange（按钮主色）
+$color-brand-dark: #a14000;             // dark orange（hover/active）
+$color-brand-light: #ffb694;            // inverse primary
+$color-brand-container: #ffdbcc;        // primary-fixed
+$color-on-brand: #ffffff;               // 按钮文字
+$color-on-brand-container: #622400;     // dark text on light brand
+$color-on-primary: $color-on-brand;     // 别名：primary = brand（组件按 M3 primary 命名引用）
+
+// 信任色：蓝色（AI/链接/医疗）
+$color-secondary: #0060ac;              // info blue
+$color-secondary-light: #68abff;        // secondary-container
+$color-secondary-container: #d4e3ff;    // secondary-fixed
+$color-on-secondary: #ffffff;
+
+// 强调色：黄色（金色瞬间/警告）
+$color-tertiary: #785900;
+$color-tertiary-container: #cb9900;
+$color-tertiary-fixed: #ffdf9e;
+
+// 状态色
+$color-success: #52c41a;
+$color-warning: #faad14;
+$color-danger: #ba1a1a;
+$color-error-container: #ffdad6;        // error 容器色（浅红背景）
+$color-emergency: #ff4d4f;              // 紧急红色
+$color-info: #0060ac;
+
+// ---------- 表面色（背景层）----------
+$color-background: #f4fafd;
+$color-surface: #f4fafd;
+$color-surface-dim: #d4dbdd;
+$color-surface-bright: #f4fafd;
+$color-surface-soft: #f8f9fa;
+$color-surface-container-lowest: #ffffff;
+$color-surface-container-low: #eef5f7;
+$color-surface-container: #e8eff1;
+$color-surface-container-high: #e2e9ec;
+$color-surface-container-highest: #dde4e6;
+$color-sky-blue-light: #ebf4ff;
+$color-surface-variant: #dde4e6;
+
+// ---------- 文字色 ----------
+$color-on-surface: #161d1f;
+$color-on-surface-variant: #584238;
+$color-on-background: #161d1f;
+$color-text-primary: #161d1f;
+$color-text-secondary: #584238;
+$color-text-tertiary: #8c7166;
+$color-text-disabled: #dde4e6;
+
+// ---------- 描边 ----------
+$color-outline: #8c7166;
+$color-outline-variant: #dfc0b3;
+
+// ---------- 圆角（rounded token）----------
+$radius-sm: 0.25rem;     // 4px
+$radius-default: 0.5rem; // 8px — 标准卡片
+$radius-md: 0.75rem;     // 12px
+$radius-lg: 1rem;        // 16px — 按钮
+$radius-xl: 1.5rem;      // 24px
+$radius-full: 9999px;    // pill
+
+// ---------- 间距（4px base unit）----------
+$spacing-base: 4px;
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+
+// ---------- 容器宽度 ----------
+$width-content-max: 1440px;
+$width-chat-max: 800px;
+$width-gutter-desktop: 24px;
+$width-margin-desktop: 120px;
+$width-gutter-mobile: 16px;
+$width-margin-mobile: 16px;
+
+// ---------- 字体 ----------
+$font-family-headline: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-body: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+// ---------- 字号 ----------
+$font-size-display-lg: 48px;
+$font-size-headline-lg: 32px;
+$font-size-headline-lg-mobile: 24px;
+$font-size-headline-md: 24px;
+$font-size-body-lg: 18px;
+$font-size-body-md: 16px;
+$font-size-label-md: 14px;
+$font-size-label-sm: 12px;
+
+// ---------- 字重 ----------
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// ---------- 行高 ----------
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ---------- 阴影 ----------
+$shadow-sm: 0 1px 2px rgba(22, 29, 31, 0.05);
+$shadow-md: 0 4px 12px rgba(22, 29, 31, 0.08);
+$shadow-lg: 0 10px 30px rgba(22, 29, 31, 0.12);
+$shadow-card: 0 2px 8px rgba(161, 64, 0, 0.08);
+$shadow-floating: 0 8px 24px rgba(161, 64, 0, 0.18);
+
+// ---------- Z-index ----------
+$z-index-base: 0;
+$z-index-header: 100;
+$z-index-drawer: 200;
+$z-index-modal: 300;
+$z-index-toast: 400;
+
+// ---------- 动画 ----------
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 400ms ease;
+
+// ---------- 断点（视口宽度）----------
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1280px;
+$breakpoint-wide: 1920px;

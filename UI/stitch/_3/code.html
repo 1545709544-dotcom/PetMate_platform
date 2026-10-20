@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PetMate Pro - 数据看板 3.13.6</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f4fafd;
+        }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(221, 228, 230, 0.5);
+        }
+        .sidebar-active {
+            position: relative;
+        }
+        .sidebar-active::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #a14000;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-tertiary-fixed-variant": "#5b4300",
+                "on-primary-container": "#622400",
+                "secondary-fixed": "#d4e3ff",
+                "primary": "#a14000",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed": "#ffdbcc",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#483400",
+                "tertiary": "#785900",
+                "on-primary-fixed": "#351000",
+                "inverse-primary": "#ffb694",
+                "surface-soft": "#F8F9FA",
+                "surface": "#f4fafd",
+                "on-primary": "#ffffff",
+                "tertiary-fixed": "#ffdf9e",
+                "surface-tint": "#a14000",
+                "surface-bright": "#f4fafd",
+                "on-secondary-fixed": "#001c39",
+                "on-tertiary-fixed": "#261a00",
+                "tertiary-fixed-dim": "#fabd00",
+                "surface-dim": "#d4dbdd",
+                "primary-container": "#ff7a32",
+                "surface-container-highest": "#dde4e6",
+                "background": "#f4fafd",
+                "on-background": "#161d1f",
+                "on-secondary-container": "#003e73",
+                "surface-variant": "#dde4e6",
+                "on-primary-fixed-variant": "#7b2f00",
+                "on-secondary": "#ffffff",
+                "outline-variant": "#dfc0b3",
+                "surface-container-low": "#eef5f7",
+                "on-surface-variant": "#584238",
+                "on-error-container": "#93000a",
+                "primary-fixed-dim": "#ffb694",
+                "tertiary-container": "#cb9900",
+                "on-secondary-fixed-variant": "#004883",
+                "inverse-surface": "#2b3234",
+                "error": "#ba1a1a",
+                "secondary": "#0060ac",
+                "on-error": "#ffffff",
+                "inverse-on-surface": "#ebf2f4",
+                "outline": "#8c7166",
+                "surface-container": "#e8eff1",
+                "secondary-container": "#68abff",
+                "on-tertiary": "#ffffff",
+                "surface-container-high": "#e2e9ec",
+                "on-surface": "#161d1f",
+                "secondary-fixed-dim": "#a4c9ff"
+              },
+              "spacing": {
+                "gutter-desktop": "24px",
+                "margin-mobile": "16px",
+                "margin-desktop": "120px",
+              },
+              "fontFamily": {
+                "headline-md": ["Plus Jakarta Sans"],
+                "headline-lg": ["Plus Jakarta Sans"],
+                "body-lg": ["Be Vietnam Pro"],
+                "label-md": ["Be Vietnam Pro"]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface overflow-x-hidden">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow-sm z-50 flex flex-col py-6 px-4 border-r border-outline-variant/30">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary leading-tight">PetMate Pro</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">商家后台中心</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-container-low text-primary font-bold border-r-4 border-primary transition-all duration-150 active:scale-95" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span><span class="font-label-md text-label-md">Dashboard</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#"><span class="material-symbols-outlined">shopping_cart</span><span class="font-label-md text-label-md">订单管理</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#"><span class="material-symbols-outlined">inventory_2</span><span class="font-label-md text-label-md">商品/服务管理</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#"><span class="material-symbols-outlined">reviews</span><span class="font-label-md text-label-md">评价管理</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#"><span class="material-symbols-outlined">bar_chart</span><span class="font-label-md text-label-md">数据统计</span></a><a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">设置</span></a></nav>
+<div class="mt-auto px-2">
+<button class="w-full py-4 bg-primary text-on-primary rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+<span class="">发布新服务</span>
+</button>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-gutter-desktop z-40"><div class="flex items-center gap-6 flex-1 min-w-0"><h2 class="font-headline-md text-headline-md font-bold text-primary whitespace-nowrap">PetMate 商家中心</h2><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span><input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-secondary/20" placeholder="搜索订单、商品或分析数据..." type="text"></div></div><div class="flex items-center gap-4 ml-4 shrink-0"><nav class="hidden lg:flex items-center gap-4"><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">帮助中心</a><a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">社区论坛</a></nav><div class="h-6 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-2"><button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors relative"><span class="material-symbols-outlined">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full"></span></button><button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">mail</span></button><div class="flex items-center gap-3 ml-2 cursor-pointer group"><div class="w-10 h-10 rounded-full border-2 border-primary/20 p-0.5 group-hover:border-primary transition-colors"><img class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWhfKnXrHa0wV9I39kgE-eNjBnNG0HQQluBREhaaL_EIo7TNzAosVwyEXPFY5rcUVdIgxWyFtkVSEIh6pYzxDWlE-ssfICqAx9ewIZeuf_wQqs--qFXTNUFa0HjSXpv-6rKZKdpkhmt2BmfprnpGWlH60igMUGJ3dmLzZn4_s6nqgbHUjS_9mguPh9lw1wTbkRygB2--e_Rwt6OZ06yHN4id3lsFJDjoo1KtFtaZxjLeT-q3-RlbX5RLb4cJ0Dj3o_3cle_5hAUDg"></div><div class="hidden xl:block"><p class="text-sm font-bold leading-none">王经理</p><p class="text-[10px] text-on-surface-variant mt-1">店铺已开张</p></div></div></div></div></header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 px-gutter-desktop pb-12 min-h-screen">
+<!-- Header & Filter -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-background">数据看板 <span class="text-primary-container text-label-md font-normal ml-2">v3.13.6</span></h3>
+<p class="text-on-surface-variant mt-1">实时监控您的店铺经营动态与用户转化数据</p>
+</div>
+<div class="flex items-center bg-white p-1 rounded-2xl shadow-sm border border-outline-variant/30">
+<button class="px-6 py-2 rounded-xl text-sm font-bold transition-all bg-primary text-white" id="btn-today" onclick="updateTimeRange('today')">今日</button>
+<button class="px-6 py-2 rounded-xl text-sm font-bold transition-all text-on-surface-variant hover:bg-surface-container-low" id="btn-week" onclick="updateTimeRange('week')">本周</button>
+<button class="px-6 py-2 rounded-xl text-sm font-bold transition-all text-on-surface-variant hover:bg-surface-container-low" id="btn-month" onclick="updateTimeRange('month')">本月</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Key Metrics -->
+<div class="col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-2">
+<div class="glass-card p-6 rounded-[2rem] flex flex-col justify-between group hover:border-primary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-primary-fixed rounded-2xl text-on-primary-fixed-variant">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-success-green flex items-center text-xs font-bold bg-success-green/10 px-2 py-1 rounded-full"><span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>+12.5%</span>
+</div>
+<div class="mt-6">
+<p class="text-on-surface-variant text-label-md">今日销售额</p>
+<h4 class="font-headline-lg text-headline-lg text-on-background mt-1">¥ 12,840.00</h4>
+</div>
+</div>
+<div class="glass-card p-6 rounded-[2rem] flex flex-col justify-between group hover:border-secondary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-secondary-fixed rounded-2xl text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="text-success-green flex items-center text-xs font-bold bg-success-green/10 px-2 py-1 rounded-full"><span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>+8.2%</span>
+</div>
+<div class="mt-6">
+<p class="text-on-surface-variant text-label-md">今日入店访客</p>
+<h4 class="font-headline-lg text-headline-lg text-on-background mt-1">1,248</h4>
+</div>
+</div>
+<div class="glass-card p-6 rounded-[2rem] flex flex-col justify-between group hover:border-tertiary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-tertiary-fixed rounded-2xl text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<span class="text-success-green flex items-center text-xs font-bold bg-success-green/10 px-2 py-1 rounded-full"><span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>+5.4%</span>
+</div>
+<div class="mt-6">
+<p class="text-on-surface-variant text-label-md">订单转化率</p>
+<h4 class="font-headline-lg text-headline-lg text-on-background mt-1">4.2%</h4>
+</div>
+</div>
+<div class="glass-card p-6 rounded-[2rem] flex flex-col justify-between group hover:border-primary-container/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-primary-container/20 rounded-2xl text-on-primary-container">
+<span class="material-symbols-outlined">avg_pace</span>
+</div>
+<span class="text-emergency-red flex items-center text-xs font-bold bg-emergency-red/10 px-2 py-1 rounded-full"><span class="material-symbols-outlined text-sm mr-0.5">trending_down</span>-1.2%</span>
+</div>
+<div class="mt-6">
+<p class="text-on-surface-variant text-label-md">客单价</p>
+<h4 class="font-headline-lg text-headline-lg text-on-background mt-1">¥ 286.00</h4>
+</div>
+</div>
+</div>
+<!-- Row 1: Line Chart & Pie Chart -->
+<div class="col-span-12 lg:col-span-8 glass-card p-8 rounded-[2.5rem] animate-fade-in" style="animation-delay: 0.1s;">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h5 class="font-headline-md text-headline-md text-on-background">客流趋势与转化分析</h5>
+<p class="text-sm text-on-surface-variant">每日进店人数与下单转化曲线</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-xs text-on-surface-variant">进店客流</span>
+</div>
+<div class="flex items-center gap-2 ml-2">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="text-xs text-on-surface-variant">下单转化</span>
+</div>
+</div>
+</div>
+<div class="h-80 relative">
+<canvas id="trafficChart" width="952" height="528" style="display: block; box-sizing: border-box; height: 320px; width: 577.5px;"></canvas>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 glass-card p-8 rounded-[2.5rem] animate-fade-in" style="animation-delay: 0.2s;">
+<h5 class="font-headline-md text-headline-md text-on-background mb-1">销售品类分布</h5>
+<p class="text-sm text-on-surface-variant mb-8">各业务模块销售占比</p>
+<div class="h-64 relative flex items-center justify-center">
+<canvas id="categoryChart" width="402" height="422" style="display: block; box-sizing: border-box; height: 256px; width: 244.1px;"></canvas>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs text-on-surface-variant">宠物食品 (45%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="text-xs text-on-surface-variant">洗护美容 (25%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-xs text-on-surface-variant">医疗健康 (20%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="text-xs text-on-surface-variant">寄宿社交 (10%)</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Conversion Funnel & Leaderboard -->
+<div class="col-span-12 lg:col-span-5 glass-card p-8 rounded-[2.5rem] animate-fade-in" style="animation-delay: 0.3s;">
+<h5 class="font-headline-md text-headline-md text-on-background mb-1">转化漏斗</h5>
+<p class="text-sm text-on-surface-variant mb-8">从触达至成交的关键路径分析</p>
+<div class="space-y-6">
+<!-- Funnel Step 1 -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-bold text-on-surface">1. 商品浏览</span>
+<span class="text-xs text-on-surface-variant">12,480 人 (100%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Funnel Step 2 -->
+<div class="pl-4 border-l-2 border-dashed border-outline-variant">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-bold text-on-surface">2. 加入购物车</span>
+<span class="text-xs text-on-surface-variant">3,120 人 (25%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary/80 rounded-full" style="width: 25%"></div>
+</div>
+<div class="mt-2 text-[10px] text-on-tertiary-fixed-variant bg-tertiary-fixed/30 px-2 py-0.5 rounded inline-block"><span class="material-symbols-outlined text-[12px] mr-1">arrow_downward</span>流失率: 75%</div>
+</div>
+<!-- Funnel Step 3 -->
+<div class="pl-8 border-l-2 border-dashed border-outline-variant">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-bold text-on-surface">3. 确认订单</span>
+<span class="text-xs text-on-surface-variant">842 人 (6.7%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary/60 rounded-full" style="width: 6.7%"></div>
+</div>
+<div class="mt-2 text-[10px] text-on-tertiary-fixed-variant bg-tertiary-fixed/30 px-2 py-0.5 rounded inline-block"><span class="material-symbols-outlined text-[12px] mr-1">arrow_downward</span>流失率: 73%</div>
+</div>
+<!-- Funnel Step 4 -->
+<div class="pl-12 border-l-2 border-dashed border-outline-variant">
+<div class="flex justify-between items-end mb-2">
+<span class="text-sm font-bold text-on-surface">4. 支付成功</span>
+<span class="text-xs text-primary font-bold">524 人 (4.2%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 4.2%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Product Sales -->
+<div class="col-span-12 lg:col-span-7 glass-card p-8 rounded-[2.5rem] animate-fade-in" style="animation-delay: 0.4s;">
+<div class="flex justify-between items-center mb-8">
+<h5 class="font-headline-md text-headline-md text-on-background">热销服务排行榜</h5>
+<button class="text-sm text-primary font-bold flex items-center hover:underline">查看全部 <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span></button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center p-4 bg-surface rounded-2xl border border-transparent hover:border-primary/10 transition-colors">
+<div class="w-12 h-12 rounded-xl overflow-hidden mr-4 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A macro high-quality photo of premium grain-free organic dog food kibbles in a stylish minimalist ceramic bowl, golden hour warm lighting, sharp focus on texture, luxury pet lifestyle vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzSKYrrBitNDalN2u3NROBPVte-hgVBjzUA0a2cvEG2a8vosig03uhv65QlCbNXdG-Nu93OwNsVsJXfhzyUA7MEeSSIlI5UOY7kvn9wYaAiZV0zYG52yTSd3nfWQK3kG5zHGj5Qwb1YrdRKuVz570TMSVMS77YF6ovQhW6-YQC_gghAhoBC5-AjR8ry3AcCl0cKZu9gmS-klEJNn3ezj0CPNZ6ZLCTF-sAsuEu1djEqiakaq8T_IhNQ30aEBv33QQyZwCOotRqEQk">
+</div>
+<div class="flex-1 space-y-1">
+<p class="text-sm font-bold text-on-background">全价冻干双拼犬粮 (12kg)</p>
+<p class="text-xs text-on-surface-variant opacity-80">SKU: PM-F001 | 品类: 食品</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-background">¥ 125,400</p>
+<p class="text-[10px] text-success-green font-bold">已售 418 件</p>
+</div>
+</div>
+<div class="flex items-center p-4 bg-surface rounded-2xl border border-transparent hover:border-primary/10 transition-colors">
+<div class="w-12 h-12 rounded-xl overflow-hidden mr-4 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close up photography of a cute golden retriever being pampered with a professional bubble bath, soap suds on its head, playful and clean aesthetic, bright high-key lighting, soft water splashes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi6Jk1WKfXU9SWM35bozUI6wHqpBaUAICozTYy2Vy5RhQI6Oix_iLeZ26t0XYsatZv7xqGkMObCuv8jTs8q7c0VquMYsRLZ6LGGyTzG5-KEDP8Th21L3afD4hriXPxjvP5ELFhKIDMaWIwyuEfmTtiFIsw0kulnTlEEn-sx4Gvidm8gWB-rFtc9-ESpFiZJSo0U3-3UluhvaIwMORHZzKgkMwDcwqFyzVYexpmXeRZQb8hKKvOHD3JmvXvsdprajCHkJ53lemi0Og">
+</div>
+<div class="flex-1 space-y-1">
+<p class="text-sm font-bold text-on-background">深度水疗洗护套餐 (中大型犬)</p>
+<p class="text-xs text-on-surface-variant opacity-80">Service: PM-G012 | 品类: 洗护</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-background">¥ 86,220</p>
+<p class="text-[10px] text-success-green font-bold">已售 324 次</p>
+</div>
+</div>
+<div class="flex items-center p-4 bg-surface rounded-2xl border border-transparent hover:border-primary/10 transition-colors">
+<div class="w-12 h-12 rounded-xl overflow-hidden mr-4 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A minimalist sleek modern cat carrier made of transparent high-grade plastic and white matte finish, photographed in a clean studio setting with soft pastel shadows, ultra-modern pet accessory design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAYQU-x9m4M5xktEnTvZ5BJc0ufy953eR2i_Tt1Nmga-3i7L8tGvBuMh2gJJVnr1uwJVqHoBEVNNVabpNHKThs4K9XiK8pk963Ri7jEsY3ailj4jkV-oz0pNSGOdtNruSd3LCnYf0KYtkQZguNwRSuGMmZZdwul-GdPZ8LKc-jyiXwQwjLKX6KkeUo_p27YtNc163ziPvh2mh8W9pfb0DwPnILttugWqNhdjkSlAa-8FedrmpKAhsAelDUCQ4kTvTkCe9smbTM6LY">
+</div>
+<div class="flex-1 space-y-1">
+<p class="text-sm font-bold text-on-background">极简透明太空舱猫包</p>
+<p class="text-xs text-on-surface-variant opacity-80">SKU: PM-A085 | 品类: 用品</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-on-background">¥ 45,600</p>
+<p class="text-[10px] text-success-green font-bold">已售 152 件</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/30 flex justify-around">
+<div class="text-center">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">库存警戒</p>
+<p class="text-xl font-headline font-bold text-emergency-red mt-1">12 <span class="text-xs">SKUs</span></p>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/30"></div>
+<div class="text-center">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">待处理工单</p>
+<p class="text-xl font-headline font-bold text-warning-amber mt-1">5 <span class="text-xs">Ticket</span></p>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/30"></div>
+<div class="text-center">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">客户好评率</p>
+<p class="text-xl font-headline font-bold text-success-green mt-1">98.5%</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Data Initialization
+        const chartData = {
+            today: {
+                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '23:59'],
+                traffic: [120, 45, 180, 520, 890, 750, 240],
+                conversion: [5, 2, 12, 35, 68, 52, 18]
+            },
+            week: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                traffic: [2400, 2800, 3100, 2900, 3800, 5200, 4800],
+                conversion: [180, 210, 240, 215, 290, 450, 410]
+            },
+            month: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                traffic: [18000, 22000, 21000, 25000],
+                conversion: [1450, 1820, 1750, 2100]
+            }
+        };
+
+        // Initialize Charts
+        let trafficChartInstance;
+        let categoryChartInstance;
+
+        function initCharts() {
+            // Traffic Line Chart
+            const ctxTraffic = document.getElementById('trafficChart').getContext('2d');
+            trafficChartInstance = new Chart(ctxTraffic, {
+                type: 'line',
+                data: {
+                    labels: chartData.today.labels,
+                    datasets: [
+                        {
+                            label: '进店客流',
+                            data: chartData.today.traffic,
+                            borderColor: '#0060ac',
+                            backgroundColor: 'rgba(0, 96, 172, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#0060ac',
+                            borderWidth: 3
+                        },
+                        {
+                            label: '下单转化',
+                            data: chartData.today.conversion,
+                            borderColor: '#ff7a32',
+                            backgroundColor: 'rgba(255, 122, 50, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#ff7a32',
+                            borderWidth: 3,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { display: true, color: 'rgba(0,0,0,0.05)' },
+                            border: { display: false }
+                        },
+                        y1: {
+                            position: 'right',
+                            grid: { display: false },
+                            border: { display: false }
+                        },
+                        x: {
+                            grid: { display: false },
+                            border: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // Category Pie Chart
+            const ctxCategory = document.getElementById('categoryChart').getContext('2d');
+            categoryChartInstance = new Chart(ctxCategory, {
+                type: 'doughnut',
+                data: {
+                    labels: ['宠物食品', '洗护美容', '医疗健康', '寄宿社交'],
+                    datasets: [{
+                        data: [45, 25, 20, 10],
+                        backgroundColor: ['#a14000', '#0060ac', '#785900', '#ff7a32'],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // Filter Logic
+        function updateTimeRange(range) {
+            const buttons = ['today', 'week', 'month'];
+            buttons.forEach(b => {
+                const btn = document.getElementById(`btn-${b}`);
+                if (b === range) {
+                    btn.classList.add('bg-primary', 'text-white');
+                    btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-low');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('text-on-surface-variant', 'hover:bg-surface-container-low');
+                }
+            });
+
+            // Update Chart Data
+            trafficChartInstance.data.labels = chartData[range].labels;
+            trafficChartInstance.data.datasets[0].data = chartData[range].traffic;
+            trafficChartInstance.data.datasets[1].data = chartData[range].conversion;
+            trafficChartInstance.update();
+
+            // Simulate loading state
+            document.querySelectorAll('.glass-card h4, .glass-card h5').forEach(el => {
+                el.classList.add('opacity-50');
+                setTimeout(() => el.classList.remove('opacity-50'), 300);
+            });
+        }
+
+        window.onload = initCharts;
+    </script>
+
+
+
+</body></html>

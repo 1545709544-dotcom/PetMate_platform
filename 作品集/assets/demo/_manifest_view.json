@@ -1,0 +1,344 @@
+[
+ {
+  "id": "s01",
+  "role": "user",
+  "path": "/",
+  "label": "首页",
+  "url": "/",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s02",
+  "role": "user",
+  "path": "/category",
+  "label": "商品分类",
+  "url": "/category",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s03",
+  "role": "user",
+  "path": "/product/3001",
+  "label": "商品详情",
+  "url": "/product/3001",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s04",
+  "role": "user",
+  "path": "/cart",
+  "label": "购物车",
+  "url": "/cart",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s05",
+  "role": "user",
+  "path": "/order/list",
+  "label": "我的订单",
+  "url": "/order/list",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s06",
+  "role": "user",
+  "path": "/service",
+  "label": "本地服务",
+  "url": "/service",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s07",
+  "role": "user",
+  "path": "/service/1",
+  "label": "服务详情",
+  "url": "/service/1",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s08",
+  "role": "user",
+  "path": "/pet/health/1",
+  "label": "健康档案",
+  "url": "/pet/health/1",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s09",
+  "role": "user",
+  "path": "/consult",
+  "label": "AI 智能问诊",
+  "url": "/consult",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s10",
+  "role": "user",
+  "path": "/community",
+  "label": "社区动态",
+  "url": "/community",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s11",
+  "role": "user",
+  "path": "/knowledge",
+  "label": "宠友百科",
+  "url": "/knowledge",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s12",
+  "role": "user",
+  "path": "/adoption",
+  "label": "领养救助",
+  "url": "/adoption",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s13",
+  "role": "user",
+  "path": "/adoption/publish",
+  "label": "发布领养",
+  "url": "/adoption/publish",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s14",
+  "role": "user",
+  "path": "/community/donate-rank",
+  "label": "爱心捐助排行",
+  "url": "/community/donate-rank",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s15",
+  "role": "user",
+  "path": "/task-center",
+  "label": "任务中心",
+  "url": "/task-center",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s16",
+  "role": "user",
+  "path": "/vip/open",
+  "label": "开通会员",
+  "url": "/vip/open",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s17",
+  "role": "user",
+  "path": "/user",
+  "label": "个人中心",
+  "url": "/user",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s18",
+  "role": "user",
+  "path": "/seckill",
+  "label": "限时秒杀",
+  "url": "/seckill",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s19",
+  "role": "user",
+  "path": "/user/footprint",
+  "label": "商品足迹",
+  "url": "/user/footprint",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s20",
+  "role": "user",
+  "path": "/aftersale",
+  "label": "我的售后",
+  "url": "/aftersale",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s21",
+  "role": "user",
+  "path": "/appointments",
+  "label": "我的预约",
+  "url": "/appointments",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "s22",
+  "role": "user",
+  "path": "/login",
+  "label": "登录页",
+  "url": "/login",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m01",
+  "role": "merchant",
+  "path": "/merchant/dashboard",
+  "label": "商家工作台",
+  "url": "/merchant/dashboard",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m02",
+  "role": "merchant",
+  "path": "/merchant/product/list",
+  "label": "商品管理",
+  "url": "/merchant/product/list",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m03",
+  "role": "merchant",
+  "path": "/merchant/order",
+  "label": "订单管理",
+  "url": "/merchant/order",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m04",
+  "role": "merchant",
+  "path": "/merchant/service/list",
+  "label": "服务管理",
+  "url": "/merchant/service/list",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m05",
+  "role": "merchant",
+  "path": "/merchant/review",
+  "label": "评价管理",
+  "url": "/merchant/review",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m06",
+  "role": "merchant",
+  "path": "/merchant/data/sales",
+  "label": "销售看板",
+  "url": "/merchant/data/sales",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m07",
+  "role": "merchant",
+  "path": "/merchant/refunds",
+  "label": "售后退款",
+  "url": "/merchant/refunds",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m08",
+  "role": "merchant",
+  "path": "/merchant/store/info",
+  "label": "门店信息",
+  "url": "/merchant/store/info",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "m09",
+  "role": "merchant",
+  "path": "/merchant/apply",
+  "label": "申请入驻",
+  "url": "/merchant/apply",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "a01",
+  "role": "admin",
+  "path": "/admin/dashboard",
+  "label": "运营仪表盘",
+  "url": "/admin/dashboard",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "a02",
+  "role": "admin",
+  "path": "/admin/user/list",
+  "label": "用户管理",
+  "url": "/admin/user/list",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "a03",
+  "role": "admin",
+  "path": "/admin/community/post",
+  "label": "内容审核",
+  "url": "/admin/community/post",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "a04",
+  "role": "admin",
+  "path": "/admin/risk/center",
+  "label": "风控中心",
+  "url": "/admin/risk/center",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "a05",
+  "role": "admin",
+  "path": "/admin/order/list",
+  "label": "订单管理",
+  "url": "/admin/order/list",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "a06",
+  "role": "admin",
+  "path": "/admin/merchant/list",
+  "label": "商家管理",
+  "url": "/admin/merchant/list",
+  "ok": true,
+  "redirected": false
+ },
+ {
+  "id": "a07",
+  "role": "admin",
+  "path": "/admin/risk/sensitive",
+  "label": "敏感词管理",
+  "url": "/admin/risk/sensitive",
+  "ok": true,
+  "redirected": false
+ }
+]

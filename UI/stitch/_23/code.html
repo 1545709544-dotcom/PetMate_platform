@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#dde4e6",
+                    "emergency-red": "#FF4D4F",
+                    "on-secondary-container": "#003e73",
+                    "on-tertiary-container": "#483400",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-primary-container": "#622400",
+                    "surface-container-high": "#e2e9ec",
+                    "on-primary-fixed": "#351000",
+                    "on-background": "#161d1f",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary-fixed-dim": "#ffb694",
+                    "surface": "#f4fafd",
+                    "tertiary-fixed": "#ffdf9e",
+                    "on-surface": "#161d1f",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e8eff1",
+                    "surface-container-low": "#eef5f7",
+                    "primary": "#a14000",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#dde4e6",
+                    "warning-amber": "#FAAD14",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "secondary-container": "#68abff",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-secondary-fixed-variant": "#004883",
+                    "outline-variant": "#dfc0b3",
+                    "outline": "#8c7166",
+                    "secondary-fixed": "#d4e3ff",
+                    "inverse-surface": "#2b3234",
+                    "on-surface-variant": "#584238",
+                    "surface-soft": "#F8F9FA",
+                    "primary-container": "#ff7a32",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f4fafd",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#785900",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#001c39",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "sky-blue-light": "#EBF4FF",
+                    "inverse-primary": "#ffb694",
+                    "primary-fixed": "#ffdbcc",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#cb9900",
+                    "success-green": "#52C41A",
+                    "secondary": "#0060ac",
+                    "background": "#f4fafd",
+                    "surface-tint": "#a14000",
+                    "surface-dim": "#d4dbdd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-chat": "800px",
+                    "gutter-desktop": "24px",
+                    "margin-desktop": "120px",
+                    "gutter-mobile": "16px",
+                    "base": "4px",
+                    "max-width-content": "1440px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"]
+            }
+          }
+        }
+      }
+    }catch(_e){}</script></head><body class="font-body-md overflow-x-hidden">
+<!-- Sidebar Navigation Shell -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-white border-r border-surface-variant flex flex-col h-full py-6 px-4 gap-2 z-50 shadow-sm"><div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-extrabold text-on-surface leading-none">PetMate Pro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">内容治理中心</p>
+</div>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">仪表盘</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">用户管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-white rounded-lg font-bold transition-all duration-200 shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gpp_maybe</span>
+<span class="font-label-md text-label-md">风险控制</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-md text-label-md">内容审核</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md">订单与商品</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-md text-label-md">权限管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">系统设置</span>
+</a>
+</div>
+<div class="mt-auto border-t border-surface-variant pt-4">
+<button class="w-full flex items-center gap-3 px-4 py-3 text-emergency-red hover:bg-error-container rounded-lg transition-all duration-200">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">退出登录</span>
+</button>
+</div></nav>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- Top Nav Bar Shell -->
+<header class="flex justify-between items-center w-full px-gutter-desktop h-16 sticky top-0 z-40 bg-surface dark:bg-inverse-surface border-b border-surface-variant dark:border-outline-variant backdrop-blur-md bg-opacity-80"><div class="flex items-center gap-6 flex-1">
+<div class="flex items-center gap-2 bg-success-green/10 text-success-green px-3 py-1 rounded-full">
+<span class="w-2 h-2 bg-success-green rounded-full animate-pulse"></span>
+<span class="text-label-sm font-bold">系统运行正常</span>
+</div>
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary-container transition-all" placeholder="搜索风控记录、用户 ID 或举报编号..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">help</button>
+<div class="w-px h-6 bg-surface-variant"></div>
+<div class="flex items-center gap-2 cursor-pointer active:opacity-80 transition-opacity">
+<img class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmrzPsPLPRzbslTquIA4CxacrQqn2rupXYP9ynukvq27FPPkbmUv8zcIcd6K_dg_ex3ql1pm_g2nsNO4Hm1vOFFK0TsmJaNnMntIasfoOIdUwaGsZkWeGVg9VK5BiAHwz8jTfFxIHor6sYMVzXWAzYOuE5p8Nh-V0tb8N7D7RyVlrzg34-zLJd9vEo3ZqKCtAnGRjAgJZ0JfS-fYVNchK_tn3LVn53tVbyV_WIejzDkytAK102uH3hyRg9tR8NR7nLrkXfhYmTlZs">
+<span class="font-label-md text-on-surface">陈管理员</span>
+</div>
+</div></header>
+<!-- Main Workspace -->
+<div class="p-8 max-w-content mx-auto">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">风险控制与安全中心</h2>
+<p class="text-on-surface-variant text-body-md mt-1">监控全局异常活动，维护社区健康氛围。</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-primary-container text-white px-4 py-2.5 rounded-xl font-label-md hover:shadow-lg active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base">emergency_share</span>
+                        紧急熔断模式
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="bento-grid">
+<!-- 1. Report Handling Center-->
+<section class="col-span-12 lg:col-span-8 risk-card rounded-2xl flex flex-col h-[600px] shadow-lg">
+<div class="p-6 border-b border-surface-variant flex justify-between items-center bg-surface-container-low rounded-t-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">flag</span>
+<h3 class="font-headline-md text-headline-md">举报处理中心</h3>
+<span class="bg-emergency-red text-white text-[10px] px-2 py-0.5 rounded-full font-bold">12 待处理</span>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md">全部标记为已读</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-4">
+<!-- Report Item 1 -->
+<div class="bg-surface-soft border border-surface-variant rounded-xl p-4 hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A diverse collection of small pet profile icons including a tabby cat, a golden retriever, and a bunny. The icons are rendered in a soft, 3D clay style with warm lighting and vibrant brand orange and blue accents, set against a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ-zagcqfgzGT8nOqZlabn2jZetpN9y4QyPaVabNDYiwuse4rmsRpQTOVNTJ7iXqwe1pRTF-bP_dpD67LFeBpxG6AfGqWVx9Et9XhbwUtAvn7y8ACzxNiaFssAwN2HnblhsXcjDC8AnOo1cvRQVDcmZkCY3aMcDHlYTBLEFm_r79DNfXhrOHlFBGD2OUkIkil3z7L_WX5BwpRHBD1dX2dri3vyc7B1fptWyiC2iJrRYLm3B9AUeKl52JT2wQyzMAskHfm6nAeQ8Bs">
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-on-surface">用户_3921</span>
+<span class="text-[10px] bg-warning-amber/10 text-warning-amber px-1.5 py-0.5 rounded">高频用户</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">举报于 5 分钟前</p>
+</div>
+</div>
+<span class="bg-error-container text-on-error-container text-label-sm px-3 py-1 rounded-full">言语辱骂</span>
+</div>
+<div class="bg-white border border-surface-variant rounded-lg p-3 mb-3 relative">
+<div class="absolute -top-2 left-4 px-2 bg-white text-[10px] text-secondary font-bold">举报内容预览</div>
+<p class="text-body-md italic text-on-surface-variant">"你家那只狗长得真丑，根本不配在这个社区..."</p>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px]">被</div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center text-[10px]">害</div>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md">忽略</button>
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md">处理举报</button>
+</div>
+</div>
+</div>
+<!-- Report Item 2 -->
+<div class="bg-surface-soft border border-surface-variant rounded-xl p-4 hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional and sleek digital avatar representing a community moderator. The icon shows a stylized human bust with a headset, rendered in a modern vector style using a color palette of deep navy blue and soft gray, suitable for a professional admin interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcHBhh4C3otpmz2VxiKPcoAbFJ8Bs1NaLq6bsHN-iYM4cHP5qcWLhbHeRq4pLoeYGvL37u7xoa2pDe2U_gdXCn46Dfzh-D76iQ8_LLmbnHJPYvm75L04ZD5XD5O0Wn54l5WQm7teNW84m-m2p1vyLeTER34cmv12lxqp3lixNnSXcWRlU-tJSQx4BUgj8JHtlNgkVzVei5Is_Y5qgSS_w4QWNHcHiB2-7925FtR1h9dddyr9tw-CmqcjA8pMFXlvCYkGhTQZ4X118">
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-on-surface">幸运妈_99</span>
+<span class="text-[10px] bg-success-green/10 text-success-green px-1.5 py-0.5 rounded">信誉良好</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">举报于 12 分钟前</p>
+</div>
+</div>
+<span class="bg-secondary-container text-on-secondary-container text-label-sm px-3 py-1 rounded-full">非法营销</span>
+</div>
+<div class="grid grid-cols-2 gap-3 mb-3">
+<div class="bg-white border border-surface-variant rounded-lg p-3 relative">
+<div class="absolute -top-2 left-4 px-2 bg-white text-[10px] text-secondary font-bold">评论上下文</div>
+<p class="text-body-md text-on-surface-variant truncate">帖子：如何科学挑选幼犬粮？</p>
+</div>
+<div class="bg-white border border-surface-variant rounded-lg p-3 relative">
+<div class="absolute -top-2 left-4 px-2 bg-white text-[10px] text-secondary font-bold">证据截图</div>
+<div class="flex items-center gap-2 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-sm">image</span>
+                                        查看 2 张附件
+                                    </div>
+</div>
+</div>
+<div class="flex justify-end gap-2">
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md">忽略</button>
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md">处理举报</button>
+</div>
+</div>
+<!-- Report Item 3 -->
+<div class="bg-surface-soft border border-surface-variant rounded-xl p-4 opacity-75">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-label-md text-on-surface-variant">查看更多历史记录...</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Keyword Management (Right Sidebar-ish) -->
+<section class="col-span-12 lg:col-span-4 risk-card rounded-2xl flex flex-col h-[600px] shadow-lg">
+<div class="p-6 border-b border-surface-variant bg-surface-container-low rounded-t-2xl">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">spellcheck</span>
+<h3 class="font-headline-md text-headline-md">关键词过滤</h3>
+</div>
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex items-center gap-2 bg-white p-1.5 rounded-lg border border-surface-variant">
+<input class="flex-1 border-none focus:ring-0 text-label-sm" placeholder="搜索关键词..." type="text">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">filter_list</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 custom-scrollbar">
+<div class="space-y-2">
+<!-- Keyword Row -->
+<div class="flex items-center justify-between p-3 bg-surface-soft rounded-xl border border-transparent hover:border-primary/30 transition-all group">
+<div class="flex flex-col">
+<span class="font-label-md text-on-surface">加微</span>
+<span class="text-[10px] text-on-surface-variant">屏蔽强度: <span class="text-emergency-red font-bold">高</span></span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+<!-- Keyword Row -->
+<div class="flex items-center justify-between p-3 bg-surface-soft rounded-xl border border-transparent hover:border-primary/30 transition-all group">
+<div class="flex flex-col">
+<span class="font-label-md text-on-surface">领养骗局</span>
+<span class="text-[10px] text-on-surface-variant">屏蔽强度: <span class="text-warning-amber font-bold">中</span></span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+<!-- Keyword Row -->
+<div class="flex items-center justify-between p-3 bg-surface-soft rounded-xl border border-transparent hover:border-primary/30 transition-all group">
+<div class="flex flex-col">
+<span class="font-label-md text-on-surface">售卖活体</span>
+<span class="text-[10px] text-on-surface-variant">屏蔽强度: <span class="text-secondary font-bold">低</span></span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+<!-- Keyword Row -->
+<div class="flex items-center justify-between p-3 bg-surface-soft rounded-xl border border-transparent hover:border-primary/30 transition-all group">
+<div class="flex flex-col">
+<span class="font-label-md text-on-surface">配种代孕</span>
+<span class="text-[10px] text-on-surface-variant">屏蔽强度: <span class="text-emergency-red font-bold">高</span></span>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="bg-primary-container text-white px-4 hover:bg-primary transition-colors font-label-md"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-surface-variant bg-surface-soft rounded-b-2xl">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center text-label-sm">
+<span class="text-on-surface-variant">全局匹配模式</span>
+<div class="w-10 h-5 bg-secondary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<p class="text-[10px] text-on-surface-variant italic">模糊匹配开启后，将识别繁体字、火星文等变体。</p>
+</div>
+</div>
+</section>
+<!-- 3. IP Blacklist (Full Width Bottom) -->
+
+</div>
+</div>
+</main>
+<!-- Floating AI Assistant Button (Contextual for Admin) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div class="absolute right-full mr-4 bg-white text-on-surface px-4 py-2 rounded-xl border border-surface-variant shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap font-label-md">
+            AI 风险分析助手已上线
+        </div>
+</button>
+<script>
+        // Micro-interactions for the cards
+        document.querySelectorAll('.risk-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential subtle effect
+            });
+        });
+
+        // Toggle logic simulation for UI
+        const toggles = document.querySelectorAll('.relative.cursor-pointer');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const knob = toggle.querySelector('div');
+                if (knob.classList.contains('right-0.5')) {
+                    knob.classList.replace('right-0.5', 'left-0.5');
+                    toggle.classList.replace('bg-secondary', 'bg-surface-variant');
+                } else {
+                    knob.classList.replace('left-0.5', 'right-0.5');
+                    toggle.classList.replace('bg-surface-variant', 'bg-secondary');
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

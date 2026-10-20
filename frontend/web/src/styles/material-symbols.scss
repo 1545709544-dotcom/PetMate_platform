@@ -1,0 +1,31 @@
+// ========================================
+// 自托管 Material Symbols Outlined 可变字体
+// 将图标字体从 Google Fonts CDN 改为本地托管，
+// 彻底消除无外网环境下导航/全站图标显示为文字（乱码）的问题。
+// 字体文件位于 public/fonts/material-symbols-outlined.woff2
+// ========================================
+
+// 完整 Material Symbols Outlined 字体（含全部图标字形与文本 ligature），
+// 彻底消除导航/全站图标显示为英文单词（乱码）的问题。
+// 原自托管字体为子集，缺 merge_type / miscellaneous_services 等生僻图标的 ligature，
+// 表现为左侧导航栏图标变成英文文本。已替换为从 Google Fonts 下载的完整字体。
+//
+// 关键：font-display 必须为 block 而非 swap。
+//  Material Symbols 用连字(ligature)机制——<span>pets</span> 在字体就绪时被替换成爪印图标。
+//  swap = 字体未加载完时用 fallback 字体渲染 -> fallback 无连字规则 -> 把 "pets"/"arrow_back"
+//         当成英文单词显示出来 = 加载中的「乱码」闪现。
+//  block = 字体未加载完时隐藏占位(不显示任何文字) -> 到位后才显示图标，根除乱码。
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-symbols-outlined.woff2?v=2') format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('/fonts/material-symbols-outlined-700.woff2?v=2') format('woff2');
+}

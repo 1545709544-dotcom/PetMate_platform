@@ -1,0 +1,180 @@
+// ========================================
+// PetMate SCSS Mixin
+// ========================================
+// 显式引入变量（通过 @use 加载时处于独立模块作用域，不依赖 vite 注入）
+
+@use './variables.scss' as *;
+
+// 响应式断点（基于 postcss-px-to-viewport，breakpoint 不转 vw）
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-mobile + 1px}) and (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-tablet + 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media (min-width: #{$breakpoint-desktop + 1px}) and (max-width: #{$breakpoint-wide - 1px}) {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media (min-width: #{$breakpoint-desktop + 1px}) {
+    @content;
+  }
+}
+
+@mixin respond-to($bp) {
+  @if $bp == 'mobile' {
+    @include mobile {
+      @content;
+    }
+  } @else if $bp == 'tablet' {
+    @include tablet {
+      @content;
+    }
+  } @else if $bp == 'desktop' {
+    @include desktop {
+      @content;
+    }
+  } @else if $bp == 'wide' {
+    @include wide {
+      @content;
+    }
+  } @else if $bp == 'desktop-large' {
+    @include desktop-large {
+      @content;
+    }
+  }
+}
+
+// 容器最大宽度（限制内容宽度，居中）
+@mixin container-max($width: $width-content-max) {
+  max-width: $width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $width-gutter-mobile;
+  padding-right: $width-gutter-mobile;
+
+  @include desktop {
+    padding-left: $width-gutter-desktop;
+    padding-right: $width-gutter-desktop;
+  }
+}
+
+// Flex 居中
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// 文字省略
+@mixin text-ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// 玻璃拟态
+@mixin glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+// 隐藏滚动条
+@mixin scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// 移动端点击区（HIG 44x44px）
+@mixin tap-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+// 卡片样式
+@mixin pet-card {
+  background: $color-surface-container-lowest;
+  border-radius: $radius-default;
+  box-shadow: $shadow-card;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// 按钮基础样式（与 Element Plus 互补使用）
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-lg;
+  font-family: $font-family-body;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-body-md;
+  cursor: pointer;
+  border: none;
+  transition: all $transition-fast;
+  min-height: 44px;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: $color-brand;
+  color: $color-on-brand;
+
+  &:hover {
+    background: $color-brand-dark;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: transparent;
+  color: $color-secondary;
+  border: 1px solid $color-secondary;
+
+  &:hover {
+    background: $color-secondary-container;
+  }
+}

@@ -1,0 +1,95 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: petmate-backend
+  # 本地私密配置（真实 API Key / 第三方密钥）从仓库外的 petmate-local.yml 注入。
+  # optional: 前缀表示文件不存在也能正常启动（此时 AI 自动降级为知识库兜底）。
+  config:
+    import:
+      - optional:file:./petmate-local.yml
+      - optional:file:./petmate-backend/petmate-local.yml
+  datasource:
+    url: jdbc:mysql://localhost:3306/petmate?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: "123456"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+  servlet:
+    multipart:
+      # 上传上限：单文件 20MB，单次请求 100MB。
+      # 前端发布页已限制 10MB/张、最多 9 张；此处留足余量，
+      # 避免真实宠物照片（普遍 > Spring Boot 默认 1MB）触发
+      # MaxUploadSizeExceededException 导致 Tomcat 中途断开连接（浏览器表现为 ERR_CONNECTION_RESET）。
+      max-file-size: 20MB
+      max-request-size: 100MB
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      timeout: 1000ms
+      connect-timeout: 1000ms
+      lettuce:
+        shutdown-timeout: 100ms
+
+logging:
+  level:
+    root: INFO
+    com.petmate: DEBUG
+    org.springframework.jdbc.core: INFO
+  pattern:
+    console: '%d{HH:mm:ss.SSS} %-5level [%X{traceId:-}] %logger{20} - %msg%n'
+
+petmate:
+  jwt:
+    # 签名密钥：必须从环境变量 PETMATE_JWT_SECRET 注入。
+    # 生产环境禁止使用默认值；本地开发至少 32 字节随机串。
+    # 生成方式：openssl rand -base64 48 或 head -c 48 /dev/urandom | base64
+    secret: ${PETMATE_JWT_SECRET:dev-default-secret-please-change-in-production-must-be-32-bytes-minimum-length}
+    # 7 天
+    expire-seconds: 604800
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://127.0.0.1:5173
+      - http://localhost:4173
+
+  # ===== 支付宝当面付（默认关闭，关闭走原演示态） =====
+  alipay:
+    enabled: ${ALIPAY_ENABLED:false}
+    app-id: ${ALIPAY_APP_ID:}
+    private-key: ${ALIPAY_PRIVATE_KEY:}
+    alipay-public-key: ${ALIPAY_PUBLIC_KEY:}
+    gateway: ${ALIPAY_GATEWAY:https://openapi.alipaydev.com/gateway.do}
+    notify-url: ${ALIPAY_NOTIFY_URL:https://your-domain.com/api/v1/pay/alipay/notify}
+    return-url: ${ALIPAY_RETURN_URL:http://localhost:5173/pay}
+    sign-type: RSA2
+    charset: UTF-8
+    # 是否跳过 TLS 证书与 hostname 校验。仅 sandbox 偶发证书过期时临时使用，
+    # 生产环境必须保持 false。设置后需重启进程。
+    insecure: ${ALIPAY_INSECURE:false}
+
+  # ===== AI 问诊 =====
+  # api-key 从环境变量 ZHIPU_API_KEY 或仓库外的 petmate-local.yml 注入，禁止硬编码在本文件。
+  # 未配置时 ConsultAiService 自动降级为知识库兜底，不影响演示。
+  ai:
+    enabled: true
+    provider: glm
+    api-key: ${ZHIPU_API_KEY:}
+    base-url: https://open.bigmodel.cn/api/paas/v4
+    model: glm-4-flash-250414
+    vision-model: glm-4v-flash
+    timeout-ms: 25000
+
+  # ===== 埋点与漏斗（默认开启：前端已接入埋点上报，漏斗读真实 t_event） =====
+  metrics:
+    real: ${METRICS_REAL:true}

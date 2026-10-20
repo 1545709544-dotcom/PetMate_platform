@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="zh-CN" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "on-primary-container": "#622400",
+                    "secondary-fixed": "#d4e3ff",
+                    "primary": "#a14000",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#483400",
+                    "tertiary": "#785900",
+                    "on-primary-fixed": "#351000",
+                    "inverse-primary": "#ffb694",
+                    "surface-soft": "#F8F9FA",
+                    "surface": "#f4fafd",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdf9e",
+                    "surface-tint": "#a14000",
+                    "surface-bright": "#f4fafd",
+                    "on-secondary-fixed": "#001c39",
+                    "on-tertiary-fixed": "#261a00",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "surface-dim": "#d4dbdd",
+                    "primary-container": "#ff7a32",
+                    "surface-container-highest": "#dde4e6",
+                    "background": "#f4fafd",
+                    "on-background": "#161d1f",
+                    "on-secondary-container": "#003e73",
+                    "surface-variant": "#dde4e6",
+                    "sky-blue-light": "#EBF4FF",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#dfc0b3",
+                    "surface-container-low": "#eef5f7",
+                    "on-surface-variant": "#584238",
+                    "warning-amber": "#FAAD14",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb694",
+                    "tertiary-container": "#cb9900",
+                    "emergency-red": "#FF4D4F",
+                    "success-green": "#52C41A",
+                    "on-secondary-fixed-variant": "#004883",
+                    "inverse-surface": "#2b3234",
+                    "error": "#ba1a1a",
+                    "secondary": "#0060ac",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#ebf2f4",
+                    "outline": "#8c7166",
+                    "surface-container": "#e8eff1",
+                    "secondary-container": "#68abff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e2e9ec",
+                    "on-surface": "#161d1f",
+                    "secondary-fixed-dim": "#a4c9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-chat": "800px",
+                    "gutter-desktop": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "120px",
+                    "gutter-mobile": "16px",
+                    "max-width-content": "1440px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="bg-background font-body-md text-on-background min-h-screen flex">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest dark:bg-inverse-surface shadow-sm flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary-fixed-dim leading-none">PetMate Pro</h1>
+<p class="text-label-sm text-on-surface-variant mt-1">商家后台中心</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-original-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-original-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-md text-label-md">订单管理</span>
+</a>
+<!-- Active State: 商品/服务管理 -->
+<a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-low active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" data-original-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">商品/服务管理</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">reviews</span>
+<span class="font-label-md text-label-md">评价管理</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-md text-label-md">数据统计</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">设置</span>
+</a>
+</nav>
+<div class="mt-auto px-2">
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-label-md flex items-center justify-center gap-2 shadow-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="">发布新服务</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar Anchor -->
+<header class="h-16 flex justify-between items-center px-gutter-desktop w-full bg-surface dark:bg-on-background border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input type="text" placeholder="搜索商品或服务内容..." class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary text-body-md">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">帮助中心</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">社区论坛</a>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">mail</span>
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly male pet store administrator in a modern minimalist office setting, warm lighting, high quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbNHbUvO_J9oJE-MUjzLrN8jJSqeA5sKUYB8XhNOiFflfG1C1pYEcjBBkoK39m1_y6b0lmtho1a605x9oPEObdxcEAD38AgbMfyt19I-r5ysMCJeoBrAR2vjPthcOxh-3LCfSBmC4YXi3tp-JNJnECvSpxoTLdEcM48Qui2tmmYRx0cksLUQNRRS9bO_SNWmAONC5jxUGfBiUyM6UBYc8WO0MBh0ambk8gJkUlMqFPZmjZzS86xUZgJF2v0eNl1TGnTppapIPD4o0">
+</div>
+<span class="text-label-md font-bold text-success-green">店铺已开张</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content Canvas -->
+<div class="p-8 w-full mx-auto"><div class="flex flex-wrap items-center gap-4 mb-6 bg-white p-4 rounded-2xl border border-outline-variant/30 shadow-sm"><div class="relative flex-1 max-w-sm"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span><input type="text" placeholder="搜索商品名称或SKU..." class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-xl text-label-md focus:ring-2 focus:ring-primary/20"></div><select class="bg-surface-container-low border-none rounded-xl text-label-md px-4 py-2 focus:ring-2 focus:ring-primary/20 min-w-[140px]"><option>所有分类</option><option>宠物主粮</option><option>零食罐头</option><option>清洁用品</option><option>智能设备</option></select><select class="bg-surface-container-low border-none rounded-xl text-label-md px-4 py-2 focus:ring-2 focus:ring-primary/20 min-w-[120px]"><option>所有状态</option><option>出售中</option><option>已下架</option><option>库存紧张</option></select><button class="ml-auto px-6 py-2 bg-on-background text-white rounded-xl text-label-md font-semibold hover:bg-black transition-colors">筛选</button></div>
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background">商品与服务管理</h2>
+<p class="text-body-md text-on-surface-variant mt-2">管理您店铺内的实物商品与宠物护理服务项目。</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-full border border-primary text-primary font-label-md hover:bg-primary-fixed transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                        导出报表
+                    </button>
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-md hover:shadow-lg transition-all flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                        发布新商品/服务
+                    </button>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<div class="flex border-b border-outline-variant mb-6 gap-8">
+<button class="pb-3 font-label-md text-label-md transition-all border-b-2 border-primary text-primary" id="tab-goods" onclick="switchTab('goods')">商品管理</button>
+<button class="pb-3 font-label-md text-label-md transition-all border-b-2 border-transparent text-on-surface-variant hover:text-primary" id="tab-services" onclick="switchTab('services')">服务管理</button>
+</div>
+<!-- Table Containers -->
+<div class="space-y-4" id="content-goods">
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-outline-variant"><th class="px-6 py-4 w-12"><input type="checkbox" class="rounded border-outline text-primary focus:ring-primary/20"></th><th class="px-6 py-4 font-label-md text-label-md">商品信息 (名称/SKU)</th><th class="px-6 py-4 font-label-md text-label-md">分类</th><th class="px-6 py-4 font-label-md text-label-md">价格</th><th class="px-6 py-4 font-label-md text-label-md">库存</th><th class="px-6 py-4 font-label-md text-label-md">状态</th><th class="px-6 py-4 font-label-md text-label-md text-right">操作</th></tr>
+</thead>
+<tbody class="divide-y divide-outline-variant"><tr class="hover:bg-surface-container-low/50 transition-colors group"><td class="px-6 py-4"><input type="checkbox" class="rounded border-outline text-primary focus:ring-primary/20"></td><td class="px-6 py-4"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-lg overflow-hidden border border-outline-variant"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcpJjb5rbR1r7I5ccKzwGj7ydhppumDrzVXqNuf5pRHnS0Z_KTNV17Prb0sQExbjfb2LNQQ5O4hPR29wFiyfqsOGS-f5bdv8moBGIgQE3g9fynT2jkMHEJjv14N4nIlozOJ23MKHqUZcoo9UCiW7vK1nMRluVP_oM0g5c5R3TACzy-Jvuvg9BcOgrSK7v1tVGgmgLjmqyUYBHjh_PZdAcT1Zlf5D20h6aC9hnvQeg57OW-1kKaNeY0oUsVJssqyvHGR-8hFaVvyis" class="w-full h-full object-cover"></div><div><p class="font-bold text-on-surface">宠爱天成 - 天然无谷成犬粮 5kg</p><p class="text-xs text-on-surface-variant">SKU: DG-FOOD-001</p></div></div></td><td class="px-6 py-4 text-label-sm">宠物主粮</td><td class="px-6 py-4 font-bold text-primary">¥358.00</td><td class="px-6 py-4 text-label-sm">142 件</td><td class="px-6 py-4"><span class="px-2 py-1 bg-success-green/10 text-success-green rounded-full text-[11px] font-bold">出售中</span></td><td class="px-6 py-4 text-right"><div class="flex justify-end gap-2"><button class="text-primary hover:underline text-label-sm">编辑</button><button class="text-error hover:underline text-label-sm">删除</button></div></td></tr><tr class="hover:bg-surface-container-low/50 transition-colors group"><td class="px-6 py-4"><input type="checkbox" class="rounded border-outline text-primary focus:ring-primary/20"></td><td class="px-6 py-4"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-lg overflow-hidden border border-outline-variant"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt9ZgcjvmoSW5m6LB2GHdLUbGRjZ-cWwuOmoSTxmNegrMW6TzIUXYX9-xcXpMPBWs3p1LZID026pbZiIyjbunqcUHt_cKwhr0JSGMGahkzMs5NYtyRSfbZU3dntqFlxen16ejJv_71NCUpfMlWkUtzDgL4rmm-AKhuaBkcbNMcODdUccsbxLO97sY2rNWlo_vMddk5rwU5FbJKZhnIc-juyk5ZEL8IQwvgrhLc11YcEXXnS61lo3O3VbFUZt-5PyoEdiJKBmw6xto" class="w-full h-full object-cover"></div><div><p class="font-bold text-on-surface">智能逗猫机器人 - 幻影系列</p><p class="text-xs text-on-surface-variant">SKU: CT-TOY-882</p></div></div></td><td class="px-6 py-4 text-label-sm">智能设备</td><td class="px-6 py-4 font-bold text-primary">¥129.00</td><td class="px-6 py-4 text-label-sm text-warning-amber font-bold">8 件</td><td class="px-6 py-4"><span class="px-2 py-1 bg-warning-amber/10 text-warning-amber rounded-full text-[11px] font-bold">库存紧张</span></td><td class="px-6 py-4 text-right"><div class="flex justify-end gap-2"><button class="text-primary hover:underline text-label-sm">编辑</button><button class="text-error hover:underline text-label-sm">删除</button></div></td></tr><tr class="hover:bg-surface-container-low/50 transition-colors group"><td class="px-6 py-4"><input type="checkbox" class="rounded border-outline text-primary focus:ring-primary/20"></td><td class="px-6 py-4"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-lg overflow-hidden border border-outline-variant"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuACm0R1TcBQn6YsZ9W_-bcVxIvNt1rUSQdjc6GRqnnZquqXL95dE_agkKmW1qNiqvER2jbFRZ-5r7Vdw6hqscFnnOY12nX3LjqkLEEQx8a3JFAvltFrxNv-BlQlnRFPAIhuhZxVeAxvbMqPz1QqvRHyicn4l3w9H-U2SrLkzDDIiZNPoUPpZjnkGOTHaLYdMqKDYAFikOdzmIReRZ5Wiyqm_VC-tPn9DsQ9tr0KOupEqqcgNMPhDRSyjtc-Xc-BKRkcuudqWBf-x5I" class="w-full h-full object-cover"></div><div><p class="font-bold text-on-surface">四季通用记忆棉宠物床垫 (L)</p><p class="text-xs text-on-surface-variant">SKU: PT-BED-04</p></div></div></td><td class="px-6 py-4 text-label-sm">日常用品</td><td class="px-6 py-4 font-bold text-primary">¥248.00</td><td class="px-6 py-4 text-label-sm">45 件</td><td class="px-6 py-4"><span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded-full text-[11px] font-bold">已下架</span></td><td class="px-6 py-4 text-right"><div class="flex justify-end gap-2"><button class="text-primary hover:underline text-label-sm">编辑</button><button class="text-error hover:underline text-label-sm">删除</button></div></td></tr><tr class="hover:bg-surface-container-low/50 transition-colors group"><td class="px-6 py-4"><input type="checkbox" class="rounded border-outline text-primary focus:ring-primary/20"></td><td class="px-6 py-4"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-lg overflow-hidden border border-outline-variant"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1moYUN76Aiyzcqbn1ooLKqUW30fEajl_r5Zh1oOBglmVQWtYIB6VzJ6XB0ahPoEeSNOEkl8KzRNNM3jTL4SQoPWg_L8E8OmdoYL9xjGVJSvZ6qZOzx8Rw80OoKDWSL5gS79J0rHyJX47ZkbJloK-YqwjvXGUYup8_HAmYNiVUeNX8TqlkMk4jm_rpU33TLJ6JcoA53XEPcDJ4bImrrfqch9uOooD6kPKmPqbu6kp7c9qaYLz60TdqGiJTOt5qMcqKl-P3ru81uvE" class="w-full h-full object-cover"></div><div><p class="font-bold text-on-surface">天然全价成犬粮 10kg (无谷配方)</p><p class="text-xs text-on-surface-variant">SKU: DG-FOOD-002</p></div></div></td><td class="px-6 py-4 text-label-sm">宠物主粮</td><td class="px-6 py-4 font-bold text-primary">¥899.00</td><td class="px-6 py-4 text-label-sm">12 件</td><td class="px-6 py-4"><span class="px-2 py-1 bg-success-green/10 text-success-green rounded-full text-[11px] font-bold">出售中</span></td><td class="px-6 py-4 text-right"><div class="flex justify-end gap-2"><button class="text-primary hover:underline text-label-sm">编辑</button><button class="text-error hover:underline text-label-sm">删除</button></div></td></tr><tr class="hover:bg-surface-container-low/50 transition-colors group"><td class="px-6 py-4"><input type="checkbox" class="rounded border-outline text-primary focus:ring-primary/20"></td><td class="px-6 py-4"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-lg overflow-hidden border border-outline-variant"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxql11nXy50Sflu30NZJNmj19PhYoYurTxuyrnv8ezNaeJhUAjZQEiQmWZJ-jjceOHETzhW10zj77dJ-0OIDxuBPH6586iAbKrdvpF3CDJjL-MOBReghjcH-2Ps9thIduL84IvJSmm0hXUBdEVvd2UNHN-tg9BsFMiXiGUEMwttJ-7lCJ8PaNlh_Tuk3xoC4fLIU1kvSEgU7ycckFQNlXT5H_Ss0WDxgWVAfUhopfCb9-gi8Xk7UGwBl7vzzvTJmgfpID9jeupj7g" class="w-full h-full object-cover"></div><div><p class="font-bold text-on-surface">除臭抑菌猫砂 6L*4袋</p><p class="text-xs text-on-surface-variant">SKU: CT-LIT-012</p></div></div></td><td class="px-6 py-4 text-label-sm">清洁用品</td><td class="px-6 py-4 font-bold text-primary">¥79.00</td><td class="px-6 py-4 text-label-sm">210 件</td><td class="px-6 py-4"><span class="px-2 py-1 bg-success-green/10 text-success-green rounded-full text-[11px] font-bold">出售中</span></td><td class="px-6 py-4 text-right"><div class="flex justify-end gap-2"><button class="text-primary hover:underline text-label-sm">编辑</button><button class="text-error hover:underline text-label-sm">删除</button></div></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="hidden space-y-4" id="content-services">
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-outline-variant">
+<th class="px-6 py-4 font-label-md text-label-md w-1/3 px-8">服务项目</th>
+<th class="px-6 py-4 font-label-md text-label-md px-8">今日排班</th>
+<th class="px-6 py-4 font-label-md text-label-md px-8">价格设置</th>
+<th class="px-6 py-4 font-label-md text-label-md px-8">当前状态</th>
+<th class="px-6 py-4 font-label-md text-label-md text-right px-8">管理操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Service Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 px-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">wash</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">精致洗护 (全系)</div>
+<div class="text-label-sm text-on-surface-variant">时长: 60-90 分钟</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="flex items-center gap-1">
+<span class="px-2 py-0.5 rounded bg-sky-blue-light text-secondary text-[11px] font-bold">10:00</span>
+<span class="px-2 py-0.5 rounded bg-sky-blue-light text-secondary text-[11px] font-bold">14:30</span>
+<span class="px-2 py-0.5 rounded bg-outline-variant text-on-surface-variant text-[11px] font-bold">已满</span>
+</div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="text-primary font-bold">¥ 88.00 <span class="text-[10px] font-normal text-on-surface-variant">起</span></div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-success-green"></div>
+<span class="text-label-sm">营业中</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right px-8">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-surface-container text-on-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">event_note</span>
+</button>
+<button class="p-2 hover:bg-surface-container text-on-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Service Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 px-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined">cottage</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">高端寄养 - VIP套房</div>
+<div class="text-label-sm text-on-surface-variant">含: 24h监控, 每日遛弯</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="text-label-sm text-on-surface">可用床位: <span class="font-bold text-success-green">4</span> / 6</div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="text-primary font-bold">¥ 198.00 <span class="text-[10px] font-normal text-on-surface-variant">/天</span></div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-success-green"></div>
+<span class="text-label-sm">接受预定</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right px-8">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-surface-container text-on-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">calendar_month</span>
+</button>
+<button class="p-2 hover:bg-surface-container text-on-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">payments</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Service Row-->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 px-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">宠物疫苗接种</div>
+<div class="text-label-sm text-on-surface-variant">包含: 健康初检, 驱虫咨询</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="text-label-sm text-on-surface-variant italic">下周一恢复预约</div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="text-primary font-bold">¥ 299.00 <span class="text-[10px] font-normal text-on-surface-variant">/针</span></div>
+</td>
+<td class="px-6 py-5 px-8">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-emergency-red"></div>
+<span class="text-label-sm">暂停服务</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right px-8">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-surface-container text-on-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">edit_calendar</span>
+</button>
+<button class="p-2 hover:bg-surface-container text-on-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">toggle_off</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination Footer -->
+<div class="mt-8 flex justify-between items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant">
+<div class="text-label-sm text-on-surface-variant">
+                    显示第 1 至 10 项，共 48 项结果
+                </div>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold text-xs">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors text-xs">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors text-xs">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function switchTab(type) {
+            const goodsTab = document.getElementById('tab-goods');
+            const servicesTab = document.getElementById('tab-services');
+            const goodsContent = document.getElementById('content-goods');
+            const servicesContent = document.getElementById('content-services');
+
+            if (type === 'goods') {
+                goodsTab.classList.add('border-primary', 'text-primary');
+                goodsTab.classList.remove('border-transparent', 'text-on-surface-variant');
+                servicesTab.classList.remove('border-primary', 'text-primary');
+                servicesTab.classList.add('border-transparent', 'text-on-surface-variant');
+                
+                goodsContent.classList.remove('hidden');
+                servicesContent.classList.add('hidden');
+            } else {
+                servicesTab.classList.add('border-primary', 'text-primary');
+                servicesTab.classList.remove('border-transparent', 'text-on-surface-variant');
+                goodsTab.classList.remove('border-primary', 'text-primary');
+                goodsTab.classList.add('border-transparent', 'text-on-surface-variant');
+                
+                servicesContent.classList.remove('hidden');
+                goodsContent.classList.add('hidden');
+            }
+        }
+    </script>
+
+</body></html>

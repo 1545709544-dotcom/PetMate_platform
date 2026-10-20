@@ -1,0 +1,389 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#dde4e6",
+                    "emergency-red": "#FF4D4F",
+                    "on-secondary-container": "#003e73",
+                    "on-tertiary-container": "#483400",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-primary-container": "#622400",
+                    "surface-container-high": "#e2e9ec",
+                    "on-primary-fixed": "#351000",
+                    "on-background": "#161d1f",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary-fixed-dim": "#ffb694",
+                    "surface": "#f4fafd",
+                    "tertiary-fixed": "#ffdf9e",
+                    "on-surface": "#161d1f",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e8eff1",
+                    "surface-container-low": "#eef5f7",
+                    "primary": "#a14000",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#dde4e6",
+                    "warning-amber": "#FAAD14",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "secondary-container": "#68abff",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-secondary-fixed-variant": "#004883",
+                    "outline-variant": "#dfc0b3",
+                    "outline": "#8c7166",
+                    "secondary-fixed": "#d4e3ff",
+                    "inverse-surface": "#2b3234",
+                    "on-surface-variant": "#584238",
+                    "surface-soft": "#F8F9FA",
+                    "primary-container": "#ff7a32",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f4fafd",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#785900",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#001c39",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "sky-blue-light": "#EBF4FF",
+                    "inverse-primary": "#ffb694",
+                    "primary-fixed": "#ffdbcc",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#cb9900",
+                    "success-green": "#52C41A",
+                    "secondary": "#0060ac",
+                    "background": "#f4fafd",
+                    "surface-tint": "#a14000",
+                    "surface-dim": "#d4dbdd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-chat": "800px",
+                    "gutter-desktop": "24px",
+                    "margin-desktop": "120px",
+                    "gutter-mobile": "16px",
+                    "base": "4px",
+                    "max-width-content": "1440px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script></head><body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Sidebar Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-white border-r border-surface-variant flex flex-col py-6 px-4 gap-2 z-50"><div class="flex items-center gap-3 px-2 mb-8"><div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-white"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span></div><div><h1 class="font-headline-md text-headline-md font-extrabold text-primary-container leading-tight">PetMate Pro</h1><p class="font-label-sm text-label-sm text-on-surface-variant">专业宠物管理系统</p></div></div><nav class="flex-1 space-y-1 sidebar-scroll overflow-y-auto"><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200 group" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-label-md text-label-md">控制台</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200 group" href="#"><span class="material-symbols-outlined">group</span><span class="font-label-md text-label-md">用户管理</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200 group" href="#"><span class="material-symbols-outlined">shopping_cart</span><span class="font-label-md text-label-md">订单与产品</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200 group" href="#"><span class="material-symbols-outlined">verified_user</span><span class="font-label-md text-label-md">内容审核</span></a><div class="h-px bg-surface-variant my-2"></div><a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary rounded-lg font-bold transition-all duration-200" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span><span class="font-label-md text-label-md">权限管理</span></a><a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all duration-200 group" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">系统设置</span></a></nav><div class="mt-auto pt-4"><button class="w-full flex items-center gap-3 px-3 py-2 text-error hover:bg-error-container rounded-lg transition-all active:scale-95"><span class="material-symbols-outlined">logout</span><span class="font-label-md text-label-md">退出登录</span></button></div></aside>
+<!-- Top Bar -->
+<header class="fixed top-0 left-64 right-0 h-16 glass-nav border-b border-surface-variant flex justify-between items-center px-gutter-desktop z-40"><div class="flex items-center gap-6"><div class="flex items-center gap-2 px-3 py-1 bg-success-green/10 text-success-green rounded-full"><span class="w-2 h-2 rounded-full bg-success-green animate-pulse"></span><span class="text-label-sm">系统运行正常</span></div><div class="relative group"><span class="absolute inset-y-0 left-3 flex items-center text-on-surface-variant"><span class="material-symbols-outlined text-body-md">search</span></span><input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full w-64 focus:ring-2 focus:ring-primary-container text-body-md transition-all" placeholder="搜索配置项..." type="text"></div></div><div class="flex items-center gap-4"><button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">notifications</span></button><button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">help</span></button><div class="h-8 w-px bg-surface-variant mx-2"></div><div class="flex items-center gap-3"><div class="text-right hidden sm:block"><p class="font-label-md text-label-md text-on-surface">陈管理员</p><p class="text-label-sm text-on-surface-variant">系统所有者</p></div><img alt="管理员头像" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBelNzRftM6VCeQOTtULIljMcb9yMMO_EyCuA7oJYv-j3mV7OiiIDmfsFTtRe-nq7HQPTYoesX9i1grgKZ6OifAQpm8JrbPytFYMnMt0KH065OXYa6p0bNWA3vr8Ki_E03Xm49ASlvSlCyaENuPzM4fpo9cXCpWi_WLl6T3CmGOVsSzkDyJdqHdQFYsO_gCekKp90kFp75c1FDjMy1mYXJReJ2EHtL-bra3oKDkHBHpmWYwSGrBY32UijGXAeacMLTO2shKKA0qXE"></div></div></header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 p-gutter-desktop min-h-screen">
+<div class="max-w-content mx-auto">
+<!-- Page Header -->
+<div class="mb-8 flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary-container">系统配置</h2>
+<p class="text-body-lg text-on-surface-variant">管理角色、权限及全局应用参数。</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-xl bg-surface-container-high font-label-md flex items-center gap-2 hover:bg-surface-variant transition-colors text-primary-container">
+<span class="material-symbols-outlined text-body-md">history</span>
+                        审计日志
+                    </button>
+<button class="px-6 py-2 rounded-xl bg-primary text-on-primary font-label-md flex items-center gap-2 shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-body-md">save</span>
+                        发布更改
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Section 1: Role Management Matrix (Large Card) -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-3xl p-6 border border-surface-variant bento-card">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">security</span>
+                            角色权限矩阵
+                        </h3>
+<button class="text-secondary font-label-md hover:underline">+ 添加新角色</button>
+</div>
+<!-- Roles Tabs -->
+<div class="flex gap-2 mb-8 bg-surface-container-low p-1.5 rounded-2xl w-max">
+<button class="px-6 py-2 bg-primary-container text-on-primary rounded-xl font-label-md shadow-sm">系统管理员</button>
+<button class="px-6 py-2 text-on-surface-variant hover:bg-surface-variant rounded-xl font-label-md transition-colors">运营人员</button>
+<button class="px-6 py-2 text-on-surface-variant hover:bg-surface-variant rounded-xl font-label-md transition-colors">客服支持</button>
+<button class="px-6 py-2 text-on-surface-variant hover:bg-surface-variant rounded-xl font-label-md transition-colors">财务管理</button>
+</div>
+<!-- Permission Tree Structure -->
+<div class="space-y-4">
+<!-- Group: User Center -->
+<div class="border border-surface-variant rounded-2xl overflow-hidden">
+<div class="bg-surface-container-low px-4 py-3 flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-hover:rotate-90">chevron_right</span>
+<span class="font-label-md text-on-surface">用户管理中心</span>
+</div>
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+</div>
+<div class="p-4 grid grid-cols-2 md:grid-cols-3 gap-4 bg-white">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+<span class="text-body-md text-on-surface-variant">查看个人资料</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+<span class="text-body-md text-on-surface-variant">编辑信息</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+<span class="text-body-md text-on-surface-variant">封禁账号</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+<span class="text-body-md text-on-surface-variant">导出用户数据</span>
+</label>
+</div>
+</div>
+<!-- Group: Content Management -->
+<div class="border border-surface-variant rounded-2xl overflow-hidden">
+<div class="bg-surface-container-low px-4 py-3 flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant transition-transform rotate-90">chevron_right</span>
+<span class="font-label-md text-on-surface">内容与营销</span>
+</div>
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+</div>
+<div class="p-4 grid grid-cols-2 md:grid-cols-3 gap-4 bg-white">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+<span class="text-body-md text-on-surface-variant">轮播图配置</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+<span class="text-body-md text-on-surface-variant">文章编辑</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+<span class="text-body-md text-on-surface-variant">APP 推送通知</span>
+</label>
+</div>
+</div>
+<!-- Group: Financials -->
+<div class="border border-surface-variant rounded-2xl overflow-hidden">
+<div class="bg-surface-container-low px-4 py-3 flex items-center justify-between cursor-pointer opacity-75">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+<span class="font-label-md text-on-surface">财务审核</span>
+</div>
+<input class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox">
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Data Dictionary & Menu (Medium Cards) -->
+<section class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Menu Management -->
+<div class="bg-surface-container-lowest rounded-3xl p-6 border border-surface-variant bento-card">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">list_alt</span>
+                                导航菜单设置
+                            </h3>
+</div>
+<div class="space-y-2 max-h-64 overflow-y-auto sidebar-scroll pr-2">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-body-md text-primary-container">drag_indicator</span>
+<span class="text-body-md">控制台</span>
+</div>
+<span class="material-symbols-outlined text-body-md text-primary-container">visibility</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-body-md text-primary-container">drag_indicator</span>
+<span class="text-body-md">用户管理</span>
+</div>
+<span class="material-symbols-outlined text-body-md text-primary-container">visibility</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-body-md text-primary-container">drag_indicator</span>
+<span class="text-body-md">智能诊断</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-body-md">visibility_off</span>
+</div>
+</div>
+<button class="w-full mt-4 py-2 border-2 border-dashed border-surface-variant rounded-xl text-on-surface-variant font-label-md hover:border-secondary hover:text-secondary transition-colors">
+                            + 添加菜单项
+                        </button>
+</div>
+<!-- Data Dictionary Quick Config -->
+<div class="bg-primary text-on-primary rounded-3xl p-6 border border-primary bento-card relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-label-md mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">menu_book</span>
+                                数据字典
+                            </h3>
+<p class="text-label-sm opacity-80 mb-4">修改全局宠物物种及健康状态常量。</p>
+<div class="bg-white/10 rounded-xl p-3 flex items-center justify-between cursor-pointer hover:bg-white/20 transition-colors">
+<span class="text-body-md">宠物物种枚举</span>
+<span class="material-symbols-outlined">open_in_new</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">database</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Homepage Layout & Banner Configuration -->
+<section class="col-span-12 bg-surface-container-lowest rounded-3xl p-8 border border-surface-variant bento-card">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">首页布局配置</h3>
+<p class="text-body-md text-on-surface-variant">自定义 PetMate 用户端 App 的视觉区块和推荐内容。</p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full">
+<span class="text-label-sm text-on-surface-variant">移动端视图</span>
+<div class="w-10 h-5 bg-secondary rounded-full relative cursor-pointer">
+<div class="absolute top-1 right-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+<span class="text-label-sm text-on-surface">桌面端视图</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Banner Preview/Config -->
+<div class="space-y-4">
+<label class="font-label-md text-on-surface block">轮播图配置 (最多 5 张)</label>
+<div class="relative rounded-2xl overflow-hidden aspect-[2/1] group cursor-pointer">
+<img alt="App 首页预览" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxDU10beNiE5phMR2MwX4Y6fTXhGxwyOD8ksZtNAlnLoMb1lKD36lNzg4cOPe1pUkoD_WXmuEITY3QEjAlin8-5uB8iJnGTnQd7OZtn_6rTcvcIcZBz21sgYLazh2ejNcrzQ_mS4puVyiBLaIOzaiVlF8Tnz7m4UVcmC3XHgPPeqmS9K39oko0rQ4y-Tox4NbUrWp-U_ml44JxuwfLxVhWIMdqlh6uJBnK1ggYC7IErVqgRlUqGnzGtIdOIu-ksrR8dJiIolWF0RE">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-white text-secondary flex items-center justify-center"><span class="material-symbols-outlined">edit</span></button>
+<button class="w-10 h-10 rounded-full bg-white text-emergency-red flex items-center justify-center"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+<div class="w-2 h-2 rounded-full bg-white/50"></div>
+<div class="w-2 h-2 rounded-full bg-white/50"></div>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container rounded-xl text-secondary font-label-md flex items-center justify-center gap-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">add_photo_alternate</span>
+                                上传新轮播图
+                            </button>
+</div>
+<!-- Recommendations Layout -->
+<div class="md:col-span-2 space-y-4">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-on-surface">首页布局流</label>
+<span class="text-label-sm text-secondary cursor-pointer">重新排序模块</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-4 border-2 border-primary-container bg-primary-container/5 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 text-primary-container flex items-center justify-center font-bold">1</div>
+<div>
+<p class="font-label-md text-on-surface">紧急医疗悬浮按钮</p>
+<p class="text-label-sm text-on-surface-variant">悬浮动作按钮 (FAB)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">drag_handle</span>
+</div>
+<div class="p-4 border border-surface-variant rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">2</div>
+<div>
+<p class="font-label-md text-on-surface">AI 宠物医生</p>
+<p class="text-label-sm text-on-surface-variant">Bento 网格区块</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">drag_handle</span>
+</div>
+<div class="p-4 border border-surface-variant rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">3</div>
+<div>
+<p class="font-label-md text-on-surface">周边服务</p>
+<p class="text-label-sm text-on-surface-variant">横向列表</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">drag_handle</span>
+</div>
+<div class="p-4 border border-surface-variant rounded-2xl flex items-center justify-between opacity-50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">4</div>
+<div>
+<p class="font-label-md text-on-surface">社区动态</p>
+<p class="text-label-sm text-on-surface-variant">瀑布流布局 (已禁用)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">visibility_off</span>
+</div>
+</div>
+<!-- Detailed Form Card -->
+<div class="bg-surface-container-low rounded-2xl p-6 border border-surface-variant mt-6">
+<h4 class="font-label-md mb-4 text-on-surface">模块属性: AI 宠物医生</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-label-sm text-on-surface-variant">显示标题</label>
+<input class="w-full px-4 py-2 rounded-xl border border-outline focus:border-secondary focus:ring-0 text-body-md" type="text" value="即时 AI 诊断">
+</div>
+<div class="space-y-2">
+<label class="text-label-sm text-on-surface-variant">主题风格</label>
+<select class="w-full px-4 py-2 rounded-xl border border-outline focus:border-secondary focus:ring-0 text-body-md">
+<option>品牌渐变</option>
+<option>极简纯白</option>
+<option>高对比度</option>
+</select>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-sm text-on-surface-variant">跳转 URI</label>
+<input class="w-full px-4 py-2 rounded-xl border border-outline focus:border-secondary focus:ring-0 text-body-md" type="text" value="petmate://feature/ai-consult">
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Toast / Status Indicator -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded-full flex items-center gap-3 shadow-xl transform translate-y-20 transition-transform duration-500 z-[100]" id="saveToast">
+<span class="material-symbols-outlined text-success-green">check_circle</span>
+<span class="font-label-md">配置已成功保存</span>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const toast = document.getElementById('saveToast');
+                toast.classList.remove('translate-y-20');
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20');
+                }, 3000);
+            });
+        });
+    </script>
+</body></html>

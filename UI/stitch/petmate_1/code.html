@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PetMate - 智能宠物管家</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-item .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            gap: 1.5rem;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "sky-blue-light": "#EBF4FF",
+                        "surface-variant": "#dde4e6",
+                        "primary-container": "#ff7a32",
+                        "outline": "#8c7166",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdbcc",
+                        "background": "#f4fafd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#dde4e6",
+                        "surface-soft": "#F8F9FA",
+                        "inverse-primary": "#ffb694",
+                        "emergency-red": "#FF4D4F",
+                        "inverse-surface": "#2b3234",
+                        "on-background": "#161d1f",
+                        "on-secondary-fixed": "#001c39",
+                        "surface-container-low": "#eef5f7",
+                        "on-surface": "#161d1f",
+                        "surface-container-high": "#e2e9ec",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "on-surface-variant": "#584238",
+                        "tertiary-container": "#cb9900",
+                        "success-green": "#52C41A",
+                        "inverse-on-surface": "#ebf2f4",
+                        "secondary": "#0060ac",
+                        "primary-fixed-dim": "#ffb694",
+                        "on-tertiary-container": "#483400",
+                        "primary": "#a14000",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d4dbdd",
+                        "surface-bright": "#f4fafd",
+                        "on-secondary-fixed-variant": "#004883",
+                        "warning-amber": "#FAAD14",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "on-primary-container": "#622400",
+                        "surface": "#f4fafd",
+                        "tertiary": "#785900",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#dfc0b3",
+                        "surface-container": "#e8eff1",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#a14000",
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#003e73",
+                        "on-primary-fixed": "#351000",
+                        "tertiary-fixed": "#ffdf9e",
+                        "secondary-container": "#68abff",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-content": "1440px",
+                        "max-width-chat": "800px",
+                        "gutter-desktop": "24px",
+                        "margin-desktop": "120px",
+                        "gutter-mobile": "16px",
+                        "margin-mobile": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-on-background shadow-sm sticky top-0 z-50 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-max-width-content mx-auto h-20">
+<!-- Brand Logo -->
+<div class="text-headline-lg font-headline-lg font-bold text-primary-container tracking-tighter flex items-center gap-2">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+                PetMate
+            </div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex gap-8">
+<a class="text-primary font-bold border-b-2 border-primary-container pb-1 font-label-md text-label-md hover:text-primary-container transition-colors" href="#">首页</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary-container transition-colors" href="#">商城</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary-container transition-colors" href="#">社区</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary-container transition-colors" href="#">领养</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:text-primary-container transition-colors" href="#">AI问诊</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container rounded-full px-4 py-2 border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md font-label-md w-40" placeholder="搜索宠物服务..." type="text">
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_cart</span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container/20 overflow-hidden ml-2 cursor-pointer shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A portrait of a stylish young pet owner smiling, with high-end editorial photography style, soft natural studio lighting. The background is a clean, minimalist off-white surface echoing the PetMate light-mode aesthetic. The individual has a warm and approachable expression, representing the friendly and trustworthy community of PetMate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVhVctFDYcTIqmqQUKGJ7x-vhXo-JVx0ly_cdjz-0ISsLXUjGi91SdOJHO-4I72HYYgWl4LCW1W2-Y-ztwxdy0w0ygDaE1POjTRVPR1ot6SBFAGwz3JyL3G0mLgUhfDKsGN6TWA4StvsD1fY4zY2QpiCm9nQXPYY7FqwYVc23gM6UALzVcuf9Jbga0kMcOPrO1BxCFhK24gztqHaDTq8LXBOr3pNFvqrE_76qN-IIBuLels6UpTXPYmxAj6kVCdIaq1kZOL5bXTzg">
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-max-width-content mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 space-y-12">
+<!-- Hero Banner Section -->
+<section class="relative h-[300px] md:h-[480px] w-full rounded-xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<div class="flex transition-transform duration-700 ease-out h-full" id="hero-slider">
+<!-- Slide 1 -->
+<div class="flex-shrink-0 w-full h-full relative">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/80 to-transparent z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-resolution shot of a fluffy golden retriever puppy receiving professional grooming services in a sun-drenched, modern pet salon. The atmosphere is warm and professional, with bright orange and blue accents throughout the room, matching the PetMate brand colors. The lighting is soft and airy, creating a high-energy and optimistic feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt3K0z5hyYyg2DeOjYxg6rAvHPxR2qZ1EQdkPXbLm-P5FxAt-du8EB6aIvCTQ-K_WEGuD7BB6KPm8X0OkCW0mYun-6M5p-umiefyBzi--WGVTcNpuGOA5dmcRZhap_TTYp8qRhyKr4tvqoksU7DZap0MQOP8mM4E38JCbSF2keVPIFUUcPi9B5AuUZNPy-zY-9-8tB4tpt9Z5d176J3Z4aJq_p9WDv8ftu8313y8lRdLAtk1N0TlhqF-q4qNx2dkyRfNYGJIxrl6I">
+<div class="absolute inset-0 z-20 flex flex-col justify-center px-12 space-y-4">
+<span class="bg-white/20 backdrop-blur-md px-4 py-1 rounded-full text-white text-label-md font-label-md self-start">限时特惠</span>
+<h1 class="text-white font-headline-lg text-headline-lg md:text-[48px] leading-tight max-w-xl">夏季宠物美容预约<br>全线8折优惠中</h1>
+<p class="text-white/90 font-body-lg text-body-lg max-w-md">让您的爱宠在炎热夏日清爽变身，专业美容师一对一服务。</p>
+<button class="bg-primary-container text-white px-8 py-3 rounded-full font-label-md text-label-md w-fit shadow-lg shadow-primary-container/30 hover:scale-105 active:scale-95 transition-all">立即预约</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Slider Dots -->
+<div class="absolute bottom-6 right-12 z-30 flex gap-2">
+<div class="w-8 h-2 rounded-full bg-white transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-white/40 transition-all hover:bg-white/60 cursor-pointer"></div>
+<div class="w-2 h-2 rounded-full bg-white/40 transition-all hover:bg-white/60 cursor-pointer"></div>
+</div>
+</section>
+<!-- Quick Actions Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+<div class="group bg-surface hover:bg-sky-blue-light transition-all duration-300 p-6 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center space-y-4 cursor-pointer">
+<div class="w-16 h-16 bg-sky-blue-light group-hover:bg-secondary rounded-2xl flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-secondary group-hover:text-white text-[32px]">calendar_month</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-label-md font-bold">洗护预约</h3>
+<p class="text-on-surface-variant text-label-sm">到店即洗，无需等待</p>
+</div>
+</div>
+<div class="group bg-surface hover:bg-primary-fixed transition-all duration-300 p-6 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center space-y-4 cursor-pointer">
+<div class="w-16 h-16 bg-primary-fixed group-hover:bg-primary-container rounded-2xl flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-[32px]">directions_walk</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-label-md font-bold">上门遛狗</h3>
+<p class="text-on-surface-variant text-label-sm">实名认证，全程轨迹</p>
+</div>
+</div>
+<div class="group bg-surface hover:bg-surface-container-high transition-all duration-300 p-6 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center space-y-4 cursor-pointer">
+<div class="w-16 h-16 bg-surface-container group-hover:bg-inverse-surface rounded-2xl flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-inverse-surface group-hover:text-white text-[32px]">local_hospital</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-label-md font-bold">宠物医院</h3>
+<p class="text-on-surface-variant text-label-sm">三甲资质，全城覆盖</p>
+</div>
+</div>
+<div class="group bg-surface hover:bg-tertiary-fixed transition-all duration-300 p-6 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center space-y-4 cursor-pointer">
+<div class="w-16 h-16 bg-tertiary-fixed group-hover:bg-tertiary rounded-2xl flex items-center justify-center transition-colors shadow-sm">
+<span class="material-symbols-outlined text-tertiary group-hover:text-white text-[32px]">volunteer_activism</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface text-label-md font-bold">领养中心</h3>
+<p class="text-on-surface-variant text-label-sm">领养代替买卖，共筑爱心</p>
+</div>
+</div>
+</section>
+<!-- Main Content Feed: Bento Style -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">为你精选</h2>
+<p class="text-on-surface-variant font-body-md">基于你的宠物档案，PetMate 推荐最适合的内容</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container p-2 rounded-full hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined">filter_list</span></button>
+<button class="bg-surface-container p-2 rounded-full hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Post Card -->
+<div class="md:col-span-8 group cursor-pointer overflow-hidden rounded-xl bg-white border border-outline-variant/20 shadow-sm hover:shadow-md transition-all">
+<div class="relative h-[400px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A beautiful, high-contrast lifestyle photograph of a sleek tuxedo cat sitting gracefully by a large window with soft afternoon sunlight. The interior design of the room is contemporary and minimalist, with subtle blue and orange decor elements that align with the PetMate brand. The focus is sharp on the cat's intense green eyes and silky fur, evoking a sense of calm and high-quality living." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDss2XcnuCu5IlFjqm4LcnD-s0lRlCbBbRVSN-oAD9KLQOQxLdctioZ_n7zstQP8YwgrgWnlazNBEWAWdImjPxl0pNHGv3_2p3J9q7VrcL2UawnXucDUnGHapTtPMbmWCuBMcc1aspx1n9oMDSoNcd-tnWvDbvNK2EzpV-AJ7JE00WL8d_vOl9rrSwECCDhiBWOPnG1cAFtLosrMrEaG3SdL_uCe1fdmrqO3AZonruYPqdnwS_9SoW5bVJg43_jUqYQXa2GzkVYve0">
+<div class="absolute top-4 left-4 bg-primary-container text-white px-3 py-1 rounded-full text-label-sm font-label-md">热门社区</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed"></div>
+<span class="font-label-md text-label-md text-on-surface">布丁妈</span>
+<span class="text-on-surface-variant text-label-sm ml-auto">2小时前</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">我家猫咪最近不爱喝水怎么办？尝试了这3个方法后竟然神了！</h3>
+<p class="text-on-surface-variant line-clamp-2">很多铲屎官都为猫咪喝水发愁，我也一样。直到上周咨询了 PetMate 的 AI 医生后，给了几个非常实用的建议...</p>
+<div class="flex gap-6 border-t border-outline-variant/10 pt-4 text-on-surface-variant text-label-md">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[20px]">favorite</span> 1.2k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[20px]">chat_bubble</span> 243</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[20px]">share</span> 分享</span>
+</div>
+</div>
+</div>
+<!-- Side Bento Stack -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- AI Consultation Card -->
+<div class="bg-secondary-container rounded-xl p-6 text-white relative overflow-hidden group cursor-pointer">
+<div class="relative z-10 space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">psychiatry</span>
+<span class="font-label-md text-label-md">AI 问诊 2.0</span>
+</div>
+<h3 class="font-headline-md text-headline-md">24小时全天候<br>在线健康顾问</h3>
+<button class="bg-white text-secondary px-4 py-2 rounded-lg font-label-md text-label-md shadow-sm group-hover:bg-sky-blue-light transition-colors">立即咨询</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-20 transform -rotate-12 transition-transform group-hover:scale-110">stethoscope</span>
+</div>
+<!-- Knowledge Article Card -->
+<div class="bg-white border border-outline-variant/20 rounded-xl overflow-hidden flex flex-col flex-grow shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover" data-alt="A clean, scientific illustration of premium dog food kibble and fresh ingredients like salmon and carrots on a light blue background. The style is modern and infographic-like, following a professional health-oriented aesthetic. The color palette features whites, oranges, and soft blues, creating a sense of reliability and expert nutritional knowledge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKpwDLNSlnVRLPhkMSZS73G2aaI_4CloF2V0XsuDBKooSaB7bH3ieptBzM0WPDv5335f9iE5pHp1M6qZjiGlr-8I2MqIZBy4uQ9RrC-B-i92qGTrp7J8IrFGURtLE3-2RaxtRfzdC0eQ1GK6A893kRDXQ444A-6H3EZjUsId87dUmQYHgGkOJq36zCO7MF5VpsMfxtCfNB6jj0pBijLu5zzN6jNRsRO9g36HWsG0YCn8C3sni3GNM55-MIc4Ke8aarZR2P4q4Izqo">
+</div>
+<div class="p-4 space-y-2">
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider">宠物科普</span>
+<h4 class="font-headline-md text-label-md font-bold text-on-surface">如何根据品种选择最科学的宠物主粮？</h4>
+<p class="text-on-surface-variant text-label-sm line-clamp-2">不同年龄、体型的狗狗对营养的需求天差地别，拒绝盲目跟风。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Product Carousel Horizontal -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">限时好物</h3>
+<a class="text-primary font-label-md text-label-md flex items-center gap-1" href="#">查看全部 <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+<!-- Product 1 -->
+<div class="min-w-[220px] bg-surface-container-low rounded-xl p-3 space-y-3 group cursor-pointer border border-transparent hover:border-primary-container/30 transition-all">
+<div class="aspect-square rounded-lg overflow-hidden bg-white relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A studio shot of a high-tech smart pet water fountain in an elegant minimalist white and charcoal grey design. The product is shown from a 3/4 angle with clean studio lighting, creating soft shadows. The overall aesthetic is sleek, modern, and high-end, fitting the PetMate professional tech feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zEHIJqbIsyDiRBsAiZCtjKWd6IF7-qKD3RIzapKpAANAn-CswQVs2Nx5TrO9hLz1A-F0gfmFDHxxZWzXb2hL_0dehejdm37T9eAU74JuvY578-OdslWrS0lQG0IvzwO1TZKk3caBObty86uJH5-xwbrBWMfu1HLQJRD-hg0Av9PZ4uRT3LbOoQiGKOxAjgytLMBbq5K4wQlp508VQMnjKzAUSFJpFSzGjvpiI_QMth14aE4uKL8q6pm0Q_mwmowLcjbZBUbt2YA">
+<span class="absolute top-2 left-2 bg-emergency-red text-white text-[10px] px-2 py-0.5 rounded-full font-bold">SALE</span>
+</div>
+<div class="space-y-1">
+<h5 class="text-label-md font-bold text-on-surface truncate">智能恒温宠物饮水机</h5>
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold text-label-md">¥129</span>
+<span class="text-on-surface-variant text-[12px] line-through">¥199</span>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="min-w-[220px] bg-surface-container-low rounded-xl p-3 space-y-3 group cursor-pointer border border-transparent hover:border-primary-container/30 transition-all">
+<div class="aspect-square rounded-lg overflow-hidden bg-white relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A bag of premium grain-free pet kibble with vibrant orange packaging and a cheerful dog illustration. The setting is a clean, modern kitchen with soft morning light. The image has a warm, high-quality commercial feel that emphasizes health and natural ingredients, aligning with the PetMate brand's optimistic color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiZjqRdHKX7QFPZkddSZgkOvaLxGdJVSaeyNiOTOoQi0zxe9Q4dhhEJ-v2GnU_l7KftRmPp4wk8A3LyuFeimcXk28azP6vrQEw1i98I7eoUcxpaXXYzLb6U8J0olI9ZQlxQSrQU3L26yUxqw9VV2ZgsNdzhdEfT2PCuqDhxLWrFlk59yyCy4EU_huMJdzk8gPs6ceY7tYmrEnSfCfkCnC7hhc0LuDJNbwLhMLxlvKq9-HC4Byu3BFmsG9TJOZf0bfyA8vESCxe5Z0">
+</div>
+<div class="space-y-1">
+<h5 class="text-label-md font-bold text-on-surface truncate">全期全价无谷猫粮 5kg</h5>
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold text-label-md">¥288</span>
+<span class="text-on-surface-variant text-[12px]">月销 5000+</span>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="min-w-[220px] bg-surface-container-low rounded-xl p-3 space-y-3 group cursor-pointer border border-transparent hover:border-primary-container/30 transition-all">
+<div class="aspect-square rounded-lg overflow-hidden bg-white relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A luxury orthopedic memory foam pet bed in a neutral beige fabric, placed in a bright, modern living room with large windows and indoor plants. The scene is shot with a shallow depth of field, highlighting the premium texture of the bed. The mood is cozy and high-end, reflecting the PetMate aesthetic of professional care and home comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1L7di5sMTxD9DsOon1MyQQ47275xs6IJNrQ0f-OgqJhsXz8vGrwP87r0H_saEN8aCB2nDR3mB1ERfPXjS1nJ9phDHRoqZTUcpX0jmdidBHNjJjzyRYPVq1DMs-vdbfDb-sGPqMhAQNZgtFIefgjEtOzld1FMyY9BHKk-XAdoYSSHDC0W2WDf3FccWQ8n5sM2TPPy4zOXKpSZMQXh0YS3LQVwUf6DhZHCKkYftRKjCwc2RsmLbWXdWeky3KIn4i649WicavCF2jHE">
+</div>
+<div class="space-y-1">
+<h5 class="text-label-md font-bold text-on-surface truncate">记忆棉四季通用宠物窝</h5>
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold text-label-md">¥89</span>
+<span class="text-on-surface-variant text-[12px]">好评率 99%</span>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="min-w-[220px] bg-surface-container-low rounded-xl p-3 space-y-3 group cursor-pointer border border-transparent hover:border-primary-container/30 transition-all">
+<div class="aspect-square rounded-lg overflow-hidden bg-white relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A set of colorful and safe pet chew toys in various organic shapes, designed with a palette of vibrant oranges and blues. They are arranged on a clean, light grey surface. The lighting is bright and cheerful, emphasizing the playful nature of the products while maintaining a high-quality product photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQx_reGMGM0yTN2WpaKQfJrcpdGz3y4mDWQznaB6TCv1emAZwxRfXxCU5HJRsCmCb9xLY27PJ0aQOXYZiVJh7NUAuH1l9sRAYs-WJSuKHbBnBk-ENOPpcPQNCpHgiK1J3oe7j7kKg_FZglDMuqGy0qJdAEU0ezsUbU7pERULBiTGZGTDqpr8jIVssZ6VIOgL-IWgsgFLaBf3KMFYnV7BZ0Hf8nEajINm9-v_g0U-7AvkvNpiQzTqAhB_BaKMFbOTn3VAQG9BGSbJg">
+</div>
+<div class="space-y-1">
+<h5 class="text-label-md font-bold text-on-surface truncate">耐咬互动宠物磨牙玩具组</h5>
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold text-label-md">¥45</span>
+<span class="text-on-surface-variant text-[12px]">多款可选</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section -->
+<footer class="bg-surface-container-high dark:bg-inverse-surface mt-12">
+<div class="w-full py-16 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-start max-w-max-width-content mx-auto gap-12">
+<div class="space-y-6 max-w-sm">
+<div class="text-headline-md font-headline-md text-primary-container font-bold flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span>
+                    PetMate
+                </div>
+<p class="text-on-surface-variant font-body-md">让养宠更智能、更简单。致力于打造全球领先的AI智能宠物医疗与生活服务平台。</p>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-all"><span class="material-symbols-outlined">public</span></button>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-all"><span class="material-symbols-outlined">share</span></button>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-all"><span class="material-symbols-outlined">mail</span></button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12 flex-grow">
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md font-bold text-on-surface">服务项目</h4>
+<ul class="space-y-2 text-on-surface-variant font-body-md text-label-md">
+<li class="hover:text-primary cursor-pointer transition-colors">宠物医疗</li>
+<li class="hover:text-primary cursor-pointer transition-colors">上门服务</li>
+<li class="hover:text-primary cursor-pointer transition-colors">领养咨询</li>
+<li class="hover:text-primary cursor-pointer transition-colors">商城配送</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md font-bold text-on-surface">关于我们</h4>
+<ul class="space-y-2 text-on-surface-variant font-body-md text-label-md">
+<li class="hover:text-primary cursor-pointer transition-colors">公司简介</li>
+<li class="hover:text-primary cursor-pointer transition-colors">加入我们</li>
+<li class="hover:text-primary cursor-pointer transition-colors">新闻动态</li>
+<li class="hover:text-primary cursor-pointer transition-colors">联系客服</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md font-bold text-on-surface">法律政策</h4>
+<ul class="space-y-2 text-on-surface-variant font-body-md text-label-md">
+<li class="hover:text-primary cursor-pointer transition-colors">用户协议</li>
+<li class="hover:text-primary cursor-pointer transition-colors">隐私政策</li>
+<li class="hover:text-primary cursor-pointer transition-colors">免责声明</li>
+<li class="hover:text-primary cursor-pointer transition-colors">售后保障</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/10 py-6 px-margin-mobile md:px-margin-desktop max-w-max-width-content mx-auto flex flex-col md:flex-row justify-between items-center text-on-surface-variant text-label-sm font-label-sm gap-4">
+<p>© 2024 PetMate 宠友之家 - AI智能宠物医疗与生活服务平台</p>
+<div class="flex gap-6">
+<span>沪ICP备20241024号-1</span>
+<span>增值电信业务经营许可证</span>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 md:hidden px-4 pb-safe bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-t border-outline-variant/30 rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-primary-container font-bold group active-nav-item" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-label-sm font-label-sm">首页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined text-[24px]">pets</span>
+<span class="text-label-sm font-label-sm">商城</span>
+</a>
+<a class="flex flex-col items-center justify-center -mt-8" href="#">
+<div class="w-14 h-14 bg-primary-container text-white rounded-full flex items-center justify-center shadow-lg border-4 border-background scale-100 active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">psychiatry</span>
+</div>
+<span class="text-label-sm font-label-sm mt-1 text-on-surface-variant">AI问诊</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-label-sm font-label-sm">社区</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-container transition-all group" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-label-sm font-label-sm">我的</span>
+</a>
+</nav>
+<!-- Floating Action Button (Mobile Contextual) -->
+<button class="fixed bottom-20 right-6 w-14 h-14 bg-primary-container text-white rounded-full flex items-center justify-center shadow-2xl z-40 md:hidden active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+<script>
+        // Simple Interaction logic for Micro-animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('nav a');
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    // Logic to handle active state visuals (mock)
+                    console.log('Navigated to:', item.textContent.trim());
+                });
+            });
+
+            // Smooth reveal animation for cards
+            const observerOptions = {
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.group').forEach(el => {
+                el.classList.add('transition-all', 'duration-500', 'opacity-0', 'translate-y-4');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body></html>

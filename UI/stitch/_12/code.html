@@ -1,0 +1,523 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PetMate Pro - 商家中心工作台</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 24px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(221, 228, 230, 0.5);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dde4e6;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c7166;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "on-primary-container": "#622400",
+                        "secondary-fixed": "#d4e3ff",
+                        "primary": "#a14000",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdbcc",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#483400",
+                        "tertiary": "#785900",
+                        "on-primary-fixed": "#351000",
+                        "inverse-primary": "#ffb694",
+                        "surface-soft": "#F8F9FA",
+                        "surface": "#f4fafd",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdf9e",
+                        "surface-tint": "#a14000",
+                        "surface-bright": "#f4fafd",
+                        "on-secondary-fixed": "#001c39",
+                        "on-tertiary-fixed": "#261a00",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "surface-dim": "#d4dbdd",
+                        "primary-container": "#ff7a32",
+                        "surface-container-highest": "#dde4e6",
+                        "background": "#f4fafd",
+                        "on-background": "#161d1f",
+                        "on-secondary-container": "#003e73",
+                        "surface-variant": "#dde4e6",
+                        "sky-blue-light": "#EBF4FF",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#dfc0b3",
+                        "surface-container-low": "#eef5f7",
+                        "on-surface-variant": "#584238",
+                        "warning-amber": "#FAAD14",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb694",
+                        "tertiary-container": "#cb9900",
+                        "emergency-red": "#FF4D4F",
+                        "success-green": "#52C41A",
+                        "on-secondary-fixed-variant": "#004883",
+                        "inverse-surface": "#2b3234",
+                        "error": "#ba1a1a",
+                        "secondary": "#0060ac",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#ebf2f4",
+                        "outline": "#8c7166",
+                        "surface-container": "#e8eff1",
+                        "secondary-container": "#68abff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e2e9ec",
+                        "on-surface": "#161d1f",
+                        "secondary-fixed-dim": "#a4c9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-chat": "800px",
+                        "gutter-desktop": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "120px",
+                        "gutter-mobile": "16px",
+                        "max-width-content": "1440px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest shadow-sm flex flex-col py-6 px-4 z-50">
+<div class="flex items-center gap-3 px-2 mb-10">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[24px]">pets</span>
+</div>
+<div>
+<h1 class="font-headline-md text-[20px] font-black text-primary leading-tight">PetMate Pro</h1>
+<p class="font-label-sm text-on-surface-variant">商家后台中心</p>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold border-r-4 border-primary bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">shopping_cart</span>
+<span class="font-label-md">订单管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">inventory_2</span>
+<span class="font-label-md">商品/服务管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">reviews</span>
+<span class="font-label-md">评价管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">bar_chart</span>
+<span class="font-label-md">数据统计</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-label-md">设置</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md">发布新服务</span>
+</button>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-8 z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 text-label-md focus:ring-2 focus:ring-primary/20" placeholder="搜索订单、用户或宠物..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant border-r border-outline-variant pr-6">
+<a class="font-label-md hover:text-primary transition-colors" href="#">帮助中心</a>
+<a class="font-label-md hover:text-primary transition-colors" href="#">社区论坛</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 bg-success-green/10 text-success-green px-3 py-1 rounded-full">
+<span class="w-2 h-2 bg-success-green rounded-full animate-pulse"></span>
+<span class="font-label-sm">店铺已开张</span>
+</div>
+<button class="relative text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-emergency-red rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a friendly Chinese male administrator in a clean modern pet shop setting. He is wearing a professional beige apron with a subtle paw print logo. The background is softly blurred showing a high-end minimalist pet grooming station with warm natural lighting and soft teal accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxql11nXy50Sflu30NZJNmj19PhYoYurTxuyrnv8ezNaeJhUAjZQEiQmWZJ-jjceOHETzhW10zj77dJ-0OIDxuBPH6586iAbKrdvpF3CDJjL-MOBReghjcH-2Ps9thIduL84IvJSmm0hXUBdEVvd2UNHN-tg9BsFMiXiGUEMwttJ-7lCJ8PaNlh_Tuk3xoC4fLIU1kvSEgU7ycckFQNlXT5H_Ss0WDxgWVAfUhopfCb9-gi8Xk7UGwBl7vzzvTJmgfpID9jeupj7g">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-8 min-h-[calc(100vh-64px)]">
+<div class="mb-8">
+<h2 class="font-headline-lg text-on-background mb-1">早安，汪汪宠物中心 👋</h2>
+<p class="text-on-surface-variant font-body-md">这是您今天的店铺概览，看起来是个忙碌的好日子。</p>
+</div>
+<!-- 1. 核心指标卡片 -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="glass-card p-6 rounded-[24px] shadow-sm flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-primary">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">payments</span>
+</div>
+<span class="text-success-green font-label-sm flex items-center bg-success-green/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>+12.5%
+                    </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md mb-1">今日销售额</p>
+<h3 class="font-display-lg text-[32px] text-on-background">¥ 12,840.00</h3>
+</div>
+</div>
+<div class="glass-card p-6 rounded-[24px] shadow-sm flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+</div>
+<span class="text-success-green font-label-sm flex items-center bg-success-green/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>+8
+                    </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md mb-1">新增订单</p>
+<h3 class="font-display-lg text-[32px] text-on-background">32</h3>
+</div>
+</div>
+<div class="glass-card p-6 rounded-[24px] shadow-sm flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-tertiary/10 rounded-2xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[28px]">calendar_today</span>
+</div>
+<span class="text-warning-amber font-label-sm flex items-center bg-warning-amber/10 px-2 py-0.5 rounded-full">
+                        需加急
+                    </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md mb-1">待处理预约</p>
+<h3 class="font-display-lg text-[32px] text-on-background">14</h3>
+</div>
+</div>
+<div class="glass-card p-6 rounded-[24px] shadow-sm flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-emergency-red">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-error-container/50 rounded-2xl flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[28px]">task_alt</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md mb-1">待办事项</p>
+<h3 class="font-display-lg text-[32px] text-on-background">5</h3>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- 2. 近 7 日销售趋势图表 -->
+<div class="lg:col-span-2 glass-card p-8 rounded-[32px] shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="font-headline-md text-on-background">销售趋势</h3>
+<p class="text-on-surface-variant font-label-sm">最近7天的经营业绩波动图</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-xl">
+<button class="px-4 py-1.5 rounded-lg bg-white shadow-sm font-label-md text-primary">销售额</button>
+<button class="px-4 py-1.5 rounded-lg font-label-md text-on-surface-variant hover:text-primary">订单量</button>
+</div>
+</div>
+<div class="w-full h-[320px]" id="salesChart"></div>
+</div>
+<!-- 4. 待办事项提醒 -->
+<div class="glass-card p-8 rounded-[32px] shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-on-background">待办任务</h3>
+<button class="text-primary font-label-md hover:underline">全部</button>
+</div>
+<div class="space-y-4">
+<div class="group flex items-start gap-4 p-4 rounded-2xl bg-primary-fixed/30 border border-primary/10 hover:shadow-md transition-all">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-on-primary-fixed leading-tight mb-1">2 小时后有金毛洗澡预约</p>
+<span class="text-label-sm text-on-primary-fixed-variant">客户: 王先生 • 技师: 李亮</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</button>
+</div>
+<div class="group flex items-start gap-4 p-4 rounded-2xl bg-secondary-fixed/30 border border-secondary/10 hover:shadow-md transition-all">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-[20px]">rate_review</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-on-secondary-fixed leading-tight mb-1">有 3 条未回复评价</p>
+<span class="text-label-sm text-on-secondary-fixed-variant">建议在 24 小时内完成回复</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</button>
+</div>
+<div class="group flex items-start gap-4 p-4 rounded-2xl bg-tertiary-fixed/30 border border-tertiary/10 hover:shadow-md transition-all">
+<div class="w-10 h-10 rounded-full bg-tertiary flex items-center justify-center text-on-tertiary">
+<span class="material-symbols-outlined text-[20px]">inventory</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-on-tertiary-fixed leading-tight mb-1">库存预警: 皇家猫粮 (2kg)</p>
+<span class="text-label-sm text-on-tertiary-fixed-variant">当前剩余: 2件</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</button>
+</div>
+<div class="group flex items-start gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:shadow-md transition-all">
+<div class="w-10 h-10 rounded-full bg-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">cleaning_services</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface-variant leading-tight mb-1">日常门店消杀工作</p>
+<span class="text-label-sm text-on-surface-variant/70">截止时间: 今日 18:00</span>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</button>
+</div>
+</div>
+</div>
+<!-- 3. 实时订单动态列表 -->
+<div class="lg:col-span-3 glass-card p-8 rounded-[32px] shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-md text-on-background">实时订单动态</h3>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-success-green rounded-full animate-pulse"></span>
+<span class="text-label-sm text-on-surface-variant">实时更新中</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-outline-variant text-label-md text-on-surface-variant">
+<th class="pb-4 font-semibold">订单编号</th>
+<th class="pb-4 font-semibold">宠物信息</th>
+<th class="pb-4 font-semibold">服务项目</th>
+<th class="pb-4 font-semibold">实付金额</th>
+<th class="pb-4 font-semibold">下单时间</th>
+<th class="pb-4 font-semibold">状态</th>
+<th class="pb-4 font-semibold">操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="py-5 font-label-md text-on-background">ORD-20240313-082</td>
+<td class="py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">pets</span>
+</div>
+<div>
+<p class="font-label-md text-on-background">球球</p>
+<p class="text-label-sm text-on-surface-variant">柯基 • 2岁</p>
+</div>
+</div>
+</td>
+<td class="py-5 text-label-md text-on-background">精致洗吹 + 爪部护理</td>
+<td class="py-5 font-bold text-on-background">¥ 188.00</td>
+<td class="py-5 text-label-md text-on-surface-variant">09:42:15</td>
+<td class="py-5">
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant text-label-sm">服务中</span>
+</td>
+<td class="py-5">
+<button class="text-primary font-label-md hover:underline">详情</button>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="py-5 font-label-md text-on-background">ORD-20240313-081</td>
+<td class="py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">cast</span>
+</div>
+<div>
+<p class="font-label-md text-on-background">露露</p>
+<p class="text-label-sm text-on-surface-variant">布偶猫 • 1.5岁</p>
+</div>
+</div>
+</td>
+<td class="py-5 text-label-md text-on-background">全身体检 + 疫苗接种</td>
+<td class="py-5 font-bold text-on-background">¥ 450.00</td>
+<td class="py-5 text-label-md text-on-surface-variant">09:15:30</td>
+<td class="py-5">
+<span class="px-3 py-1 rounded-full bg-success-green/10 text-success-green text-label-sm">已完成</span>
+</td>
+<td class="py-5">
+<button class="text-primary font-label-md hover:underline">详情</button>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="py-5 font-label-md text-on-background">ORD-20240313-080</td>
+<td class="py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">pets</span>
+</div>
+<div>
+<p class="font-label-md text-on-background">大壮</p>
+<p class="text-label-sm text-on-surface-variant">拉布拉多 • 4岁</p>
+</div>
+</div>
+</td>
+<td class="py-5 text-label-md text-on-background">寄养服务 (3天)</td>
+<td class="py-5 font-bold text-on-background">¥ 360.00</td>
+<td class="py-5 text-label-md text-on-surface-variant">08:50:11</td>
+<td class="py-5">
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-label-sm">待签收</span>
+</td>
+<td class="py-5">
+<button class="text-primary font-label-md hover:underline">详情</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // ECharts 销售趋势图初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartDom = document.getElementById('salesChart');
+            const myChart = echarts.init(chartDom);
+            
+            const option = {
+                color: ['#a14000', '#0060ac'],
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    borderColor: '#dde4e6',
+                    textStyle: { color: '#161d1f' },
+                    padding: [12, 16],
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                grid: {
+                    left: '0%',
+                    right: '2%',
+                    bottom: '0%',
+                    top: '5%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['3/07', '3/08', '3/09', '3/10', '3/11', '3/12', '3/13'],
+                    axisLine: { lineStyle: { color: '#dde4e6' } },
+                    axisLabel: { color: '#584238', fontFamily: 'Be Vietnam Pro', margin: 15 }
+                },
+                yAxis: {
+                    type: 'value',
+                    splitLine: { lineStyle: { type: 'dashed', color: '#dde4e6' } },
+                    axisLabel: { color: '#584238', fontFamily: 'Be Vietnam Pro' }
+                },
+                series: [
+                    {
+                        name: '销售额 (元)',
+                        type: 'line',
+                        smooth: true,
+                        symbolSize: 8,
+                        lineStyle: { width: 4 },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(161, 64, 0, 0.2)' },
+                                { offset: 1, color: 'rgba(161, 64, 0, 0)' }
+                            ])
+                        },
+                        data: [8200, 9300, 7800, 11000, 9800, 13200, 12840]
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+        });
+
+        // 简单的交互反馈
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.98)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = 'scale(1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

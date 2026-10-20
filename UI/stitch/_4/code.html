@@ -1,0 +1,428 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PetMate Pro - 内容审核中心</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#dde4e6",
+                    "emergency-red": "#FF4D4F",
+                    "on-secondary-container": "#003e73",
+                    "on-tertiary-container": "#483400",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-primary-container": "#622400",
+                    "surface-container-high": "#e2e9ec",
+                    "on-primary-fixed": "#351000",
+                    "on-background": "#161d1f",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary-fixed-dim": "#ffb694",
+                    "surface": "#f4fafd",
+                    "tertiary-fixed": "#ffdf9e",
+                    "on-surface": "#161d1f",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e8eff1",
+                    "surface-container-low": "#eef5f7",
+                    "primary": "#a14000",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#dde4e6",
+                    "warning-amber": "#FAAD14",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "secondary-container": "#68abff",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-secondary-fixed-variant": "#004883",
+                    "outline-variant": "#dfc0b3",
+                    "outline": "#8c7166",
+                    "secondary-fixed": "#d4e3ff",
+                    "inverse-surface": "#2b3234",
+                    "on-surface-variant": "#584238",
+                    "surface-soft": "#F8F9FA",
+                    "primary-container": "#ff7a32",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f4fafd",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#785900",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#001c39",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "sky-blue-light": "#EBF4FF",
+                    "inverse-primary": "#ffb694",
+                    "primary-fixed": "#ffdbcc",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#cb9900",
+                    "success-green": "#52C41A",
+                    "secondary": "#0060ac",
+                    "background": "#f4fafd",
+                    "surface-tint": "#a14000",
+                    "surface-dim": "#d4dbdd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-chat": "800px",
+                    "gutter-desktop": "24px",
+                    "margin-desktop": "120px",
+                    "gutter-mobile": "16px",
+                    "base": "4px",
+                    "max-width-content": "1440px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Side Navigation Shell (from JSON) -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest dark:bg-inverse-surface shadow-sm flex flex-col py-6 px-4 z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-lg text-headline-lg font-black text-primary">PetMate Pro</h1>
+<p class="text-label-sm text-on-surface-variant">商家后台中心</p>
+</div>
+<nav class="flex-1 space-y-2 overflow-y-auto scrollbar-hide">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md">订单管理</span>
+</a>
+<!-- Active Tab: 内容审核 (Assuming it falls under item management or its own section, highlighted based on logic) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold border-r-4 border-primary bg-surface-container-low transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">reviews</span>
+<span class="font-label-md">评价管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md">商品/服务管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-md">数据统计</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-colors text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">设置</span>
+</a>
+</nav>
+<div class="mt-auto px-4 pt-4 border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-label-md active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                发布新服务
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- Top Nav (from JSON) -->
+<header class="flex justify-between items-center h-16 px-gutter-desktop w-full bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-6">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">PetMate 商家中心</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-label-md w-64 focus:ring-2 focus:ring-primary/20" placeholder="搜索待审核内容..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">帮助中心</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">社区论坛</a>
+</div>
+<div class="flex gap-4 border-l border-outline-variant pl-6">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-emergency-red rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">mail</span></button>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">help_outline</span></button>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-label-md leading-tight">管理员</p>
+<p class="text-xs text-success-green font-medium">店铺已开张</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional high-resolution profile portrait of a smiling female administrator in a modern office environment, warm ambient lighting, soft blurred background with a subtle pet-friendly office theme, consistent with the playful professional aesthetic of PetMate Pro." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY4v39bt18X7EHj3vKWhtr_stouZ1dtoCJg0_eRbuCqSI6jPuWo6_wsniL1HOkI1voR68nuLh0MqsT8PqcEVuvXLytTfay1ZAboNMAXUTvuKn9T3tmpnMI62CoOzmTuw5ey_ho9eGnD413QOTEealH0m71nIVGlKLrCe7nhIEZHpiEJ9hh7NiB8sb4W94CcM6Zri8Tdluv8xJpUjbRMrFDhRojucJz_JKPer6c9xIKHrlau3glhDF8T62u0pfyfH4HumkkdPo7y1s">
+</div>
+</div>
+</header>
+<!-- Audit Center Content -->
+<div class="p-gutter-desktop space-y-8">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">内容审核中心</h3>
+<p class="text-body-md text-on-surface-variant mt-1">确保社区质量，为每一个生命负责。</p>
+</div>
+<div class="flex bg-surface-container-high rounded-xl p-1 gap-1">
+<button class="px-6 py-2 rounded-lg bg-surface text-primary shadow-sm font-label-md transition-all">社区动态 (12)</button>
+<button class="px-6 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md">知识科普 (5)</button>
+<button class="px-6 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-label-md">领养救助 (3)</button>
+</div>
+</div>
+<!-- Bento Grid Content List -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Task Card 1: Community Post -->
+<div class="col-span-12 xl:col-span-8 group bg-surface-container-lowest border border-outline-variant rounded-[2rem] overflow-hidden hover:shadow-xl transition-all duration-300">
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<!-- Preview Thumbnail -->
+<div class="w-full md:w-64 h-64 md:h-auto relative rounded-2xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A heartwarming, high-contrast photograph of a golden retriever puppy playing in a sun-drenched backyard. The lighting is golden hour warm, creating long shadows on the grass. The aesthetic is bright and clear, reflecting the PetMate brand's friendly and optimistic character." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4XJ7irbH94mNTDAQesxLjOjKUbhwM3K7CE11OseUkV-gWOejGdLrAUzySpz2BOFTrsuLloYZZlqzF01UryCTzMguZsfl9f56T4cVnqtQwWKLvmj5Y6a-nFZ0mx2fswqc4WTp6eTL5lgxYF65Rx0Ni50s-swAniWBQ7HzwilU4DXTJcuhzmsO6k9HERAuw92NGGJ1IVhqBoZBNkHVv5os9yjn4L7y47d2HHUCaQfj3k6KVqlrc1ygHpC3QrZndqAIQT6LiWMeiLf4">
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">photo_library</span>
+<span class="text-xs font-bold text-on-surface">3 张图片</span>
+</div>
+</div>
+<!-- Content Info -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border border-outline-variant" data-alt="Close-up of a circular user avatar featuring a young man smiling warmly, wearing a modern blue shirt, studio lighting against a soft pastel background, clean and friendly look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf2PpnaWHgkvKIZvTkqEnKrvJ5oQNujW1xNYQ-GfJfNsEMBRwz7iE_LVKQ8zA8sqOQt0N-25JVb7fYoWchZkNBA9O4FRDvAHCGXO3OspRtVHYP4OSR0WUWjsXYwC0jRot5jQ0dGVoSu8pI9WSr6qqOTnfV3PIhNiRRgOFOs59DfcGkGZHkD15L4Yu4s3OeH1JI5d6tI3C3FxkWc3wsqliFw1X_K3Ap6KP0g6SuGLoSIwCRgZ9k7ajhWYj27SuOxSd9LEKZdD9EsTM">
+<div>
+<p class="font-label-md text-on-surface">萌宠博主 @金毛蛋挞</p>
+<p class="text-xs text-on-surface-variant">申请时间：2023-10-24 14:30</p>
+</div>
+</div>
+<span class="bg-primary-container text-on-primary-fixed-variant px-3 py-1 rounded-full text-xs font-bold">待审核</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-2">今天带蛋挞去公园交到了新朋友！</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-3">
+                                    大家看，这只萨摩耶也太可爱了吧！它们在草坪上跑了好久。最近发现蛋挞有点挑食，有没有家长推荐好吃的天然粮？主要是想找高蛋白且易消化的那种。顺便分享一下日常，祝大家的毛孩子都健康成长！
+                                </p>
+</div>
+<!-- Actions -->
+<div class="mt-6 flex flex-wrap items-center gap-3">
+<button class="flex-1 min-w-[120px] bg-success-green/10 text-success-green hover:bg-success-green hover:text-white px-6 py-3 rounded-2xl font-label-md transition-all flex items-center justify-center gap-2 border border-success-green/20" onclick="handleAudit('approve')">
+<span class="material-symbols-outlined">check_circle</span>
+                                    快速通过
+                                </button>
+<button class="flex-1 min-w-[120px] bg-warning-amber/10 text-warning-amber hover:bg-warning-amber hover:text-white px-6 py-3 rounded-2xl font-label-md transition-all flex items-center justify-center gap-2 border border-warning-amber/20" onclick="openRejectModal()">
+<span class="material-symbols-outlined">cancel</span>
+                                    填写驳回
+                                </button>
+<button class="bg-error-container text-on-error-container hover:bg-emergency-red hover:text-white px-4 py-3 rounded-2xl font-label-md transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">report</span>
+                                    标记违规
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side Stats / Summary -->
+<div class="col-span-12 xl:col-span-4 space-y-6">
+<div class="bg-secondary-container text-on-secondary-container p-8 rounded-[2rem] shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<h5 class="font-headline-md text-headline-md font-bold mb-1">审核进度</h5>
+<p class="text-on-secondary-container/80 text-sm mb-6">今日已处理 85% 的内容</p>
+<div class="flex items-end gap-2">
+<span class="text-4xl font-black">24</span>
+<span class="text-lg opacity-80 pb-1">/ 28 条待办</span>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-20">
+<span class="material-symbols-outlined text-[160px]">verified_user</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-[2rem]">
+<h5 class="font-label-md text-on-surface mb-4">待处理细分</h5>
+<ul class="space-y-4">
+<li class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-on-surface-variant font-label-sm">疑似广告内容</span>
+</div>
+<span class="text-primary font-bold">4</span>
+</li>
+<li class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-emergency-red"></div>
+<span class="text-on-surface-variant font-label-sm">被举报内容</span>
+</div>
+<span class="text-emergency-red font-bold">2</span>
+</li>
+<li class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-success-green"></div>
+<span class="text-on-surface-variant font-label-sm">优质科普申请</span>
+</div>
+<span class="text-success-green font-bold">3</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Task Card 2: Knowledge Post -->
+<div class="col-span-12 group bg-surface-container-lowest border border-outline-variant rounded-[2rem] overflow-hidden hover:shadow-xl transition-all duration-300">
+<div class="p-6 grid grid-cols-12 gap-8">
+<div class="col-span-12 md:col-span-4 lg:col-span-3">
+<div class="aspect-square bg-surface-container-low rounded-2xl flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional infographic-style illustration about cat nutrition. Flat design with soft pastel colors (blues and oranges), clear icons representing vitamins and minerals, and a healthy tabby cat illustrated in a friendly, geometric style. Professional and educational mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxhoVre0h39ghSwxClh9a5QWERX7DaSy4ZGaQ-R8zaIPYMqUIE3adav98x8u5bCgaQDJd66B-DoQZSrStY7ZisHzIDlNkLkc1Wd8_jnoZZirVXcr4RPVdvIvx7zE9fvDbAKVV28qKBG3eC9GoQZ9kEfcaXLlDtzBbdEg3ibC8y-CCytPURXtorwj9Uy-qcHcGUs1kLQTOV0U_PmnnkAbt44AVeay7MmeTqN8gyHqeb86-ytzQPk0ume3kJMRXPyhzegYTWCnab7E0">
+</div>
+</div>
+<div class="col-span-12 md:col-span-8 lg:col-span-9 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="text-xs font-bold text-primary tracking-wider">知识科普申请</span>
+</div>
+<h4 class="font-headline-md text-headline-md">猫咪换季掉毛严重？五招教你科学打理</h4>
+<p class="text-xs text-on-surface-variant mt-1">发布者：宠物营养师小张 · 提交于 2023-10-24 10:15</p>
+</div>
+<div class="flex gap-2">
+<button class="p-3 rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+<button class="p-3 rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">share</span></button>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl my-4">
+<p class="text-body-md text-on-surface leading-relaxed">
+                                    【摘要】随着气温转凉，很多猫咪开始进入季节性换毛期。如果不及时打理，不仅家里到处是毛，猫咪舔入过多毛发还容易引发毛球症。本文将从日常梳理、饮食调理、环境温湿度控制、洗护选择以及健康检查五个维度，详细介绍如何科学度过换毛季...
+                                </p>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary py-4 rounded-2xl font-label-md active:scale-95 transition-transform">通过并设为精选</button>
+<button class="flex-1 border border-outline text-on-surface py-4 rounded-2xl font-label-md hover:bg-surface-container-low transition-colors" onclick="openRejectModal()">驳回申请</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Reject Modal Overlay -->
+<div class="fixed inset-0 bg-on-background/40 backdrop-blur-sm z-[60] hidden flex items-center justify-center p-gutter-mobile" id="rejectModal">
+<div class="bg-surface w-full max-w-md rounded-[2.5rem] shadow-2xl overflow-hidden scale-90 opacity-0 transition-all duration-300" id="modalContent">
+<div class="p-8">
+<div class="flex justify-between items-center mb-6">
+<h5 class="font-headline-md text-headline-md">驳回原因</h5>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeRejectModal()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="space-y-4">
+<label class="block">
+<span class="text-label-sm text-on-surface-variant block mb-2 px-1">请选择驳回类型</span>
+<select class="w-full bg-surface-container-low border-2 border-transparent focus:border-secondary rounded-2xl p-4 text-on-surface font-label-md appearance-none">
+<option>包含违规广告/外链</option>
+<option>图片内容质量过低</option>
+<option>重复发布相同内容</option>
+<option>言论不当/涉及争议</option>
+<option>其他原因</option>
+</select>
+</label>
+<label class="block">
+<span class="text-label-sm text-on-surface-variant block mb-2 px-1">详细描述 (选填)</span>
+<textarea class="w-full bg-surface-container-low border-2 border-transparent focus:border-secondary rounded-2xl p-4 text-on-surface font-body-md resize-none" placeholder="输入具体修改建议，帮助用户改进内容..." rows="4"></textarea>
+</label>
+</div>
+<div class="flex gap-3 mt-8">
+<button class="flex-1 py-4 text-on-surface-variant font-label-md hover:bg-surface-container-low rounded-2xl transition-colors" onclick="closeRejectModal()">取消</button>
+<button class="flex-1 bg-emergency-red text-white py-4 font-label-md rounded-2xl shadow-lg shadow-emergency-red/20 active:scale-95 transition-transform" onclick="submitReject()">确认驳回</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Feedback Toast -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-on-background text-surface px-8 py-4 rounded-2xl font-label-md shadow-2xl transition-all translate-y-20 opacity-0 z-[70] flex items-center gap-3" id="toast">
+<span class="material-symbols-outlined text-success-green" id="toastIcon">check_circle</span>
+<span id="toastMsg">操作成功</span>
+</div>
+<script>
+        function handleAudit(type) {
+            showToast(type === 'approve' ? '审核已通过，内容已上线' : '内容已标记为违规');
+        }
+
+        function openRejectModal() {
+            const modal = document.getElementById('rejectModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-90', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeRejectModal() {
+            const modal = document.getElementById('rejectModal');
+            const content = document.getElementById('modalContent');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-90', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function submitReject() {
+            closeRejectModal();
+            setTimeout(() => {
+                showToast('已驳回该申请，通知已发送至发布者', 'error');
+            }, 350);
+        }
+
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMsg.innerText = msg;
+            if (type === 'error') {
+                toastIcon.innerText = 'info';
+                toastIcon.className = 'material-symbols-outlined text-warning-amber';
+            } else {
+                toastIcon.innerText = 'check_circle';
+                toastIcon.className = 'material-symbols-outlined text-success-green';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Quick Hover Micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+        });
+    </script>
+</body></html>

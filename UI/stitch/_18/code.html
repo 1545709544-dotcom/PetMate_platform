@@ -1,0 +1,514 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#dde4e6",
+                        "emergency-red": "#FF4D4F",
+                        "on-secondary-container": "#003e73",
+                        "on-tertiary-container": "#483400",
+                        "inverse-on-surface": "#ebf2f4",
+                        "on-primary-container": "#622400",
+                        "surface-container-high": "#e2e9ec",
+                        "on-primary-fixed": "#351000",
+                        "on-background": "#161d1f",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "primary-fixed-dim": "#ffb694",
+                        "surface": "#f4fafd",
+                        "tertiary-fixed": "#ffdf9e",
+                        "on-surface": "#161d1f",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e8eff1",
+                        "surface-container-low": "#eef5f7",
+                        "primary": "#a14000",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#dde4e6",
+                        "warning-amber": "#FAAD14",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "secondary-container": "#68abff",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-secondary-fixed-variant": "#004883",
+                        "outline-variant": "#dfc0b3",
+                        "outline": "#8c7166",
+                        "secondary-fixed": "#d4e3ff",
+                        "inverse-surface": "#2b3234",
+                        "on-surface-variant": "#584238",
+                        "surface-soft": "#F8F9FA",
+                        "primary-container": "#ff7a32",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f4fafd",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#785900",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#001c39",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "sky-blue-light": "#EBF4FF",
+                        "inverse-primary": "#ffb694",
+                        "primary-fixed": "#ffdbcc",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#cb9900",
+                        "success-green": "#52C41A",
+                        "secondary": "#0060ac",
+                        "background": "#f4fafd",
+                        "surface-tint": "#a14000",
+                        "surface-dim": "#d4dbdd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-chat": "800px",
+                        "gutter-desktop": "24px",
+                        "margin-desktop": "120px",
+                        "gutter-mobile": "16px",
+                        "base": "4px",
+                        "max-width-content": "1440px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Be Vietnam Pro"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    }catch(_e){}</script></head><body class="bg-surface font-body-md text-on-surface">
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center w-full px-gutter-desktop h-16 sticky top-0 z-50 bg-surface dark:bg-inverse-surface border-b border-surface-variant dark:border-outline-variant flat no shadows">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary-fixed-dim">PetMate Admin</span>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-secondary text-label-md" placeholder="搜索订单、SKU或用户..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer active:opacity-80" data-original-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer active:opacity-80">help</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer active:opacity-80">settings</span>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-surface-variant">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-container">
+<img class="w-full h-full object-cover" alt="管理员头像" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAORj_uUECOT5lIYBS75BXwV2ofcon2mqlDY0zw6U_hdZ-BK2gEjspYZfikhXG7xS6z5dq_wquo7lZSN5p9CAxjY22UL4_gd_uwIjlbSNQCUlyap2tWI7i0RMk3G_W5A9EqH7YxOyO5N1UnUY0Qd0G9Afo6eB7TxPJJIKLijXSVDT6jBmxbJMpUMMTi8JmCIU2W2CsZPvvVM73eSy3wBkDaEbXXz-E3yoo14AYHNb0fm-lsqFQW90Z31zapA-PMvwSfSnrUfq9_eIM">
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">管理员_Sarah</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider font-bold">高级管理员</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="flex flex-col h-screen w-64 fixed left-0 top-0 pt-20 bg-surface-container dark:bg-inverse-surface border-r border-surface-variant dark:border-outline-variant shadow-sm z-40">
+<nav class="flex flex-col h-full py-6 px-4 gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant transition-all duration-200 rounded-lg scale-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">仪表盘</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant transition-all duration-200 rounded-lg scale-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">用户管理</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold scale-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md">订单与商品</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant transition-all duration-200 rounded-lg scale-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-md text-label-md">内容审核</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant transition-all duration-200 rounded-lg scale-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">gpp_maybe</span>
+<span class="font-label-md text-label-md">风险控制</span>
+</a>
+<div class="mt-auto border-t border-surface-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-emergency-red hover:bg-error-container/20 transition-all duration-200 rounded-lg scale-100 active:scale-95" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">退出登录</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 p-gutter-desktop space-y-6">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">订单与商品管理</h1>
+<p class="text-body-md text-on-surface-variant">实时监控 PetMate 市场交易与商品合规性。</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2 bg-surface-container-highest text-secondary font-bold rounded-full border border-secondary/20 hover:bg-secondary-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                    导出报表
+                </button>
+<button class="px-6 py-2 bg-primary text-on-primary font-bold rounded-full shadow-lg hover:shadow-xl active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                    批量导入
+                </button>
+</div>
+</div>
+<!-- Management Tabs -->
+<div class="flex border-b border-surface-variant space-x-8">
+<button class="pb-4 px-2 font-label-md text-label-md active-tab transition-all" id="tab-monitoring" onclick="switchTab('monitoring')">订单监控</button>
+<button class="pb-4 px-2 font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-all" id="tab-refunds" onclick="switchTab('refunds')">退款审核</button>
+<button class="pb-4 px-2 font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-all" id="tab-compliance" onclick="switchTab('compliance')">违规商品管理</button>
+</div>
+<!-- Content Sections -->
+<div id="content-sections">
+<!-- Section 1: Order Monitoring -->
+<div class="space-y-6" id="section-monitoring">
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="p-6 bg-surface-container-lowest rounded-xl shadow-sm border border-surface-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant">今日交易额</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-headline-md font-bold text-on-surface">1,284</span>
+<span class="text-success-green font-bold text-xs">↑ 12.5%</span>
+</div>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl shadow-sm border border-surface-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant">待发货订单</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-headline-md font-bold text-warning-amber">142</span>
+<span class="text-on-surface-variant text-xs">笔订单</span>
+</div>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl shadow-sm border border-surface-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant">退款中</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-headline-md font-bold text-emergency-red">28</span>
+<span class="text-on-surface-variant text-xs">项请求</span>
+</div>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl shadow-sm border border-surface-variant">
+<span class="text-label-sm font-label-sm text-on-surface-variant">今日 GMV</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-headline-md font-bold text-secondary">¥84,200</span>
+<span class="text-success-green font-bold text-xs">↑ 8.2%</span>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap gap-4 items-center bg-surface-container-low p-4 rounded-xl border border-surface-variant">
+<div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-outline-variant">
+<span class="text-xs font-bold text-on-surface-variant">状态:</span>
+<select class="border-none bg-transparent p-0 text-sm focus:ring-0">
+<option>全部订单</option>
+<option>待支付</option>
+<option>处理中</option>
+<option>已发货</option>
+<option>已完成</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-outline-variant">
+<span class="text-xs font-bold text-on-surface-variant">时间范围:</span>
+<select class="border-none bg-transparent p-0 text-sm focus:ring-0">
+<option>最近 24 小时</option>
+<option>最近 7 天</option>
+<option>自定义范围</option>
+</select>
+</div>
+<button class="ml-auto text-secondary font-bold text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-base">filter_list</span>
+                        高级筛选
+                    </button>
+</div>
+<!---->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-surface-variant">
+<th class="px-6 py-4 font-label-md text-on-surface-variant">订单编号</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">商品</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">买家</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">金额</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant">状态</th>
+<th class="px-6 py-4 font-label-md text-on-surface-variant text-right">操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">#PM-20230815-01</span>
+<span class="text-[10px] text-on-surface-variant uppercase">14:22:15</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-sky-blue-light rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" alt="商品图" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4gE4XziBA-SrUsKhngHKWlnuc6k-zxrL4w3WDqelkxjSo_cioFdsM8AvEbPS1X7xEJM_0qkXaVlhMKQ5FyXjkd1B5g6sOaSLqs8W1ukkFd_Jk0FLbmhNCbGgWp8m1B1qqLW-qLf284rlRdCqNql6hBBsmnCR-IqMPA5Pdg5gaZ0QINZ69ecCL3NRLCteE2wFHLRPh-6xgSgTis6gda1JNElInIuIRdo5CfM7NOegp3jV7ik7RJjN-yVCjzANBcpiZu-FsyqhjQyc">
+</div>
+<span class="font-label-md truncate max-w-[150px]">有机幼犬粮 2kg</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">LC</div>
+<span class="text-sm">Liam Carter</span>
+</div>
+</td>
+<td class="px-6 py-4 font-bold text-on-surface">¥198.00</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full text-[11px] font-bold bg-secondary-container text-on-secondary-container">处理中</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-secondary hover:underline font-bold text-sm">详情</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">#PM-20230815-02</span>
+<span class="text-[10px] text-on-surface-variant uppercase">14:28:44</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-sky-blue-light rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" alt="商品图" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJKuU4n-PCGciahkFUyzROXlyzoGnRxyLNjfKTMiTERL0cJrBLbTdbbt_O4KtE9o3roE3YTDOzvQxUOLI4sb9FJ1AbuViyZhtJfbnb2BUhnySpCTDIFoRAg2HVTyjpyTI9maP_VlWnkiGp5Ycknb3NsCZnqwg5H3n8QrSS4RNPCW0KHbpJR6tMQSXgS725pYNG01lUDfczKQDFGmVkBOOjv3g5hrD9PqrMqLIa1HS5BjA9I004o3AWnfpudQ8IH0qGDRVcHlzjiCE">
+</div>
+<span class="font-label-md truncate max-w-[150px]">智能饮水机 v2</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-fixed-dim flex items-center justify-center text-[10px] font-bold text-on-tertiary-fixed">EW</div>
+<span class="text-sm">Emma Watson</span>
+</div>
+</td>
+<td class="px-6 py-4 font-bold text-on-surface">¥459.00</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full text-[11px] font-bold bg-warning-amber/20 text-warning-amber">待支付</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-secondary hover:underline font-bold text-sm">详情</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section 2: Refund Review (Hidden by default) -->
+<div class="hidden space-y-6" id="section-refunds">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Refund Request List -->
+<div class="lg:col-span-2 space-y-4 h-[600px] overflow-y-auto custom-scrollbar pr-2">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-emergency-red shadow-sm border-y border-r border-surface-variant hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded">等待退款</span>
+<span class="text-on-surface-variant font-label-md text-sm">ID: RF-882103</span>
+</div>
+<span class="text-on-surface-variant text-xs">申请时间: 2023-08-15 10:30</span>
+</div>
+<div class="flex gap-6">
+<div class="w-24 h-24 bg-surface rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" alt="退款商品" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvZ-P4Q7l15cKcLWoa5SqhnmbVI9Kox4jVo7Rd-P139xuRu1LkME2CCtAEfteLtPuj3gNvoqvK4DsC0FOa6QMZSCZ9H-53ht_EO_rMo4hfbrLKDUeVWhoBD1tVtJMjvG3zjtchxZTCxmtp4WzNppZ2pAfF359BPY9VknldI-1hGGrziXB2Ky9DLCR2Po2ZNeg1fMc2P2X-_xfq9sTi2XvurWSpD74yrCFh_yfOLRKj66xvAqFe6RSiEdVZO9JU5ojEAZlbtuY4TMo">
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-on-surface">矫形猫窝 (中号)</h3>
+<p class="text-sm text-on-surface-variant mt-1">金额: <span class="text-on-surface font-bold text-lg">¥215.00</span></p>
+<div class="mt-3 p-3 bg-surface rounded-lg">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">退款理由</p>
+<p class="text-sm mt-1 text-on-surface italic">"商品左侧接缝处有小破损。不适合长期使用。"</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 justify-center">
+<button class="px-6 py-2 bg-success-green text-white font-bold rounded-lg text-sm hover:opacity-90 transition-opacity">通过</button>
+<button class="px-6 py-2 border border-emergency-red text-emergency-red font-bold rounded-lg text-sm hover:bg-error-container/20 transition-all">驳回</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border-l-4 border-emergency-red shadow-sm border-y border-r border-surface-variant hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded">等待退款</span>
+<span class="text-on-surface-variant font-label-md text-sm">ID: RF-882104</span>
+</div>
+<span class="text-on-surface-variant text-xs">申请时间: 2023-08-15 11:15</span>
+</div>
+<div class="flex gap-6">
+<div class="w-24 h-24 bg-surface rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" alt="退款商品" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKdFD4c5wJSjIU02BExewJO2SLmTCzzyzHmSgRAxlUeuPKPwk4wbC_JPsZo0SgRy31CdMcXxko7Y335UDYmkJoujuVOn6YNlhaEpA6sHM9r2PRt4rHomvdqXmgLtkY5Ikuxsp8tYns9IPT8I7ik4Mgj7tUe_qI34CXna05ANOzJCvbD8eb6w2FmudKrulNUksWitNJewTgP6OeuybBT_J7TnIRFwHnBOylWyHxSDf8cEhEyTsm5NJmn6TUpXhb9a-iNTFAWEesOIs">
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-on-surface">专业版自动喂食器</h3>
+<p class="text-sm text-on-surface-variant mt-1">金额: <span class="text-on-surface font-bold text-lg">¥899.00</span></p>
+<div class="mt-3 p-3 bg-surface rounded-lg">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">退款理由</p>
+<p class="text-sm mt-1 text-on-surface italic">"不想要了，在别处看到了更便宜的。"</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 justify-center">
+<button class="px-6 py-2 bg-success-green text-white font-bold rounded-lg text-sm hover:opacity-90 transition-opacity">通过</button>
+<button class="px-6 py-2 border border-emergency-red text-emergency-red font-bold rounded-lg text-sm hover:bg-error-container/20 transition-all">驳回</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Refund Statistics Sidebar -->
+<div class="space-y-6">
+<div class="bg-secondary-container/10 border border-secondary-container p-6 rounded-xl">
+<h4 class="font-bold text-secondary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">analytics</span>
+                                审核效率
+                            </h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">平均响应时间</span>
+<span class="font-bold">2.4 小时</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 75%"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">通过率</span>
+<span class="font-bold">68%</span>
+</div>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-success-green h-full" style="width: 68%"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-surface-variant">
+<h4 class="font-bold text-on-surface mb-4">退款原因分布</h4>
+<div class="space-y-3">
+<div class="flex justify-between text-xs">
+<span>物流破损</span>
+<span class="font-bold">45%</span>
+</div>
+<div class="flex justify-between text-xs">
+<span>质量问题</span>
+<span class="font-bold">30%</span>
+</div>
+<div class="flex justify-between text-xs">
+<span>错发/漏发</span>
+<span class="font-bold">15%</span>
+</div>
+<div class="flex justify-between text-xs">
+<span>其他</span>
+<span class="font-bold">10%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3:-->
+<div class="hidden" id="section-compliance">
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-hidden shadow-sm">
+<div class="p-6 border-b border-surface-variant bg-surface-container-low flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">违规管理</h2>
+<span class="text-sm text-emergency-red font-bold animate-pulse">● 12 个待审核违规项</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 p-6">
+<!-- Compliance Card 1 -->
+<div class="flex flex-col border border-surface-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+<div class="h-48 bg-surface-variant relative">
+<img class="w-full h-full object-cover" alt="违规商品" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWG8RXFcVLe5qNuyAu8jcimGrFR8-zUhvTsbJw8KuKar9GYqFXaWZ6fM70ox1lU_26K6A-Q5SXl5LK8PKVFRJeZ-BxkdM0TVCajpEkr16pxRbo4l3uYycLdONfYA-OcWFdLIclctFO6wUXaB_5CSUayIQNqgrL6bMUx6t5Szo50IyEsv-mGDDMuYF-xqP57XRxDPXRwfWnZain0nZ5WDRTyi4Sd7fCo7Z891qkZLW74b5t7g2d86Ot7gI7qPvPmXaql9sFxzISBGI">
+<div class="absolute top-3 right-3 px-3 py-1 bg-emergency-red text-white text-[10px] font-bold rounded-full">违规标记: 药品</div>
+</div>
+<div class="p-4 flex-1">
+<h4 class="font-bold text-on-surface">无标签“神奇”宠物补充剂</h4>
+<p class="text-xs text-on-surface-variant mt-1">商家: HealthFirst Pets</p>
+<div class="mt-4 p-2 bg-error-container/20 rounded border border-error-container/30">
+<p class="text-[11px] font-bold text-emergency-red uppercase">政策违规</p>
+<p class="text-xs mt-1">销售未经核实的处方药 / 过度宣传医疗效果。</p>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-surface-variant flex gap-2">
+<button class="flex-1 py-2 bg-emergency-red text-white text-xs font-bold rounded-lg">下架商品</button>
+<button class="flex-1 py-2 border border-secondary text-secondary text-xs font-bold rounded-lg">警告商家</button>
+</div>
+</div>
+<!-- Compliance Card 2 -->
+<div class="flex flex-col border border-surface-variant rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+<div class="h-48 bg-surface-variant relative">
+<img class="w-full h-full object-cover" alt="违规商品" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlzoIskNZG2bvcMP7bLhS7EZrlSVSp94hPAVNaqTsk_D7ZRrBM50RxToUD2SBtrHAjvkA_sieJG_GcnLagGaT0mfjPpUPgjl43DcwvbwUoNB5BS2GWpSzoCTZJOvUp48UWQ79lW3FtNNPOKr5YvwePlFw10AELi3aA3wWtqSFTpwhLdja5_LPrBVj-Y0tiW3vRu0qHqKepi3rSV1dVOKPmiKvP01wRiADRK42bsg9RSGD6o9D0e1kHtdCj63HjTSEczvT2Mi2CkZE">
+<div class="absolute top-3 right-3 px-3 py-1 bg-warning-amber text-white text-[10px] font-bold rounded-full">违规标记: 安全</div>
+</div>
+<div class="p-4 flex-1">
+<h4 class="font-bold text-on-surface">尖刺防御颈圈 (金属)</h4>
+<p class="text-xs text-on-surface-variant mt-1">商家: SpikeStore Alpha</p>
+<div class="mt-4 p-2 bg-warning-amber/10 rounded border border-warning-amber/30">
+<p class="text-[11px] font-bold text-warning-amber uppercase">潜在违规</p>
+<p class="text-xs mt-1">可能存在虐待动物/安全隐患。需要人工复核。</p>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-surface-variant flex gap-2">
+<button class="flex-1 py-2 bg-emergency-red text-white text-xs font-bold rounded-lg">下架商品</button>
+<button class="flex-1 py-2 border border-secondary text-secondary text-xs font-bold rounded-lg">联系商家</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+    function switchTab(tabId) {
+        // Update Tab UI
+        const tabs = ['monitoring', 'refunds', 'compliance'];
+        tabs.forEach(id => {
+            const tabBtn = document.getElementById('tab-' + id);
+            const section = document.getElementById('section-' + id);
+            
+            if (id === tabId) {
+                tabBtn.classList.add('active-tab');
+                tabBtn.classList.remove('text-on-surface-variant');
+                section.classList.remove('hidden');
+            } else {
+                tabBtn.classList.remove('active-tab');
+                tabBtn.classList.add('text-on-surface-variant');
+                section.classList.add('hidden');
+            }
+        });
+
+        // Smooth scroll to top of content
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Add some atmospheric polish
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+</script>
+</body></html>

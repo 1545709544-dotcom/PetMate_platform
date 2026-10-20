@@ -1,0 +1,290 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>登录 - PetMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2b3234",
+                        "inverse-on-surface": "#ebf2f4",
+                        "emergency-red": "#FF4D4F",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e2e9ec",
+                        "on-secondary-fixed": "#001c39",
+                        "on-primary": "#ffffff",
+                        "success-green": "#52C41A",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffdbcc",
+                        "on-error-container": "#93000a",
+                        "outline": "#8c7166",
+                        "on-surface-variant": "#584238",
+                        "on-background": "#161d1f",
+                        "surface-variant": "#dde4e6",
+                        "primary-container": "#ff7a32",
+                        "tertiary-fixed": "#ffdf9e",
+                        "on-secondary-fixed-variant": "#004883",
+                        "tertiary": "#785900",
+                        "warning-amber": "#FAAD14",
+                        "surface-bright": "#f4fafd",
+                        "secondary-container": "#68abff",
+                        "inverse-primary": "#ffb694",
+                        "surface-container-low": "#eef5f7",
+                        "on-surface": "#161d1f",
+                        "surface-container": "#e8eff1",
+                        "background": "#f4fafd",
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "on-primary-container": "#622400",
+                        "surface": "#f4fafd",
+                        "on-tertiary-container": "#483400",
+                        "surface-soft": "#F8F9FA",
+                        "primary": "#a14000",
+                        "on-tertiary-fixed": "#261a00",
+                        "surface-dim": "#d4dbdd",
+                        "primary-fixed-dim": "#ffb694",
+                        "secondary-fixed": "#d4e3ff",
+                        "outline-variant": "#dfc0b3",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "on-primary-fixed": "#351000",
+                        "surface-tint": "#a14000",
+                        "surface-container-lowest": "#ffffff",
+                        "sky-blue-light": "#EBF4FF",
+                        "secondary": "#0060ac",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#dde4e6",
+                        "tertiary-container": "#cb9900",
+                        "on-secondary-container": "#003e73",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5b4300"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "8px",
+                        "lg": "12px",
+                        "xl": "16px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-content": "1440px",
+                        "max-width-chat": "800px",
+                        "margin-desktop": "120px",
+                        "gutter-mobile": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter-desktop": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Be Vietnam Pro"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            color: #a14000;
+            border-bottom: 3px solid #ff7a32;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .pet-pattern {
+            background-image: radial-gradient(#ff7a32 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed">
+<main class="min-h-screen flex items-center justify-center relative overflow-hidden">
+<!-- Background Animation/Decoration -->
+<div class="absolute inset-0 z-0 opacity-20">
+
+</div>
+<div class="container max-w-max-width-content px-margin-mobile md:px-margin-desktop z-10 grid md:grid-cols-2 gap-12 items-center">
+<!-- Left Side: Visual Narrative -->
+<div class="hidden md:flex flex-col space-y-8 pr-12">
+<div class="space-y-4">
+<h1 class="font-display-lg text-display-lg text-primary">
+                        PetMate
+                    </h1>
+<p class="font-headline-md text-headline-md text-on-surface-variant max-w-md">
+                        智慧宠物关怀，让爱更有温度。
+                    </p>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary-container/20 rounded-xl blur-2xl group-hover:bg-primary-container/30 transition-all duration-700"></div>
+<div class="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border-4 border-white">
+<img class="w-full h-full object-cover" data-alt="A warm, high-quality photograph of a smiling young woman cuddling a fluffy golden retriever in a bright, sun-drenched living room. The lighting is soft and golden, emphasizing a joyful, trusting bond. The aesthetic is clean and modern, with a palette of soft whites and warm oranges that match the PetMate brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTxwzcZ_B7FvVufBlWev7n04X1O2EH7pbyh79Hgp_8VmgH-4dbLpw5umw_J0VBFARrqFQ1E31bKDAUqhuLPbGfh9hm8S1Bd9odaPeDJWeOqyFAJmHfxPl_rFNV0_yxKvJ6FXuTKZdq5wxB-v8dabfBpn1YiO0XJPPXK0PPr9XorJFbfePBI8M_jG2m2v_FGV714CQgq8J15MVF5UMvkdul8BDd0IG672UFponl_yRRbQxJDTZAJgVBhRV26JoJa0U4qNiJUfxodyE">
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -right-6 glass-effect p-6 rounded-xl shadow-lg border border-white/50 flex items-center space-x-4 animate-bounce hover:animate-none">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined">pets</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">10,000+ 宠物</p>
+<p class="text-xs text-on-surface-variant">已加入社区</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Card -->
+<div class="w-full max-w-md mx-auto">
+<div class="bg-surface-container-lowest p-8 md:p-10 rounded-xl shadow-xl relative overflow-hidden border border-outline-variant/30">
+<div class="absolute top-0 right-0 pet-pattern w-32 h-32 -mr-12 -mt-12 rounded-full"></div>
+<!-- Header -->
+<div class="text-center md:text-left mb-8">
+<div class="md:hidden flex justify-center mb-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">PetMate</h2>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">欢迎回来</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">与您的爱宠共享智慧生活</p>
+</div>
+<!-- Login Tabs -->
+<div class="flex border-b border-outline-variant mb-8">
+<button class="flex-1 pb-3 text-center font-label-md text-label-md active-tab transition-all" id="tab-sms" onclick="switchTab('sms')">
+                            验证码登录
+                        </button>
+<button class="flex-1 pb-3 text-center font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all" id="tab-pwd" onclick="switchTab('pwd')">
+                            密码登录
+                        </button>
+</div>
+<!-- Form -->
+<form class="space-y-6" id="login-form" onsubmit="return false">
+<!-- Mobile Input -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1">手机号码</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-secondary transition-colors">smartphone</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all font-body-md text-body-md" placeholder="请输入手机号" type="tel">
+</div>
+</div>
+<!-- SMS Code Input (Dynamic) -->
+<div class="space-y-2" id="sms-section">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1">验证码</label>
+<div class="flex space-x-3">
+<div class="relative flex-1 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-secondary transition-colors">verified_user</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all font-body-md text-body-md" maxlength="6" placeholder="6位验证码" type="text">
+</div>
+<button class="px-4 py-3 font-label-md text-label-md text-secondary border border-secondary rounded hover:bg-secondary/5 active:scale-95 transition-all whitespace-nowrap" type="button">
+                                    获取验证码
+                                </button>
+</div>
+</div>
+<!-- Password Input (Hidden by default) -->
+<div class="space-y-2 hidden" id="pwd-section">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1">登录密码</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-secondary transition-colors">lock</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all font-body-md text-body-md" placeholder="请输入密码" type="password">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+</button>
+</div>
+<div class="text-right">
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">忘记密码？</a>
+</div>
+</div>
+<!-- Primary Button -->
+<button class="w-full py-4 bg-primary-container text-white font-headline-md text-headline-md rounded-lg shadow-[0_4px_0_0_#a14000] hover:shadow-[0_2px_0_0_#a14000] hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none transition-all duration-100 flex items-center justify-center space-x-2">
+<span class="">登录 / 注册</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative my-10 text-center">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<span class="relative px-4 bg-surface-container-lowest font-label-sm text-label-sm text-outline">其他登录方式</span>
+</div>
+<!-- Social Login -->
+<button class="w-full flex items-center justify-center space-x-3 py-3 border border-outline-variant rounded hover:bg-surface-container hover:border-outline transition-colors active:scale-95">
+<div class="w-6 h-6 flex items-center justify-center">
+<svg class="w-5 h-5 fill-[#07C160]" viewBox="0 0 24 24">
+<path d="M12.2,2c-5,0-9,3.5-9,7.8c0,2.4,1.2,4.6,3.2,6.1c-0.2,0.8-0.8,2-0.8,2.1c0,0.1,0,0.3,0.1,0.4 c0.1,0.1,0.2,0.2,0.3,0.2c0.2,0,1.9-0.5,3.3-1.4c1,0.3,1.9,0.4,2.9,0.4c5,0,9-3.5,9-7.8C21.2,5.5,17.2,2,12.2,2z M10.2,9.3 c-0.5,0-0.9-0.4-0.9-0.9c0-0.5,0.4-0.9,0.9-0.9c0.5,0,0.9,0.4,0.9,0.9C11.1,8.9,10.7,9.3,10.2,9.3z M14.8,9.3c-0.5,0-0.9-0.4-0.9-0.9 c0-0.5,0.4-0.9,0.9-0.9c0.5,0,0.9,0.4,0.9,0.9C15.7,8.9,15.3,9.3,14.8,9.3z"></path>
+</svg>
+</div>
+<span class="font-label-md text-label-md text-on-surface">微信一键登录</span>
+</button><div class="mt-6 text-center">
+    <a href="#" class="inline-flex items-center space-x-1 text-primary text-sm hover:underline group">
+        <span class="">我是商家，跳转到商家中心</span>
+        <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">chevron_right</span>
+    </a>
+</div>
+<!-- Footer -->
+<div class="mt-8 text-center space-y-4">
+<div class="flex items-center justify-center space-x-2">
+<input class="w-4 h-4 text-primary bg-surface-container-low border-outline-variant rounded focus:ring-primary" id="agree" type="checkbox">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="agree">
+                                我已阅读并同意 <a class="text-secondary hover:underline" href="#">用户协议</a> 与 <a class="text-secondary hover:underline" href="#">隐私政策</a>
+</label>
+</div>
+</div>
+</div>
+<!-- Extra mobile navigation or links -->
+<div class="mt-6 text-center md:hidden">
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                        还没有账号？ <a class="text-primary font-bold" href="#">立即注册</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- UI Interaction Script -->
+<script>
+        function switchTab(type) {
+            const smsTab = document.getElementById('tab-sms');
+            const pwdTab = document.getElementById('tab-pwd');
+            const smsSec = document.getElementById('sms-section');
+            const pwdSec = document.getElementById('pwd-section');
+
+            if (type === 'sms') {
+                smsTab.classList.add('active-tab');
+                smsTab.classList.remove('text-on-surface-variant');
+                pwdTab.classList.remove('active-tab');
+                pwdTab.classList.add('text-on-surface-variant');
+                smsSec.classList.remove('hidden');
+                pwdSec.classList.add('hidden');
+            } else {
+                pwdTab.classList.add('active-tab');
+                pwdTab.classList.remove('text-on-surface-variant');
+                smsTab.classList.remove('active-tab');
+                smsTab.classList.add('text-on-surface-variant');
+                pwdSec.classList.remove('hidden');
+                smsSec.classList.add('hidden');
+            }
+        }
+    </script>
+
+
+
+</body></html>

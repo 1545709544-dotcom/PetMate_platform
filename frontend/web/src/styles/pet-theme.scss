@@ -1,0 +1,294 @@
+// ============================================================
+// PetMate · 用户端统一设计语言（Pet Design Language）
+// 目标：让全部用户页面在「布局节奏 / 配色 / 图标」上保持一致，
+//       并围绕「宠物」主题营造温暖、舒适、可信赖的氛围。
+// 采用已有的 Material 3 Token（variables.scss），不引入新色值。
+// 动效克制：仅保留 hover 微交互与一次性入场，杜绝环境循环动画。
+// ============================================================
+
+@use './variables.scss' as *;
+@use './mixin.scss' as *;
+
+// ------------------------------------------------------------
+// 1. 统一内容容器（页面内最大宽度 + 响应式留白）
+// ------------------------------------------------------------
+.pet-container {
+  @include container-max;
+}
+
+// ------------------------------------------------------------
+// 2. 页面级标题（每个页面顶部主标题）
+// ------------------------------------------------------------
+.page-title {
+  font-family: $font-family-headline;
+  font-size: $font-size-headline-lg;
+  font-weight: $font-weight-extrabold;
+  color: $color-text-primary;
+  letter-spacing: -0.02em;
+  line-height: $line-height-tight;
+  margin: 0;
+}
+
+.page-subtitle {
+  margin: 6px 0 0;
+  font-size: $font-size-body-md;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+// ------------------------------------------------------------
+// 3. 区块标题（列表/卡片分组通用头部）
+//    .section-head 承载「标题 + 右侧操作(更多/筛选)」
+// ------------------------------------------------------------
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-family: $font-family-headline;
+  font-size: $font-size-headline-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  letter-spacing: -0.01em;
+  line-height: $line-height-tight;
+  margin: 0;
+
+  // 标题前缀的小图标（宠物主题强调色）
+  .pet-icon {
+    color: $color-brand;
+  }
+}
+
+.section-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: $font-size-label-md;
+  font-weight: $font-weight-semibold;
+  color: $color-brand;
+  text-decoration: none;
+  transition: color $transition-fast, gap $transition-fast;
+
+  &:hover {
+    color: $color-brand-dark;
+    gap: 6px;
+  }
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+}
+
+// ------------------------------------------------------------
+// 4. 图标规范（Material Symbols 统一尺寸 / 填充态）
+//    用法：<span class="material-symbols-outlined pet-icon">pets</span>
+//         激活/选中时追加 .filled
+// ------------------------------------------------------------
+.pet-icon {
+  font-size: 22px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-variation-settings: 'FILL' 0, 'wght' 500;
+
+  &.filled {
+    font-variation-settings: 'FILL' 1, 'wght' 600;
+  }
+}
+
+// 强调色图标（信息/医疗场景用品牌蓝）
+.pet-icon--info {
+  color: $color-secondary;
+}
+
+// ------------------------------------------------------------
+// 5. 卡片表面（统一卡片质感：白底 + 极淡描边 + 柔和阴影 + hover 微抬）
+// ------------------------------------------------------------
+.pet-card {
+  background: $color-surface-container-lowest;
+  border: 1px solid $color-surface-container;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  transition: transform $transition-base, box-shadow $transition-base,
+    border-color $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    border-color: $color-brand-container;
+  }
+}
+
+// ------------------------------------------------------------
+// 6. 胶囊标签（分类 / 状态 / 计数）
+// ------------------------------------------------------------
+.pet-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: $radius-full;
+  background: $color-brand-container;
+  color: $color-on-brand-container;
+  font-size: $font-size-label-sm;
+  font-weight: $font-weight-semibold;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  .material-symbols-outlined {
+    font-size: 16px;
+  }
+}
+
+.pet-pill--soft {
+  background: $color-surface-container-low;
+  color: $color-text-secondary;
+}
+
+.pet-pill--info {
+  background: $color-secondary-container;
+  color: $color-secondary;
+}
+
+// ------------------------------------------------------------
+// 7. 柔和分隔线
+// ------------------------------------------------------------
+.pet-divider {
+  height: 1px;
+  border: 0;
+  background: $color-surface-container;
+  margin: $spacing-lg 0;
+}
+
+// ------------------------------------------------------------
+// 8. 统计 / 数据小条（我的 / 详情页常用）
+// ------------------------------------------------------------
+.pet-stat-row {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.pet-stat {
+  flex: 1;
+  min-width: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  background: $color-surface-container-low;
+}
+
+.pet-stat__num {
+  font-family: $font-family-headline;
+  font-size: $font-size-headline-md;
+  font-weight: $font-weight-extrabold;
+  color: $color-brand;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.pet-stat__label {
+  font-size: $font-size-label-sm;
+  color: $color-text-secondary;
+}
+
+// ------------------------------------------------------------
+// 9. 空状态基础（与 PetEmptyState 组件互补，供内联使用）
+// ------------------------------------------------------------
+.pet-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $spacing-2xl $spacing-lg;
+  color: $color-text-tertiary;
+
+  &__icon {
+    font-size: 56px;
+    color: $color-outline-variant;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__title {
+    font-size: $font-size-body-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-secondary;
+  }
+
+  &__desc {
+    margin-top: 4px;
+    font-size: $font-size-label-md;
+    color: $color-text-tertiary;
+    max-width: 280px;
+  }
+}
+
+// ------------------------------------------------------------
+// 10. 通用「主行动条」底部吸底（结算/下单等）
+// ------------------------------------------------------------
+.pet-action-bar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  background: rgba($color-surface-container-lowest, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid $color-surface-container;
+}
+
+// ------------------------------------------------------------
+// 11. 顶部导航统一徽标（购物车 / 消息红点）
+//     购物车(el-badge) 与消息铃铛(自定义) 此前红点尺寸/描边不一致，
+//     统一为同一套视觉：18px 高、2px 白描边、品牌紧急红、右上对齐 40×40 按钮。
+// ------------------------------------------------------------
+.header-badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: $color-emergency;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: $font-weight-bold;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $color-surface-container-lowest;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 1;
+}
+
+// ------------------------------------------------------------
+// 12. 无障碍：尊重「减少动态效果」偏好
+// ------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  .pet-card,
+  .section-more,
+  .pet-icon {
+    transition: none !important;
+  }
+  .pet-card:hover {
+    transform: none;
+  }
+}

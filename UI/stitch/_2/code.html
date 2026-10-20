@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PetMate Pro - 评价管理</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdf9e",
+                    "surface-container-high": "#e2e9ec",
+                    "surface-tint": "#a14000",
+                    "surface-bright": "#f4fafd",
+                    "secondary": "#0060ac",
+                    "on-tertiary-container": "#483400",
+                    "surface": "#f4fafd",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb694",
+                    "on-surface-variant": "#584238",
+                    "background": "#f4fafd",
+                    "sky-blue-light": "#EBF4FF",
+                    "surface-variant": "#dde4e6",
+                    "primary-fixed-dim": "#ffb694",
+                    "tertiary-container": "#cb9900",
+                    "surface-container-highest": "#dde4e6",
+                    "surface-container": "#e8eff1",
+                    "secondary-container": "#68abff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#dfc0b3",
+                    "emergency-red": "#FF4D4F",
+                    "on-secondary-container": "#003e73",
+                    "secondary-fixed": "#d4e3ff",
+                    "inverse-surface": "#2b3234",
+                    "on-secondary-fixed-variant": "#004883",
+                    "on-tertiary-fixed": "#261a00",
+                    "warning-amber": "#FAAD14",
+                    "on-background": "#161d1f",
+                    "on-primary-container": "#622400",
+                    "inverse-on-surface": "#ebf2f4",
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "on-error": "#ffffff",
+                    "primary-container": "#ff7a32",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "surface-soft": "#F8F9FA",
+                    "primary": "#a14000",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "on-surface": "#161d1f",
+                    "outline": "#8c7166",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "surface-container-low": "#eef5f7",
+                    "on-primary-fixed": "#351000",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "surface-dim": "#d4dbdd",
+                    "tertiary": "#785900",
+                    "primary-fixed": "#ffdbcc",
+                    "success-green": "#52C41A",
+                    "on-secondary-fixed": "#001c39"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-content": "1440px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "gutter-mobile": "16px",
+                    "gutter-desktop": "24px",
+                    "margin-desktop": "120px",
+                    "max-width-chat": "800px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab { position: relative; }
+        .active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #a14000;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest dark:bg-inverse-surface shadow-sm flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-2 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">pets</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary dark:text-primary-fixed-dim leading-none">PetMate Pro</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">商家后台中心</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">shopping_cart</span>
+<span class="font-label-md text-label-md">订单管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">inventory_2</span>
+<span class="font-label-md text-label-md">商品/服务管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">reviews</span>
+<span class="font-label-md text-label-md">评价管理</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">bar_chart</span>
+<span class="font-label-md text-label-md">数据统计</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-label-md text-label-md">设置</span>
+</a>
+</nav>
+<button class="mt-auto bg-primary-container text-on-primary-container py-3 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+            发布新服务
+        </button>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 h-16 left-64 bg-surface border-b border-outline-variant flex items-center justify-between px-gutter-desktop z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-secondary text-sm" placeholder="搜索订单号或用户昵称..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="#">帮助中心</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="#">社区论坛</a>
+</nav>
+<div class="flex items-center gap-4 border-l border-outline-variant pl-6">
+<button class="relative text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-emergency-red rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="flex items-center gap-3 ml-2">
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">萌宠之家旗舰店</p>
+<span class="text-[10px] bg-success-green/10 text-success-green px-2 py-0.5 rounded-full font-bold">店铺已开张</span>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-fixed ring-2 ring-surface" data-alt="A professional headshot of a friendly female pet shop manager in her 30s, wearing a clean uniform with a small pet logo, warm lighting, blurred background of a modern pet boutique with orange and white interior design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAanCbjN354LcJvzpqfW--sRjG8uJoeyPp2xpUHBy6VukPXOBTUgyF-uH9Q6VSoKZ_N3ErXfjZ93vU3F90WJwUKoJ3ay-sUc91b9TavE63_ZIvMfgPtNZSPDm8BZwME4_I61B-u50rTtNkSaId4__lVUx9Zzh_vZDqwH-FbRVkTPc88mqE36xt_EM3arcAdyKXt7KAPGVErPMZ2Ugtsep81cmydwm-G7kUvqmbfYtdceQ21XoPDmY909OnI1XVluDA2XHhkxG2SyIU">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-8 max-w-[1440px] mx-auto">
+<!-- Header Section -->
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">评价管理</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">查看、回复并分析客户的真实反馈，持续提升服务品质。</p>
+</div>
+<!-- Summary Metrics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-desktop mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-surface-variant/30 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant mb-2">累计评价</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-bold text-on-surface">12,480</span>
+<span class="text-success-green text-sm flex items-center font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span> 12%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-surface-variant/30 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant mb-2">平均评分</span>
+<div class="flex items-end justify-between">
+<div class="flex items-center gap-2">
+<span class="text-3xl font-bold text-on-surface">4.8</span>
+<div class="flex text-warning-amber">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="text-on-surface-variant text-sm font-medium">行业平均: 4.5</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-surface-variant/30 flex flex-col ring-2 ring-primary/20 ring-offset-2">
+<span class="font-label-md text-label-md text-on-surface-variant mb-2">待回复评价</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-bold text-primary">42</span>
+<button class="text-xs bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full hover:bg-primary-container transition-colors">立即处理</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-surface-variant/30 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant mb-2">申诉处理中</span>
+<div class="flex items-end justify-between">
+<span class="text-3xl font-bold text-secondary">3</span>
+<span class="material-symbols-outlined text-secondary">history_edu</span>
+</div>
+</div>
+</div>
+<!-- Filtering Section -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-variant/30 overflow-hidden mb-8">
+<div class="flex items-center justify-between px-6 border-b border-outline-variant">
+<div class="flex gap-8">
+<button class="py-4 font-label-md text-label-md text-primary active-tab">全部评价 (12480)</button>
+<button class="py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">待回复 (42)</button>
+<button class="py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">低分评价 (15)</button>
+<button class="py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">评价申诉 (3)</button>
+</div>
+<div class="flex items-center gap-4 py-3">
+<select class="bg-surface border-outline rounded-lg text-sm focus:ring-primary focus:border-primary">
+<option>评分排序</option>
+<option>最新评价</option>
+<option>最旧评价</option>
+</select>
+<button class="flex items-center gap-2 px-4 py-2 border border-outline rounded-lg text-sm text-on-surface hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                            筛选
+                        </button>
+</div>
+</div>
+<!-- Review List Container -->
+<div class="divide-y divide-outline-variant">
+<!-- Review Card 1 (Pending Reply) -->
+<div class="p-6 hover:bg-surface-bright transition-colors">
+<div class="flex gap-6">
+<!-- User Info -->
+<div class="w-48 shrink-0">
+<div class="flex items-center gap-3 mb-2">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A portrait of a cute white pomeranian as a user profile avatar for a pet owner, soft lighting, pastel background, circular framing, digital photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2djngs_6Om7C-cOG9YI2QmPAgqLnzbG03PLNsczE1F-aWVXq_9vjtHgKg79PvBFrvzD3IxxP-v1LIn_KoHCqTBB8BpBIZOn9_kGwJbs37RAPAe8fhaIKfYTNFJzlqBA7WVyx_UN17Db1873g1lrbdrgVb7VmvLnPTu-rkJMGkZbyMNJJSeyb33ELOZ3sZGya6OBJtS5XYv8v31FK3xxTSzQynkg6uTkkoXB_eNIxRXpXY7sYrxNtJtXab0WZbeC6lO8auA2K6Q24">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">可乐妈咪</h4>
+<span class="text-[10px] bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded-full font-bold">VIP 3</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">content_paste</span>
+                                        ID: 2938475510
+                                    </p>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                        2023-11-24 14:30
+                                    </p>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-3">
+<div class="flex gap-0.5 text-warning-amber">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded text-xs text-on-surface-variant">
+                                        购买项目: <span class="text-on-surface font-semibold">狗狗全周期疫苗套餐</span>
+</div>
+</div>
+<p class="text-on-surface body-md mb-4 leading-relaxed">
+                                    医生非常专业，很有耐心。可乐一开始很害怕，但在医生的安抚下很快就安静下来了。诊室环境也很干净卫生，没有任何异味，强烈推荐！
+                                </p>
+<div class="flex gap-3 mb-4">
+<div class="w-24 h-24 rounded-lg overflow-hidden border border-outline-variant cursor-pointer hover:opacity-90 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A bright and clean veterinary examination room, with a fluffy white pomeranian sitting on a metallic table looking happy, soft natural lighting, pet clinic interior, modern equipment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPnKrM2CEf3L5mkDqD_beTc3UNgEbQ3iltb2YLFXZbOVcfmiIQ2fXzjLuEcBUcOltbkTKucm_3NDRIzDfxTwLTx-cDZcQWRdzAqUN_bnDwnzCcgh6ivadODk4i7DZFJ8QFHxQTsVvwaKNssF9_1vGhnDRhElA1QLjXuRBjG_3V-6HBumB_dBMzrRzkLPMkB_YceGfmJaKX6L0vO35xZxjDYI_usiXAA1YTnEjjJby4Pd_mpX4IrC8jEBB5KsEAQNUtxhdy6RoC8VU">
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden border border-outline-variant cursor-pointer hover:opacity-90 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a pet vaccination record booklet with clear handwriting and a stamp from PetMate Pro clinic, professional and trustworthy vibe, soft focus background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4O6yv1gKOOrGVlblhHVSAbAf1eREcggvpGHXnejjto3u6nwrMOyDAf65C8bm11vyyYY1ZoXmHERSZlPO9nvAVwvJw8IO6kEiDjqjszUjEfOCzDZ6IKNkJtl6Tkrped-vQUapsua5y8qEGx-koD2Rlo0vtCJ6B8OvJWG3sjklYhVc9y1ciPBJRFuoN4ihXopxVZ0AkjerkwFCidZbWlMdE-JXGdJd73UmFXSDtY2jhuWce5_K3mMxcjYZ9TAb-W7sV0lV_rAeNtbM">
+</div>
+</div>
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 text-primary font-label-md text-label-md border border-primary rounded-lg hover:bg-primary-fixed transition-colors">回复</button>
+<button class="px-4 py-2 text-on-surface-variant font-label-md text-label-md border border-outline rounded-lg hover:bg-surface-container-low transition-colors">申诉</button>
+<button class="px-4 py-2 text-on-surface font-label-md text-label-md border border-outline rounded-lg hover:bg-surface-container-low transition-colors">详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Review Card 2 (Replied State) -->
+<div class="p-6 hover:bg-surface-bright transition-colors">
+<div class="flex gap-6">
+<!-- User Info -->
+<div class="w-48 shrink-0">
+<div class="flex items-center gap-3 mb-2">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Minimalist artistic avatar of a golden retriever puppy, soft warm yellow background, clean illustration style, high resolution, friendly aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNxQs_8QCxvoklaDwBAAPMmy5jbCoOfUukr1dh0D5HZumvQ1KKWcsQ7_fVMwNBH0XwHm2ira_kzqhlAgHgr0dmkvqPjDnGSDbgVkaLs8iqjG5De6JeJ1r0V1zAPCpkTMz90MaIS8PR3i4xIJyx9ETsdaYULRmFW1LgwkXm-Jh1Y8zFG9Zf9FGuEWrzi-JksLzLDj67NQSTPBGIjvypPIVDc5DEZVQJvw3unZPwagtBJZ4E5wnCuafXSoIF6wyGrPSSLAt8Wvhmgss">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">大黄的主人</h4>
+<span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded-full font-bold">VIP 1</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">content_paste</span>
+                                        ID: 2938475482
+                                    </p>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                        2023-11-23 10:15
+                                    </p>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-3">
+<div class="flex gap-0.5 text-warning-amber">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded text-xs text-on-surface-variant">
+                                        购买项目: <span class="text-on-surface font-semibold">全犬种洗澡SPA服务</span>
+</div>
+</div>
+<p class="text-on-surface body-md mb-4">
+                                    洗得很干净，毛发蓬松。就是洗澡时间比预约的晚了15分钟，希望下次能更准时一点。
+                                </p>
+<!-- Merchant Reply Box -->
+<div class="bg-surface-container-low p-4 rounded-xl border-l-4 border-primary mt-4 relative">
+<div class="absolute -top-3 left-6 px-2 bg-surface-container-low text-[10px] font-bold text-primary uppercase tracking-wider">商家回复</div>
+<p class="text-sm text-on-surface leading-relaxed">
+                                        尊敬的“大黄的主人”，感谢您的认可与建议！对于服务时间延迟给您带来的不便我们深感抱歉。由于前一单狗狗体型较大处理时间略长，我们已加强了时段排期管控，确保后续为您提供更准时的极致体验。期待大黄下次光临！
+                                    </p>
+<p class="text-[10px] text-on-surface-variant mt-2">回复时间: 2023-11-23 11:05</p>
+</div>
+<div class="flex justify-end gap-3 mt-6">
+<button class="px-4 py-2 text-on-surface-variant font-label-md text-label-md border border-outline rounded-lg opacity-50 cursor-not-allowed">已回复</button>
+<button class="px-4 py-2 text-on-surface font-label-md text-label-md border border-outline rounded-lg hover:bg-surface-container-low transition-colors">修改回复</button>
+<button class="px-4 py-2 text-on-surface font-label-md text-label-md border border-outline rounded-lg hover:bg-surface-container-low transition-colors">详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Review Card 3 (Low Rating) -->
+<div class="p-6 hover:bg-surface-bright transition-colors bg-error-container/5">
+<div class="flex gap-6">
+<!-- User Info -->
+<div class="w-48 shrink-0">
+<div class="flex items-center gap-3 mb-2">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Profile photo of a middle aged man with a neutral expression, casual pet enthusiast look, background is a blurred park with green trees, high quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK3gWMJ07CGea6UYKVVCIoAV7WIYy45SzHgGkoxvYwm07bHABoNwVJRT-VIsykQ9nmQSNcHOuQRqQpx1HVFS9CjQpJMZJfTuKGUA_uQgUegl2nG9c8E3_qCjPZnE6_mSj8Ca5kp0myzMV7z5G_eBncshao_KvGu49M7hjTEeAXL5eZNgQVzA3d9HILvC1DYY94ZO6fyKhCJSRCY2ILke4jwL4a_e5hGfAbbbZHB3ABCVqAoGNXg6TWEn_Olu9UaNeNnA-orh8WG1g">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">匿名的铲屎官</h4>
+<span class="text-[10px] bg-outline-variant text-on-surface-variant px-2 py-0.5 rounded-full font-bold">新用户</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">content_paste</span>
+                                        ID: 2938475221
+                                    </p>
+<p class="text-[12px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                        2023-11-22 18:45
+                                    </p>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-3">
+<div class="flex gap-0.5 text-warning-amber">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-error font-bold bg-error-container px-2 py-0.5 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> 低分评价
+                                        </span>
+<div class="bg-surface-container px-3 py-1 rounded text-xs text-on-surface-variant">
+                                            购买项目: <span class="text-on-surface font-semibold">上门遛狗服务(30min)</span>
+</div>
+</div>
+</div>
+<p class="text-on-surface body-md mb-4">
+                                    感觉遛狗员不太专业，遛狗过程中一直在看手机。而且回来看GPS轨迹，并没有按照约定的路线走。
+                                </p>
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:opacity-90 shadow-sm transition-all">立即回复</button>
+<button class="px-4 py-2 text-secondary font-label-md text-label-md border border-secondary rounded-lg hover:bg-secondary-fixed transition-colors">提起申诉</button>
+<button class="px-4 py-2 text-on-surface font-label-md text-label-md border border-outline rounded-lg hover:bg-surface-container-low transition-colors">详情</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="p-6 flex items-center justify-between border-t border-outline-variant">
+<p class="text-sm text-on-surface-variant">共 12,480 条评价，显示第 1-10 条</p>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline hover:bg-surface-container-low disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-low">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-low">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-low">1248</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline hover:bg-surface-container-low">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Helper (Hidden by default) -->
+<div class="hidden flex flex-col items-center justify-center py-20">
+<span class="material-symbols-outlined text-6xl text-surface-variant mb-4">rate_review</span>
+<p class="text-on-surface-variant font-headline-md">暂无相关评价</p>
+<p class="text-on-surface-variant mt-2">当用户提交反馈后，它们将出现在这里。</p>
+</div>
+</div>
+</main>
+<!-- Floating Action Button Contextual Logic (Suppressed on this page per guidelines) -->
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => el.classList.add('scale-95'));
+            el.addEventListener('mouseup', () => el.classList.remove('scale-95'));
+            el.addEventListener('mouseleave', () => el.classList.remove('scale-95'));
+        });
+
+        // Tab Switcher Simulation
+        const tabs = document.querySelectorAll('.active-tab'); // This would be more dynamic in a real app
+        // Here we just keep the static CSS for visual representation of the provided design
+    </script>
+</body></html>

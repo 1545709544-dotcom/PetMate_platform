@@ -1,0 +1,8 @@
+#!/bin/sh
+# Maven Wrapper start script (POSIX)
+set -euf
+DIR="$(cd "$(dirname "$0")" && pwd)"
+APP_HOME="$DIR"
+exec java -classpath "$APP_HOME/.mvn/wrapper/maven-wrapper.jar" \
+  -Dwrapper.properties="$APP_HOME/.mvn/wrapper/maven-wrapper.properties" \
+  org.apache.maven.wrapper.MavenWrapperMain "$@"

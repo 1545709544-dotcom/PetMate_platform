@@ -1,0 +1,370 @@
+// ========================================
+// 商家管理端 · 高级视觉增强层
+// 说明：本文件提供「氛围装饰」与「可选高级工具类」。
+// 氛围装饰（.merchant-content 背景光晕）自动作用于整个管理端；
+// 工具类（.pm-*）为 opt-in，由页面按需添加，不影响现有 scoped 样式。
+// ========================================
+
+@use './variables.scss' as *;
+@use './mixin.scss' as *;
+
+// ---------- 1. 内容区氛围光晕 ----------
+// 在管理端内容区背后叠一层极淡的品牌渐变，制造高级纵深感（不影响卡片可读性）
+.merchant-content {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 32% at 0% 0%, rgba($color-brand, 0.05), transparent 70%),
+      radial-gradient(36% 30% at 100% 0%, rgba($color-secondary, 0.04), transparent 70%);
+  }
+
+  // 真实内容位于光晕之上
+  > .page-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ---------- 2. 可选高级工具类（opt-in）----------
+
+// 玻璃拟态卡片
+.pm-glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 32px rgba(22, 29, 31, 0.08);
+  border-radius: $radius-xl;
+}
+
+// 标准高级卡片（带 hover 微浮起 + 描边高亮）
+.pm-card {
+  background: $color-surface-container-lowest;
+  border: 1px solid $color-surface-container;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-card;
+  padding: $spacing-lg;
+  transition: transform $transition-base, box-shadow $transition-base,
+    border-color $transition-base;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-lg;
+    border-color: rgba($color-brand, 0.35);
+  }
+}
+
+// 数据指标卡
+.pm-stat {
+  position: relative;
+  overflow: hidden;
+  padding: $spacing-lg;
+  background: $color-surface-container-lowest;
+  border: 1px solid $color-surface-container;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-lg;
+  }
+
+  .pm-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: $spacing-sm;
+  }
+
+  .pm-stat-label {
+    font-size: $font-size-label-md;
+    color: $color-text-secondary;
+  }
+
+  .pm-stat-value {
+    font-family: $font-family-headline;
+    font-size: 30px;
+    font-weight: $font-weight-extrabold;
+    color: $color-text-primary;
+    line-height: 1.1;
+    margin-top: 2px;
+  }
+
+  .pm-stat-trend {
+    margin-top: 6px;
+    font-size: $font-size-label-sm;
+    font-weight: $font-weight-bold;
+
+    &.up { color: $color-success; }
+    &.down { color: $color-emergency; }
+  }
+
+  // 右下角装饰光斑
+  &::after {
+    content: '';
+    position: absolute;
+    right: -28px;
+    bottom: -28px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($color-brand, 0.1), transparent 70%);
+    pointer-events: none;
+  }
+}
+
+// 空状态（高级留白版）
+.pm-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-3xl $spacing-lg;
+  text-align: center;
+  color: $color-text-secondary;
+
+  .pm-empty-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-surface-container-low;
+    color: $color-brand;
+
+    .material-symbols-outlined {
+      font-size: 36px;
+      font-variation-settings: 'FILL' 1;
+      opacity: 0.8;
+    }
+  }
+
+  .pm-empty-title {
+    font-family: $font-family-headline;
+    font-size: $font-size-headline-md;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+  }
+
+  .pm-empty-desc {
+    font-size: $font-size-body-md;
+    max-width: 360px;
+    line-height: 1.6;
+  }
+}
+
+// 胶囊标签
+.pm-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px $spacing-md;
+  border-radius: $radius-full;
+  font-size: $font-size-label-sm;
+  font-weight: $font-weight-semibold;
+  background: $color-surface-container-low;
+  color: $color-text-secondary;
+
+  &.brand { background: rgba($color-brand, 0.12); color: $color-brand; }
+  &.blue { background: rgba($color-secondary, 0.12); color: $color-secondary; }
+  &.gold { background: rgba($color-warning, 0.16); color: #8a6500; }
+  &.green { background: rgba($color-success, 0.14); color: $color-success; }
+  &.red { background: rgba($color-emergency, 0.12); color: $color-emergency; }
+}
+
+// 分隔小标题
+.pm-section-title {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  font-family: $font-family-headline;
+  font-size: $font-size-headline-md;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0;
+
+  &::before {
+    content: '';
+    width: 4px;
+    height: 18px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, $color-brand, $color-brand-dark);
+  }
+}
+
+// 通用栅格
+.pm-grid {
+  display: grid;
+  gap: $spacing-md;
+
+  &.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  &.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  &.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  @include mobile {
+    &.cols-2, &.cols-3, &.cols-4 { grid-template-columns: 1fr; }
+  }
+  @include tablet {
+    &.cols-3, &.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+}
+
+// 列表行卡片悬浮微交互
+.pm-row-hover {
+  transition: background-color $transition-fast, transform $transition-fast;
+  &:hover {
+    background: $color-surface-container-low;
+  }
+}
+
+// 下拉/弹窗等 Element Plus 卡片在管理端内的统一圆角与阴影（安全、低特异性）
+.merchant-content {
+  .el-card {
+    border-radius: $radius-xl;
+    border-color: $color-surface-container;
+    box-shadow: $shadow-card;
+  }
+  .el-table {
+    border-radius: $radius-lg;
+    overflow: hidden;
+  }
+}
+
+// ---------- 3. 页面头部统一高级化处理（作用于所有商家页 .page-head）----------
+// 仅新增 scoped 样式未定义的属性（position / ::before / 动画 / 分隔线），
+// 避免与组件内 scoped 规则冲突，安全提升所有商家页头部的精致度。
+.merchant-content {
+  .page-head {
+    position: relative;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid $color-surface-container;
+    animation: pm-head-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+    .page-title {
+      position: relative;
+      padding-left: 16px;
+      letter-spacing: -0.01em;
+
+      // 标题左侧渐变强调短杠
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 64%;
+        border-radius: 3px;
+        background: linear-gradient(180deg, $color-brand, $color-brand-dark);
+      }
+    }
+
+    .page-sub {
+      padding-left: 16px;
+    }
+
+    .head-actions {
+      display: flex;
+      gap: $spacing-sm;
+      align-items: center;
+    }
+  }
+}
+
+@keyframes pm-head-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ---------- 4. 商家页通用区块卡片（替代裸白卡片，统一高级质感）----------
+.merchant-content {
+  .card,
+  .table-card,
+  .form-card,
+  .detail-card {
+    background: $color-surface-container-lowest;
+    border: 1px solid $color-surface-container;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-card;
+  }
+
+  // 区块小标题统一渐变竖条（与页头呼应）
+  .section-title,
+  .block-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-family: $font-family-headline;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 16px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, $color-brand, $color-brand-dark);
+    }
+  }
+}
+
+// ---------- 5. 全局微交互（沉浸式高级手感，安全、不覆盖既有布局）----------
+.merchant-content {
+  // 大卡片 hover：描边高亮 + 阴影加深（不做位移，避免复杂卡片抖动）
+  .card,
+  .table-card,
+  .form-card,
+  .detail-card,
+  .chart-card,
+  .alerts-card,
+  .heatmap-card {
+    transition: border-color $transition-base, box-shadow $transition-base;
+    will-change: box-shadow;
+
+    &:hover {
+      border-color: rgba($color-brand, 0.3);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  // KPI 小卡：轻微悬浮微交互（独立类，安全）
+  .kpi-card {
+    transition: transform $transition-base, box-shadow $transition-base;
+    will-change: transform;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  // 数据表格行 hover：品牌色底纹微反馈
+  .data-table {
+    tbody tr {
+      transition: background-color $transition-fast;
+    }
+    tbody tr:hover {
+      background: rgba($color-brand, 0.05);
+    }
+  }
+}
